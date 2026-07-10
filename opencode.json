@@ -1,0 +1,44 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "instructions": ["AGENTS.md"],
+    "watcher": {
+        "ignore": [".astro", "dist", "node_modules"]
+    },
+    "permission": {
+        "bash": "ask"
+    },
+    "command": {
+        "dev": {
+            "template": "npm run dev",
+            "description": "Start Astro dev server at localhost:4321"
+        },
+        "build": {
+            "template": "npm run build",
+            "description": "Build production site to dist/"
+        },
+        "preview": {
+            "template": "npm run preview",
+            "description": "Preview built site locally"
+        },
+        "astro": {
+            "template": "npm run astro -- $INPUT",
+            "description": "Run any Astro CLI command"
+        }
+    },
+    "formatter": {
+        "prettier": {
+            "command": [
+                "./node_modules/.bin/prettier",
+                "--plugin",
+                "prettier-plugin-astro"
+            ],
+            "extensions": [".astro"]
+        }
+    },
+    "lsp": {
+        "astro-ls": {
+            "command": ["./node_modules/.bin/astro-ls", "--stdio"],
+            "extensions": [".astro", ".mdx"]
+        }
+    }
+}
