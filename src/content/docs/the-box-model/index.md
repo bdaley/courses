@@ -1,0 +1,28 @@
+---
+title: The Box Model
+description: Week 5 - Understanding the CSS box model
+---
+
+Every element on a web page is a rectangular box made up of four layers:
+
+```css
+/* The four parts of the box model */
+.box {
+  width: 300px;
+  padding: 20px;       /* Space between content and border */
+  border: 2px solid #333;  /* Edge around the padding */
+  margin: 15px;        /* Space outside the border */
+}
+```
+
+## Introduction to the Box Model
+
+[Introduction to the Box Model - YouTube](https://youtu.be/WiFz-rr66gA)
+
+## Box Model Properties
+
+[Box Model Properties - YouTube](https://youtu.be/gEomwyawbUU)
+
+## Floats and Box Sizing
+
+[Floats and Box Sizing - YouTube](https://youtu.be/KvxIkAhtlWI)

@@ -1,0 +1,26 @@
+---
+title: Links
+description: Creating hyperlinks in HTML
+---
+
+```html
+<!-- Absolute link -->
+<a href="https://example.com/page.html">External Site</a>
+
+<!-- Relative link -->
+<a href="about.html">About Us</a>
+
+<!-- Relative link (subdirectory) -->
+<a href="images/photo.jpg">View Photo</a>
+
+<!-- Email link -->
+<a href="mailto:hello@example.com">Send Email</a>
+```
+
+## Relative Links
+
+[Relative Links - YouTube](https://www.youtube.com/watch?v=Um1DXLL5isc)
+
+## Non-Web Links
+
+[Non-Web Links - YouTube](https://www.youtube.com/watch?v=rkBXzXjiqzs)

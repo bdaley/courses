@@ -1,0 +1,22 @@
+---
+title: Lists
+description: Creating ordered and unordered lists in HTML
+---
+
+```html
+<!-- Unordered list (bullets) -->
+<ul>
+  <li>Apples</li>
+  <li>Bananas</li>
+  <li>Cherries</li>
+</ul>
+
+<!-- Ordered list (numbers) -->
+<ol>
+  <li>First step</li>
+  <li>Second step</li>
+  <li>Third step</li>
+</ol>
+```
+
+[Lists - YouTube](https://youtu.be/E4JK1PYup3w)

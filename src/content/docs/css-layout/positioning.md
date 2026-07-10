@@ -1,0 +1,38 @@
+---
+title: Positioning
+description: Understanding CSS positioning (static, relative, absolute, fixed)
+---
+
+```css
+/* Static — default positioning (flows in normal document order) */
+.static-box {
+  position: static;
+}
+
+/* Relative — offset from its normal position */
+.relative-box {
+  position: relative;
+  top: 20px;
+  left: 10px;
+}
+
+/* Absolute — positioned relative to nearest positioned ancestor */
+.absolute-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Fixed — positioned relative to the viewport, stays on scroll */
+.fixed-box {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+```
+
+[Positioning - YouTube](https://youtu.be/1KlDnXuJkrY)
+
+:::note
+[Here are the slides](https://docs.google.com/presentation/d/1AzDXL9ZF_MASJYUYITOl8LTkligiHppSLMHSTAnTa7w/edit?usp=sharing) for the video.
+:::

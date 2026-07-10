@@ -1,0 +1,32 @@
+---
+title: Display & Visibility
+description: Understanding CSS display and visibility properties
+---
+
+```css
+/* display: block — takes full width, starts on new line */
+.block-element {
+  display: block;
+}
+
+/* display: inline — flows within text, only takes needed space */
+.inline-element {
+  display: inline;
+}
+
+/* display: none — completely removes the element from the page */
+.hidden-element {
+  display: none;
+}
+
+/* visibility: hidden — hides element but preserves its space */
+.invisible-element {
+  visibility: hidden;
+}
+```
+
+[Display & Visibility - YouTube](https://youtu.be/D87N7bfK6xk)
+
+:::note
+[Here are the slides](https://docs.google.com/presentation/d/1oqT99SRIMs4wDrEQC494HLPLVCqS4WHYCbdBKNnmans/edit?usp=sharing) for the video.
+:::

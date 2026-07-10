@@ -1,0 +1,35 @@
+---
+title: Using the Image Element
+description: How to use the HTML image element and its attributes
+---
+
+```html
+<!-- Basic image with required src and alt attributes -->
+<img src="photo.jpg" alt="A sunset over the ocean">
+
+<!-- Image with width and height -->
+<img src="logo.png" alt="Company logo" width="200" height="100">
+
+<!-- Image as a link -->
+<a href="https://example.com">
+  <img src="banner.jpg" alt="Click to visit our site">
+</a>
+```
+
+### The "src" Attribute
+
+[The src Attribute - YouTube](https://www.youtube.com/watch?v=Nzw7vA2S0rw)
+
+### The "alt" Attribute
+
+[The alt Attribute - YouTube](https://www.youtube.com/watch?v=fqdTtB7-Ohw)
+
+### Image Display Characteristics
+
+Do you think it displays as inline or block?
+
+[Image Display - YouTube](https://www.youtube.com/watch?v=9VjAvtQyWF8)
+
+### Making the Image Clickable
+
+[Making Images Clickable - YouTube](https://www.youtube.com/watch?v=3IQrWz_JTnI)

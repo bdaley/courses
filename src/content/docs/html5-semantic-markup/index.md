@@ -1,0 +1,46 @@
+---
+title: HTML5 & Semantic Markup
+description: Week 4 - Understanding semantic HTML and its importance
+---
+
+## Semantic Markup: What & Why?
+
+Why is [semantic code](https://developer.mozilla.org/en-US/docs/Glossary/Semantics) important? Why not just use `<div>` for every block-level element? This (short) post explains the importance of semantic code. Not only is writing semantic code the right thing to do (accessibility), but it also makes business sense (SEO).
+
+[Semantic Code: What, Why, and How (Boagworld)](https://boagworld.com/dev/semantic-code-what-why-how/)
+
+## Semantic Markup: How?
+
+With HTML5, [a plethora of new HTML tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) were introduced that allow us to provide meaning to our pages.
+
+```html
+<!-- Non-semantic: no meaning -->
+<div class="header">
+  <div class="nav">...</div>
+</div>
+<div class="main">
+  <div class="article">...</div>
+</div>
+
+<!-- Semantic: describes purpose -->
+<header>
+  <nav>...</nav>
+</header>
+<main>
+  <article>...</article>
+</main>
+```
+
+Now that you understand *why* we use semantic markup and HTML5 tags, learn *how*:
+
+[Semantic HTML5 Guide (Semrush)](https://www.semrush.com/blog/semantic-html5-guide/)
+
+## Semantic Markup for Accessibility
+
+Okay, so we know that semantic markup makes it easier for those with disabilities to use our websites. It's also easy to accomplish. Instead using a bunch of `<div>` elements to create our page, we instead use things like, `<section>`, `<nav>`, `<header>`, and `<main>`.
+
+But it's hard to gain a full appreciation for how much of a difference that semantic markup makes, unless you see a website from the perspective of a user with an impairment that hinders the use of a website.
+
+This video highlights the differences between two identical pages. One with semantic markup and the other without.
+
+[Semantic Markup for Accessibility - YouTube](https://www.youtube.com/watch?v=9S_66Dg5Sqs)

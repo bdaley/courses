@@ -1,0 +1,42 @@
+---
+title: Document Structure
+description: The required structure of an HTML document
+---
+
+Every HTML document follows the same basic structure:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Web Page</title>
+</head>
+<body>
+  <p>Hello, world!</p>
+</body>
+</html>
+```
+
+### Add to every HTML document
+
+- `<!DOCTYPE html>` — document type declaration
+- `<html lang="en">` — root element with language attribute
+- `<head>` — metadata container
+
+### Required components inside the `<head>`
+
+- Character encoding (`<meta charset="UTF-8">`)
+- Document title (`<title>`)
+- Viewport metadata (`<meta name="viewport">`)
+
+### Other `<head>` content
+
+- CSS (`<link>` or `<style>`)
+- Scripts (`<script>`)
+- HTML comments
+
+#### Further details:
+
+[Learn HTML: Document Structure (web.dev)](https://web.dev/learn/html/document-structure/)

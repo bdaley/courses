@@ -1,0 +1,27 @@
+---
+title: Tags, Attributes, & Elements
+description: Understanding the building blocks of HTML
+---
+
+## Example
+
+```html
+<!-- Element: opening tag + content + closing tag -->
+<p>This is a paragraph element.</p>
+
+<!-- Opening tag with an attribute -->
+<a href="https://example.com">Click here</a>
+
+<!-- Self-closing (void) element -->
+<img src="photo.jpg" alt="A photo">
+```
+
+## Video
+
+[Tags, Attributes, & Elements - YouTube](https://www.youtube.com/watch?v=L1GYJyfwx3s)
+
+## Slides
+
+[Download the Slides (PPT)](https://docs.google.com/presentation/d/1o2SUq_U5_ECp34v8QMoYHvyuojF3sZVBnLEmELY2740/export/pptx?id=1o2SUq_U5_ECp34v8QMoYHvyuojF3sZVBnLEmELY2740&pageid=p)
+
+[View the Slides](https://docs.google.com/presentation/d/1o2SUq_U5_ECp34v8QMoYHvyuojF3sZVBnLEmELY2740/edit#slide=id.g16563a0e6b_0_23)

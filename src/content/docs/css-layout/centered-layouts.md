@@ -1,0 +1,29 @@
+---
+title: Centered Layouts
+description: Techniques for centering content with CSS
+---
+
+## Using Margin Auto
+
+```css
+.container {
+  width: 80%;
+  max-width: 960px;
+  margin: 0 auto;   /* Centers the container horizontally */
+}
+```
+
+[Centering with Margin Auto - YouTube](https://www.youtube.com/watch?v=FJlVLyslEKc&feature=youtu.be)
+
+## Using Flexbox
+
+```css
+.parent {
+  display: flex;
+  justify-content: center;   /* Centers horizontally */
+  align-items: center;       /* Centers vertically */
+  min-height: 400px;
+}
+```
+
+[Centering with Flexbox - YouTube](https://www.youtube.com/watch?v=wGTCH0iZD7Y&feature=youtu.be)

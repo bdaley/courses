@@ -1,0 +1,43 @@
+---
+title: "Example: Navigation"
+description: Creating a navigation bar with Flexbox
+---
+
+```html
+<nav>
+  <ul class="nav-list">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+```
+
+```css
+.nav-list {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+}
+
+.nav-list li {
+  flex: 1;             /* Each item stretches evenly */
+}
+
+.nav-list a {
+  display: block;
+  padding: 10px 20px;
+  text-align: center;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-list a:hover {
+  background: #555;
+}
+```
+
+[Example: Navigation - YouTube](https://youtu.be/cR6Q_c5SaIc)

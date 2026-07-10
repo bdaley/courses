@@ -1,0 +1,35 @@
+---
+title: "Example: flex-basis & flex-grow"
+description: Understanding flex-basis and flex-grow properties
+---
+
+```css
+.flex-container {
+  display: flex;
+}
+
+/* flex-grow: 0 — item won't grow beyond its basis */
+.item-fixed {
+  flex-grow: 0;
+  flex-basis: 200px;
+}
+
+/* flex-grow: 1 — item will fill available space */
+.item-stretch {
+  flex-grow: 1;   /* Takes up remaining space */
+  flex-basis: 0;
+}
+
+/* Shorthand: flex: grow shrink basis */
+.item-sidebar {
+  flex: 0 0 250px;   /* Fixed at 250px, won't grow or shrink */
+}
+
+.item-main {
+  flex: 1 1 auto;    /* Grows and shrinks as needed */
+}
+```
+
+Here's [the cheatsheet that is referenced in the video below](https://yoksel.github.io/flex-cheatsheet/).
+
+[Example: flex-basis & flex-grow - YouTube](https://youtu.be/dnlQW08zXJ0)

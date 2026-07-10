@@ -1,0 +1,12 @@
+---
+title: Helpful Layout Patterns
+description: Common CSS layout patterns and resources
+---
+
+Layouts are hard. It's okay to get a little help from the people that have come before you. Below is a link to common CSS layouts and patterns. The website can be really helpful when encountering a tough layout.
+
+[CSS Layout Collection](https://phuoc.ng/collection/css-layout/)
+
+:::danger
+**Warning** - Many of the examples use inline CSS to achieve the desired layouts. While this is acceptable in some situations (like demos), make sure you use external CSS files when completing assignments for this course.
+:::
