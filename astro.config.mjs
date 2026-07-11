@@ -1,13 +1,18 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { remarkYouTube } from './src/plugins/remark-youtube';
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://bdaley.github.io",
 	base: '/dmd-1070-5070/',
+	markdown: {
+		remarkPlugins: [remarkYouTube],
+	},
 	integrations: [
 		starlight({
 			title: 'DMD 1070/5070',
+			customCss: ['./src/styles/video-embed.css'],
 			social: {
 				github: 'https://github.com/bdaley/dmd-1070-5070',
 				twitter: 'https://twitter.com/uconnwebprof',
