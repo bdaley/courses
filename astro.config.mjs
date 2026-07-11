@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
 import starlight from '@astrojs/starlight';
 import { unified } from '@astrojs/markdown-remark';
 import { remarkYouTube } from './src/plugins/remark-youtube';
@@ -9,6 +10,7 @@ export default defineConfig({
 	site: "https://bdaley.github.io",
 	base: '/dmd-1070-5070/',
 	integrations: [
+		react(),
 		unified({ remarkPlugins: [remarkYouTube] }),
 		starlight({
 			title: 'DMD 1070/5070',

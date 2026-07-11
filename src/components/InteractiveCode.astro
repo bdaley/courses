@@ -1,0 +1,12 @@
+---
+import SandpackPreview from "./SandpackPreview";
+
+export interface Props {
+  html?: string;
+  css?: string;
+}
+
+const { html, css } = Astro.props;
+---
+
+<SandpackPreview {html} {css} client:load />

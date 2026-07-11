@@ -3,8 +3,14 @@ title: Floats
 description: Using CSS floats for layout
 ---
 
-```css
-/* Float an image so text wraps around it */
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+
+<InteractiveCode
+  html={`<div class="clearfix">
+  <img src="avatar.jpg" alt="Avatar" class="avatar">
+  <p>Text will wrap around the floated image on the right side.</p>
+</div>`}
+  css={`/* Float an image so text wraps around it */
 img.avatar {
   float: left;
   margin-right: 15px;
@@ -16,15 +22,8 @@ img.avatar {
   content: "";
   display: table;
   clear: both;
-}
-```
-
-```html
-<div class="clearfix">
-  <img src="avatar.jpg" alt="Avatar" class="avatar">
-  <p>Text will wrap around the floated image on the right side.</p>
-</div>
-```
+}`}
+/>
 
 [Floats - YouTube](https://youtu.be/NDRP2paDucs)
 

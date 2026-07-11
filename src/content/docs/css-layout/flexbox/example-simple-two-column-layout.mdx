@@ -3,15 +3,14 @@ title: "Example: Simple Two-Column Layout"
 description: Creating a two-column layout with Flexbox
 ---
 
-```html
-<div class="container">
+import InteractiveCode from '../../../../components/InteractiveCode.astro';
+
+<InteractiveCode
+  html={`<div class="container">
   <div class="column">Left Column</div>
   <div class="column">Right Column</div>
-</div>
-```
-
-```css
-.container {
+</div>`}
+  css={`.container {
   display: flex;
   gap: 20px;
 }
@@ -20,7 +19,7 @@ description: Creating a two-column layout with Flexbox
   flex: 1;              /* Each column takes equal width */
   padding: 20px;
   background: #f4f4f4;
-}
-```
+}`}
+/>
 
 [Example: Simple Two-Column Layout - YouTube](https://youtu.be/eKMeJSXa2eU)

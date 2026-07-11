@@ -3,6 +3,8 @@ title: Responsive Web Design
 description: Week 11 - Making websites work on any device
 ---
 
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+
 ## Introduction
 
 Please watch the two videos below for an introduction on the topic of responsive web design.
@@ -13,8 +15,8 @@ Please watch the two videos below for an introduction on the topic of responsive
 
 ## Using Media Queries
 
-```css
-/* Base styles for mobile-first design */
+<InteractiveCode
+  css={`/* Base styles for mobile-first design */
 .container {
   display: flex;
   flex-direction: column;
@@ -41,8 +43,8 @@ Please watch the two videos below for an introduction on the topic of responsive
     max-width: 1200px;
     margin: 0 auto;
   }
-}
-```
+}`}
+/>
 
 [Media Queries - Loom](https://www.loom.com/share/57f31d03684e4d34a475380aafc2c701)
 

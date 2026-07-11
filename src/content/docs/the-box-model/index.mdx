@@ -3,17 +3,19 @@ title: The Box Model
 description: Week 5 - Understanding the CSS box model
 ---
 
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+
 Every element on a web page is a rectangular box made up of four layers:
 
-```css
-/* The four parts of the box model */
+<InteractiveCode
+  css={`/* The four parts of the box model */
 .box {
   width: 300px;
   padding: 20px;       /* Space between content and border */
   border: 2px solid #333;  /* Edge around the padding */
   margin: 15px;        /* Space outside the border */
-}
-```
+}`}
+/>
 
 ## Introduction to the Box Model
 

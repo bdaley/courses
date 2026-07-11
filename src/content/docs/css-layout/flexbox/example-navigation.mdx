@@ -3,19 +3,18 @@ title: "Example: Navigation"
 description: Creating a navigation bar with Flexbox
 ---
 
-```html
-<nav>
+import InteractiveCode from '../../../../components/InteractiveCode.astro';
+
+<InteractiveCode
+  html={`<nav>
   <ul class="nav-list">
     <li><a href="#">Home</a></li>
     <li><a href="#">About</a></li>
     <li><a href="#">Services</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
-</nav>
-```
-
-```css
-.nav-list {
+</nav>`}
+  css={`.nav-list {
   display: flex;
   gap: 0;
   list-style: none;
@@ -37,7 +36,7 @@ description: Creating a navigation bar with Flexbox
 
 .nav-list a:hover {
   background: #555;
-}
-```
+}`}
+/>
 
 [Example: Navigation - YouTube](https://youtu.be/cR6Q_c5SaIc)

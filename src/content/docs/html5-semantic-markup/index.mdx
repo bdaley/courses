@@ -3,6 +3,8 @@ title: HTML5 & Semantic Markup
 description: Week 4 - Understanding semantic HTML and its importance
 ---
 
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+
 ## Semantic Markup: What & Why?
 
 Why is [semantic code](https://developer.mozilla.org/en-US/docs/Glossary/Semantics) important? Why not just use `<div>` for every block-level element? This (short) post explains the importance of semantic code. Not only is writing semantic code the right thing to do (accessibility), but it also makes business sense (SEO).
@@ -13,8 +15,8 @@ Why is [semantic code](https://developer.mozilla.org/en-US/docs/Glossary/Semanti
 
 With HTML5, [a plethora of new HTML tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) were introduced that allow us to provide meaning to our pages.
 
-```html
-<!-- Non-semantic: no meaning -->
+<InteractiveCode
+  html={`<!-- Non-semantic: no meaning -->
 <div class="header">
   <div class="nav">...</div>
 </div>
@@ -28,8 +30,8 @@ With HTML5, [a plethora of new HTML tags](https://developer.mozilla.org/en-US/do
 </header>
 <main>
   <article>...</article>
-</main>
-```
+</main>`}
+/>
 
 Now that you understand *why* we use semantic markup and HTML5 tags, learn *how*:
 

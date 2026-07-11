@@ -3,8 +3,10 @@ title: "Example: flex-basis & flex-grow"
 description: Understanding flex-basis and flex-grow properties
 ---
 
-```css
-.flex-container {
+import InteractiveCode from '../../../../components/InteractiveCode.astro';
+
+<InteractiveCode
+  css={`.flex-container {
   display: flex;
 }
 
@@ -27,8 +29,8 @@ description: Understanding flex-basis and flex-grow properties
 
 .item-main {
   flex: 1 1 auto;    /* Grows and shrinks as needed */
-}
-```
+}`}
+/>
 
 Here's [the cheatsheet that is referenced in the video below](https://yoksel.github.io/flex-cheatsheet/).
 
