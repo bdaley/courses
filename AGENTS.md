@@ -33,3 +33,33 @@ src/content/docs/
   reference/         # auto-generated sidebar
 guides/              # manual sidebar entries defined in astro.config.mjs
 ```
+
+## Starlight Quiz
+
+Quizzes can be added to any `.mdx` page using the `<Quiz>` component from `starlight-quiz/components`.
+
+```astro
+---
+import { Quiz } from 'starlight-quiz/components';
+---
+
+<Quiz>
+Which of these are programming languages?
+
+- [x] Python
+- [ ] HTML
+- [x] JavaScript
+- [ ] CSS
+</Quiz>
+```
+
+- `[x]` = correct answer, `[ ]` = incorrect
+- Single `[x]` renders radio buttons; multiple `[x]` switches to checkboxes
+- Fill-in-the-blank: `[[answer]]` in text
+- Content after the answer list is hidden until submitted
+
+Additional components: `<QuizResults>`, `<QuizIntro>`, `<QuizProgress>` (all from `starlight-quiz/components`).
+
+**Plugin reference:** https://ewels.github.io/starlight-quiz/guides/quick-start/
+**Configuration options:** https://ewels.github.io/starlight-quiz/guides/configuration/
+
