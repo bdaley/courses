@@ -1,6 +1,9 @@
 {
     "$schema": "https://opencode.ai/config.json",
     "instructions": ["AGENTS.md"],
+    "skills": {
+        "paths": [".opencode/skills"]
+    },
     "watcher": {
         "ignore": [".astro", "dist", "node_modules"]
     },
