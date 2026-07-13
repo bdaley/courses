@@ -11,6 +11,21 @@ npm run preview # serve built site locally
 
 `npm run start` is an alias for `npm run dev`.
 
+## Course context
+
+This site is an interactive learning companion for **DMD 1070** (undergraduate) and **DMD 5070** (graduate) at the University of Connecticut. DMD 1070 is an introductory course in web design and development covering:
+
+- The design process and website planning
+- Image editing and resizing
+- HTML coding
+- CSS coding
+- Basic understanding of JavaScript's role (not explicitly taught, but students are encouraged to research and use JS when applicable)
+- FTP deployment of a complete website
+
+By the end of the course, students should be able to design, build, and deploy a complete website.
+
+**Interactive components** (Sandpack live code editors and Starlight Quiz formative assessments) should be used liberally throughout all sections to encourage hands-on experimentation and self-check learning.
+
 ## Project type
 
 Astro + Starlight documentation site. All content is Markdown under `src/content/docs/`. Sidebars are auto-generated from subdirectory structure (see `astro.config.mjs` sidebar config).
@@ -33,6 +48,8 @@ src/content/docs/
   reference/         # auto-generated sidebar
 guides/              # manual sidebar entries defined in astro.config.mjs
 ```
+
+**Note on `.md` vs `.mdx`:** Both `InteractiveCode` and `Quiz` are Astro/React components that must be imported, so any page using them **must** be `.mdx` (not `.md`). Plain `.md` files cannot use component imports.
 
 ## Starlight Quiz
 
@@ -62,4 +79,25 @@ Additional components: `<QuizResults>`, `<QuizIntro>`, `<QuizProgress>` (all fro
 
 **Plugin reference:** https://ewels.github.io/starlight-quiz/guides/quick-start/
 **Configuration options:** https://ewels.github.io/starlight-quiz/guides/configuration/
+
+## Interactive Code (Sandpack)
+
+Live code editors can be embedded in any `.mdx` page using the `<InteractiveCode>` component.
+
+```astro
+---
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+---
+
+<InteractiveCode
+  html={`<h1>Hello World</h1>
+<p>This is editable!</p>`}
+  css={`h1 { color: rebeccapurple; }`}
+/>
+```
+
+- Props: `html` (string) and/or `css` (string)
+- Renders a split-pane code editor with live preview
+- Only one of `html` or `css` is required; if only `css` is provided, a default HTML shell is used
+- Pages using this component must be `.mdx` (not `.md`)
 
