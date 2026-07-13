@@ -1,9 +1,11 @@
 ---
 title: Line Breaks
 description: Using line breaks in HTML
+order: 9
 ---
 
 import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
 
 <InteractiveCode
   html={`<p>This is line one.<br>
@@ -14,3 +16,12 @@ This is line three.</p>`}
 Use `<br>` (a void element) to break a line inside a paragraph. Avoid using multiple `<br>` tags for spacing — use CSS margins instead.
 
 [Line Breaks - YouTube](https://youtu.be/yjH4e-KvjQ0)
+
+<Quiz>
+What is the correct way to add space between two paragraphs?
+
+- [ ] Add multiple `<br>` elements
+- [x] Use CSS margins
+- [ ] Add an empty paragraph
+- [ ] Add a `<hr>` element
+</Quiz>

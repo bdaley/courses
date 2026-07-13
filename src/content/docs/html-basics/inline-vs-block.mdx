@@ -1,9 +1,32 @@
 ---
 title: Inline vs. Block
 description: Understanding inline and block-level HTML elements
+order: 13
 ---
 
 import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+## Block Elements
+
+Block elements start on a new line and take up the full available width. They create a "block" of content:
+
+- `<p>` — paragraphs
+- `<h1>` through `<h6>` — headings
+- `<div>` — generic container
+- `<ul>`, `<ol>` — lists
+- `<hr>` — horizontal rule
+
+## Inline Elements
+
+Inline elements flow within the text. They only take up as much space as needed:
+
+- `<strong>` — important text (bold)
+- `<em>` — emphasized text (italic)
+- `<a>` — links
+- `<span>` — generic inline container
+- `<img>` — images
+- `<br>` — line breaks
 
 <InteractiveCode
   html={`<!-- Block elements: start on a new line, fill available width -->
@@ -11,8 +34,30 @@ import InteractiveCode from '../../../components/InteractiveCode.astro';
 <div>This div is also a block element.</div>
 
 <!-- Inline elements: flow within text, only take needed space -->
-<p>This <strong>bold word</strong> and
-<a href="#">this link</a> are inline elements.</p>`}
+<p>This is <strong>bold text</strong> and
+<em>italic text</em> and
+<a href="#">a link</a> — all inline elements.</p>`}
 />
 
+Try adding more inline elements inside the paragraph. Notice how they stay on the same line.
+
 [Inline vs. Block - YouTube](https://youtu.be/EAPxu-gYbk4)
+
+<Quiz>
+How does a block element behave in the browser?
+
+- [ ] It flows inline with text
+- [x] It starts on a new line and fills the available width
+- [ ] It only takes up as much space as its content
+- [ ] It ignores width and height
+</Quiz>
+
+<Quiz>
+Which of the following are inline elements? Select all that apply.
+
+- [x] `<strong>`
+- [ ] `<div>`
+- [x] `<a>`
+- [ ] `<p>`
+- [x] `<span>`
+</Quiz>

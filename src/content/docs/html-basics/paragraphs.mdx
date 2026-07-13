@@ -1,9 +1,11 @@
 ---
 title: Paragraphs
 description: Using the paragraph tag in HTML
+order: 3
 ---
 
 import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
 
 <InteractiveCode
   html={`<p>This is a paragraph of text. Browsers will automatically
@@ -13,4 +15,15 @@ add space before and after each paragraph element.</p>
 block-level elements, so each paragraph starts on a new line.</p>`}
 />
 
+Try adding a third paragraph to the example above. Notice how the browser adds space between each one automatically.
+
 [Paragraphs - YouTube](https://youtu.be/zB8eLzXulpQ)
+
+<Quiz>
+How does a browser display two `<p>` elements placed one after the other?
+
+- [x] Each paragraph starts on a new line with space between them
+- [ ] They appear side by side
+- [ ] The second paragraph is ignored
+- [ ] They merge into a single paragraph
+</Quiz>

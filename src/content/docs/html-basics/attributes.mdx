@@ -1,0 +1,75 @@
+---
+title: HTML Attributes
+description: Adding extra information to HTML elements with attributes
+order: 10
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+Attributes provide extra information about an HTML element. They always go inside the opening tag and follow a `name="value"` pattern.
+
+## Common Attributes
+
+- `href` — link destination (used on `<a>`)
+- `src` — image source (used on `<img>`)
+- `alt` — alternative text for images
+- `class` — CSS class name for styling
+- `id` — unique identifier for an element
+- `style` — inline CSS rules
+
+<InteractiveCode
+  html={`<a href="https://example.com" class="link">A link with attributes</a>
+
+<img src="https://placehold.co/150" alt="A placeholder image" style="border-radius: 8px;">
+
+<p id="intro" class="highlight">This paragraph has an id and a class.</p>`}
+/>
+
+Try changing the `class`, `id`, or `style` values above. What happens?
+
+## Global Attributes
+
+Some attributes work on every HTML element. The most common global attributes are:
+
+- `class` — one or more CSS class names (space-separated)
+- `id` — a unique name for the element (no two elements should share the same `id`)
+- `style` — inline CSS styling
+- `lang` — language of the element's content
+- `title` — extra information (shown as a tooltip on hover)
+
+## Boolean Attributes
+
+Some attributes don't need a value — their presence alone means "true." These are called **boolean attributes**.
+
+Common examples:
+
+- `disabled` — disables an input
+- `hidden` — hides an element
+- `required` — makes a form field required
+
+<InteractiveCode
+  html={`<button disabled>Click Me</button>
+
+<p hidden>This paragraph is hidden.</p>
+
+<input type="text" required placeholder="This field is required">`}
+/>
+
+<Quiz>
+Where does an HTML attribute go?
+
+- [ ] After the closing tag
+- [x] Inside the opening tag
+- [ ] Inside the content
+- [ ] Before the element
+</Quiz>
+
+<Quiz>
+Which of the following is the correct syntax for an attribute?
+
+- [ ] `href=https://example.com`
+- [x] `href="https://example.com"`
+- [ ] `(href=https://example.com)`
+- [ ] `[href=https://example.com]`
+</Quiz>

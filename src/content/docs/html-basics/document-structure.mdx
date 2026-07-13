@@ -1,9 +1,11 @@
 ---
 title: Document Structure
 description: The required structure of an HTML document
+order: 2
 ---
 
 import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
 
 Every HTML document follows the same basic structure:
 
@@ -39,6 +41,25 @@ Every HTML document follows the same basic structure:
 - Scripts (`<script>`)
 - HTML comments
 
-#### Further details:
+### Further details:
 
 [Learn HTML: Document Structure (web.dev)](https://web.dev/learn/html/document-structure/)
+
+<Quiz>
+What does `<!DOCTYPE html>` tell the browser?
+
+- [x] That the document uses modern HTML (HTML5)
+- [ ] The page title
+- [ ] The language of the page
+- [ ] The character encoding
+</Quiz>
+
+<Quiz>
+Which elements are required inside the `<head>` of every HTML document? Select all that apply.
+
+- [x] `<title>`
+- [ ] `<link>`
+- [x] `<meta charset="UTF-8">`
+- [ ] `<style>`
+- [x] `<meta name="viewport">`
+</Quiz>

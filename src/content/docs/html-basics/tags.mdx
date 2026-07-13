@@ -1,23 +1,57 @@
 ---
 title: Tags, Attributes, & Elements
 description: Understanding the building blocks of HTML
+order: 1
 ---
 
 import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
 
-## Example
+## What are Tags, Attributes, and Elements?
+
+An **HTML element** is the basic building block of a web page. Every element consists of:
+
+- An **opening tag** — the element name wrapped in angle brackets, like `<p>`
+- **Content** — the text or other elements inside
+- A **closing tag** — the element name with a forward slash, like `</p>`
+
+An **attribute** provides extra information about an element. Attributes go inside the opening tag and use a `name="value"` format. For example, `<a href="https://example.com">` has an `href` attribute that tells the browser where the link should go.
 
 <InteractiveCode
   html={`
 <!-- Self-closing (void) element -->
 <img src="https://placehold.co/100@3x.png?text=Sample%20Image" width="100" alt="A photo">
-  
+
 <!-- Element: opening tag + content + closing tag -->
 <p>This is a paragraph element.</p>
 
 <!-- Opening tag with an attribute -->
 <a href="https://example.com">Click here</a>
 `}
+/>
+
+Try changing the `href` attribute value in the link above, or swap out the `alt` text on the image.
+
+## Void (Self-Closing) Elements
+
+Most HTML elements have both an opening and closing tag. But some elements are **void elements** — they have no content and no closing tag. Void elements are self-closing.
+
+Common void elements include:
+
+- `<br>` — a line break
+- `<hr>` — a horizontal rule
+- `<img>` — an image
+- `<input>` — a form input
+- `<meta>` — metadata
+
+<InteractiveCode
+  html={`<p>This is the first line.<br>
+This is the second line.</p>
+
+<hr>
+
+<p>An image is also a void element:</p>
+<img src="https://placehold.co/200x100" alt="Placeholder image">`}
 />
 
 ## Video
@@ -29,3 +63,22 @@ import InteractiveCode from '../../../components/InteractiveCode.astro';
 [Download the Slides (PPT)](https://docs.google.com/presentation/d/1o2SUq_U5_ECp34v8QMoYHvyuojF3sZVBnLEmELY2740/export/pptx?id=1o2SUq_U5_ECp34v8QMoYHvyuojF3sZVBnLEmELY2740&pageid=p)
 
 [View the Slides](https://docs.google.com/presentation/d/1o2SUq_U5_ECp34v8QMoYHvyuojF3sZVBnLEmELY2740/edit#slide=id.g16563a0e6b_0_23)
+
+<Quiz>
+Which parts make up a complete HTML element?
+
+- [ ] The opening tag only
+- [x] The opening tag, content, and closing tag
+- [ ] The closing tag only
+- [ ] The content only
+</Quiz>
+
+<Quiz>
+Which of the following are void (self-closing) elements? Select all that apply.
+
+- [x] `<br>`
+- [ ] `<p>`
+- [x] `<img>`
+- [ ] `<a>`
+- [x] `<hr>`
+</Quiz>

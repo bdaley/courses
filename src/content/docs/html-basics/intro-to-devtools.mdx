@@ -1,0 +1,58 @@
+---
+title: Intro to DevTools
+description: Introduction to browser developer tools
+order: 16
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+Every modern web browser includes **Developer Tools** — a set of built-in tools that let you inspect, debug, and experiment with your web pages.
+
+## Opening DevTools
+
+- **Chrome/Edge:** Right-click anywhere on a page and select "Inspect," or press `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Option+I` (Mac)
+- **Firefox:** Right-click and select "Inspect Element," or press `Ctrl+Shift+I`
+
+## The Elements Panel
+
+The Elements panel shows your page's HTML structure. You can:
+
+- See the HTML and CSS for any element
+- Edit HTML and CSS in real time (changes are temporary)
+- See box model dimensions
+- Check accessibility properties
+
+Try it yourself: open DevTools on any website, click the Elements tab, and hover over different HTML elements. Watch how they highlight on the page.
+
+<InteractiveCode
+  html={`<!-- Open DevTools on this page and inspect this code -->
+<h2>What you can do in DevTools</h2>
+<ul>
+  <li>Edit HTML live</li>
+  <li>Change CSS styles</li>
+  <li>Test responsive layouts</li>
+</ul>`}
+/>
+
+**Try this:** Open DevTools (right-click → Inspect), find this code in the Elements panel, and double-click the text inside a list item to edit it.
+
+[Intro to DevTools - YouTube](https://youtu.be/nHmbjAmwQo4)
+
+<Quiz>
+What keyboard shortcut opens DevTools in Chrome on Windows/Linux?
+
+- [ ] `Ctrl+Alt+Del`
+- [x] `Ctrl+Shift+I`
+- [ ] `Ctrl+Space`
+- [ ] `Ctrl+Shift+P`
+</Quiz>
+
+<Quiz>
+When you edit HTML in the DevTools Elements panel, are your changes saved to the file?
+
+- [ ] Yes, DevTools saves automatically
+- [x] No, changes are temporary and disappear on page refresh
+- [ ] Only if you click the save button
+- [ ] Yes, but only in Chrome
+</Quiz>

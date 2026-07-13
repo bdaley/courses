@@ -1,0 +1,75 @@
+---
+title: Accessibility Basics
+description: Making your HTML accessible to all users
+order: 14
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+Web accessibility means designing and coding your site so that everyone can use it, including people who use screen readers, keyboard navigation, or other assistive technologies.
+
+## Alt Text on Images
+
+The `alt` attribute on `<img>` provides a text description of the image. Screen readers read this aloud. If an image can't load, the alt text is shown instead.
+
+<InteractiveCode
+  html={`<!-- Good alt text: describes the image -->
+<img src="https://placehold.co/300x200" alt="A red sunset over the ocean">
+
+<!-- Decorative image: empty alt is OK -->
+<img src="https://placehold.co/30" alt="">
+
+<!-- Missing alt: screen readers will read the filename -->
+<img src="https://placehold.co/300x200">`}
+/>
+
+**Rule:** Every `<img>` needs an `alt` attribute. If the image is decorative, use `alt=""` (empty). Never leave it out.
+
+## Proper Heading Structure
+
+Screen reader users often navigate by jumping between headings. A clear heading hierarchy helps them understand your page.
+
+- Use one `<h1>` per page (the main title)
+- Don't skip levels (don't jump from `<h2>` to `<h4>`)
+- Use headings to create an outline of your content
+
+## Semantic HTML
+
+Using the right element for the right purpose is one of the easiest accessibility wins:
+
+- Use `<button>` for buttons, not `<div>`
+- Use `<nav>` for navigation, not `<div>`
+- Use headings for titles, not just bold text
+
+<InteractiveCode
+  html={`<!-- Good: semantic elements -->
+<nav>
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+</nav>
+
+<main>
+  <h1>Our Services</h1>
+  <p>We offer web design and development.</p>
+  <button>Get a Quote</button>
+</main>`}
+/>
+
+<Quiz>
+What does the `alt` attribute on an `<img>` element do?
+
+- [ ] It adjusts the image brightness
+- [x] It provides a text description for screen readers
+- [ ] It links the image to another page
+- [ ] It sets the image size
+</Quiz>
+
+<Quiz>
+Why is it important to use a single `<h1>` per page and not skip heading levels?
+
+- [ ] The page won't load otherwise
+- [ ] It looks better visually
+- [x] Screen reader users rely on headings to navigate; a clear outline helps everyone
+- [ ] Search engines will penalize pages with multiple h1s
+</Quiz>

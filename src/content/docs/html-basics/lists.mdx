@@ -1,9 +1,11 @@
 ---
 title: Lists
 description: Creating ordered and unordered lists in HTML
+order: 6
 ---
 
 import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
 
 <InteractiveCode
   html={`<!-- Unordered list (bullets) -->
@@ -21,4 +23,36 @@ import InteractiveCode from '../../../components/InteractiveCode.astro';
 </ol>`}
 />
 
+## Nested Lists
+
+You can place one list inside another. This is useful for sub-items or outlines. To nest a list, put a new `<ul>` or `<ol>` inside a list item (`<li>`):
+
+<InteractiveCode
+  html={`<ul>
+  <li>Fruits
+    <ul>
+      <li>Apples</li>
+      <li>Bananas</li>
+    </ul>
+  </li>
+  <li>Vegetables
+    <ul>
+      <li>Carrots</li>
+      <li>Broccoli</li>
+    </ul>
+  </li>
+</ul>`}
+/>
+
+Try adding a third category (like "Grains") with its own sub-list.
+
 [Lists - YouTube](https://youtu.be/E4JK1PYup3w)
+
+<Quiz>
+When should you use an `<ol>` instead of a `<ul>`?
+
+- [ ] When you want bullet points
+- [x] When the order of items matters (like step-by-step instructions)
+- [ ] When the list has fewer than five items
+- [ ] When you want to nest lists
+</Quiz>

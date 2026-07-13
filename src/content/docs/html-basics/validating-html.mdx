@@ -1,0 +1,71 @@
+---
+title: Validating HTML
+description: How to validate your HTML using the W3C Markup Validator
+order: 15
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+All web pages must be validated before submitting to HuskyCT. The process of validation will help you attain a deeper understanding of HTML. It can also catch potential errors that may cause rendering problems in certain web browsers.
+
+## Common HTML Errors
+
+- **Missing closing tags** — forgetting `</p>`, `</li>`, or `</a>`
+- **Nesting mistakes** — overlapping elements like `<p><strong>text</p></strong>`
+- **Missing required attributes** — like `alt` on `<img>` or `href` on `<a>`
+- **Incorrect doctype** — missing or outdated `<!DOCTYPE html>`
+- **Duplicate IDs** — using the same `id` value on multiple elements
+
+<InteractiveCode
+  html={`<!-- This HTML has errors — can you spot them? -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Page</title>
+</head>
+<body>
+  <h1>Welcome!</h1>
+  <p>This is a paragraph.
+  <img src="photo.jpg">
+  <p>Another paragraph</p>
+</body>
+</html>`}
+/>
+
+**Can you spot the errors?** Check: missing `lang` attribute on `<html>`, missing `alt` on `<img>`, missing closing `</p>` tag.
+
+## How to Validate
+
+1. Go to the [W3C Markup Validator](https://validator.w3.org/)
+2. Choose the **Validate by Direct Input** tab
+3. Copy and paste your HTML code
+4. Click "Check"
+5. Read the errors and fix them
+
+The following video demonstrates HTML Validation through the "Direct Input" method. However, I highly recommend uploading your pages to the DMD web server and validating through the "URI" method.
+
+[HTML Validation - YouTube](https://www.youtube.com/watch?v=jRffT0F7MOQ)
+
+## W3C Markup Validator
+
+[W3C Markup Validator](https://validator.w3.org/)
+
+<Quiz>
+What should you do if the W3C Validator reports errors on your page?
+
+- [ ] Ignore them — the page still works
+- [x] Read each error message and fix the corresponding issue in your code
+- [ ] Use a different validator
+- [ ] Remove the DOCTYPE declaration
+</Quiz>
+
+<Quiz>
+Which of these are common HTML validation errors? Select all that apply.
+
+- [x] Missing closing tags
+- [ ] Using too many colors
+- [x] Nesting elements incorrectly
+- [x] Missing `alt` attributes on images
+- [ ] Having too many paragraphs
+</Quiz>

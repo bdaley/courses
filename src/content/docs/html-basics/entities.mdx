@@ -1,0 +1,53 @@
+---
+title: HTML Entities
+description: Displaying special characters using HTML entities
+order: 11
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+What if you want to display a `<` or `>` symbol on your page? If you type `<` directly, the browser thinks it's the start of an HTML tag. That's where **HTML entities** come in.
+
+An HTML entity is a special code that represents a character. Entities always start with `&` and end with `;`.
+
+## Common HTML Entities
+
+| Character | Entity Code | Description |
+|---|---|---|
+| `<` | `&lt;` | Less than |
+| `>` | `&gt;` | Greater than |
+| `&` | `&amp;` | Ampersand |
+| `"` | `&quot;` | Double quote |
+| `'` | `&apos;` | Apostrophe |
+| (non-breaking space) | `&nbsp;` | Space that won't break across lines |
+| `©` | `&copy;` | Copyright symbol |
+| `™` | `&trade;` | Trademark symbol |
+| `®` | `&reg;` | Registered trademark |
+
+<InteractiveCode
+  html={`<p>To create a paragraph, use the &lt;p&gt; tag.</p>
+<p>HTML &amp; CSS are the building blocks of the web.</p>
+<p>&copy; 2024 Your Company. All rights reserved.</p>
+<p>Use &nbsp; to prevent&nbsp;a&nbsp;line&nbsp;break.</p>`}
+/>
+
+Try replacing `&copy;` with `&trade;` in the example above.
+
+<Quiz>
+Why do you need HTML entities to display the `<` symbol?
+
+- [ ] The `<` key doesn't work on keyboards
+- [x] The browser interprets `<` as the start of an HTML tag
+- [ ] It's optional — `<` works fine without entities
+- [ ] Only some browsers need entities for `<`
+</Quiz>
+
+<Quiz>
+What is the HTML entity for the ampersand (`&`) character?
+
+- [ ] `&and;`
+- [x] `&amp;`
+- [ ] `&ampersand;`
+- [ ] `&`
+</Quiz>

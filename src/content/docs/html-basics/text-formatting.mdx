@@ -1,0 +1,63 @@
+---
+title: Text Formatting
+description: Formatting text with strong, emphasis, and other inline elements
+order: 5
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+HTML provides several elements for marking up text with meaning or style.
+
+## Strong Importance
+
+Use `<strong>` to mark text as important. Browsers display it in **bold** by default.
+
+<InteractiveCode
+  html={`<p><strong>Warning:</strong> This information is important.</p>
+<p>Please read the <strong>entire</strong> instructions before starting.</p>`}
+/>
+
+## Emphasis
+
+Use `<em>` to stress or emphasize text. Browsers display it in *italic* by default.
+
+<InteractiveCode
+  html={`<p>I <em>really</em> think you should try this.</p>
+<p>This is not just any cake — it's the <em>best</em> cake.</p>`}
+/>
+
+Try changing which word you emphasize in the example above. Notice how the meaning of the sentence shifts.
+
+## Other Text-Level Elements
+
+- `<b>` — bold text (use `<strong>` for importance instead)
+- `<i>` — italic text (use `<em>` for emphasis instead)
+- `<small>` — side comments or fine print
+- `<mark>` — highlighted text
+- `<del>` — deleted text (strikethrough)
+- `<ins>` — inserted text (underline)
+
+<InteractiveCode
+  html={`<p><mark>Highlighted</mark> text draws attention.</p>
+<p><del>Old price: $25</del> <ins>New price: $20</ins></p>
+<p><small>Terms and conditions apply.</small></p>`}
+/>
+
+<Quiz>
+Which HTML element should you use to mark text as important?
+
+- [ ] `<i>`
+- [x] `<strong>`
+- [ ] `<em>`
+- [ ] `<mark>`
+</Quiz>
+
+<Quiz>
+What is the difference between `<strong>` and `<b>`?
+
+- [ ] They are exactly the same
+- [ ] `<strong>` is for bold text, `<b>` is for italic text
+- [x] `<strong>` has semantic meaning (importance), while `<b>` is purely visual
+- [ ] `<b>` is for bold text, `<strong>` is for larger text
+</Quiz>

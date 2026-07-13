@@ -1,9 +1,11 @@
 ---
 title: Links
 description: Creating hyperlinks in HTML
+order: 8
 ---
 
 import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
 
 <InteractiveCode
   html={`<!-- Absolute link -->
@@ -19,10 +21,32 @@ import InteractiveCode from '../../../components/InteractiveCode.astro';
 <a href="mailto:hello@example.com">Send Email</a>`}
 />
 
-## Relative Links
+## Absolute vs. Relative Links
+
+An **absolute link** includes the full URL (`https://example.com/page.html`). Use it when linking to pages on a different website.
+
+A **relative link** gives the path from the current page, like `about.html` or `images/photo.jpg`. Use it when linking between pages on your own site. Relative links are shorter and won't break if your site changes domain.
+
+## Video
 
 [Relative Links - YouTube](https://www.youtube.com/watch?v=Um1DXLL5isc)
 
-## Non-Web Links
-
 [Non-Web Links - YouTube](https://www.youtube.com/watch?v=rkBXzXjiqzs)
+
+<Quiz>
+What attribute on the `<a>` element tells the browser where the link should go?
+
+- [ ] `src`
+- [ ] `link`
+- [x] `href`
+- [ ] `url`
+</Quiz>
+
+<Quiz>
+When should you use a relative link instead of an absolute link?
+
+- [ ] When linking to any website
+- [x] When linking between pages on your own site
+- [ ] When linking to an email address
+- [ ] Relative links always work better than absolute links
+</Quiz>

@@ -1,9 +1,11 @@
 ---
 title: Headings
 description: Using heading tags in HTML (h1-h6)
+order: 4
 ---
 
 import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
 
 <InteractiveCode
   html={`<h1>Main Page Heading</h1>
@@ -14,6 +16,37 @@ import InteractiveCode from '../../../components/InteractiveCode.astro';
 <h6>The Smallest Heading</h6>`}
 />
 
-Use `<h1>` for the page title, `<h2>` for major sections, and so on — never skip levels.
+## Heading Hierarchy
+
+HTML provides six heading levels, `<h1>` through `<h6>`. Think of them like an outline:
+
+- `<h1>` — the page title (use only one per page)
+- `<h2>` — major sections
+- `<h3>` — sub-sections within an `<h2>` section
+- And so on down to `<h6>`
+
+**Never skip levels.** Going from `<h2>` to `<h4>` confuses screen readers and creates a poor outline. If you need a smaller heading, use CSS to style it — don't jump levels.
+
+## Accessibility & Headings
+
+Screen reader users often navigate a page by jumping from heading to heading. A well-structured outline (with no skipped levels and a single `<h1>`) helps everyone understand your page's organization.
 
 [Headings - YouTube](https://youtu.be/so8dz3FU1QU)
+
+<Quiz>
+How many heading levels does HTML provide?
+
+- [ ] 3
+- [x] 6
+- [ ] 10
+- [ ] It depends on the browser
+</Quiz>
+
+<Quiz>
+Why should you avoid skipping heading levels (e.g., going from `<h2>` to `<h4>`)?
+
+- [ ] The browser will display an error
+- [x] It creates a confusing outline for screen readers and users
+- [ ] Skipping levels is actually recommended
+- [ ] It only works in some browsers
+</Quiz>
