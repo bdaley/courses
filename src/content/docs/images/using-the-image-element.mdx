@@ -4,6 +4,9 @@ description: How to use the HTML image element and its attributes
 ---
 
 import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+The `<img>` element adds an image to an HTML page. It is a **void element** — it has no closing tag and no content of its own.
 
 <InteractiveCode
   html={`<!-- Basic image with required src and alt attributes -->
@@ -18,20 +21,97 @@ import InteractiveCode from '../../../components/InteractiveCode.astro';
 </a>`}
 />
 
-### The "src" Attribute
+## The `src` Attribute
+
+The `src` (source) attribute tells the browser where to find the image file. The value is a URL — either a relative path or an absolute URL.
+
+- **Relative path**: Points to a file within your own site, e.g. `images/photo.jpg`
+- **Absolute URL**: Points to a file on another site, e.g. `https://example.com/images/photo.jpg`
+
+For your own projects, always use relative paths.
 
 [The src Attribute - YouTube](https://www.youtube.com/watch?v=Nzw7vA2S0rw)
 
-### The "alt" Attribute
+## The `alt` Attribute
+
+The `alt` (alternative text) attribute provides a text description of the image. It is **required** for accessibility.
+
+Screen readers read the alt text aloud so that people who cannot see the image still understand its content. Alt text also appears on the page when the image fails to load.
+
+Good alt text describes the content and purpose of the image. For a photo of a team, write `alt="Our marketing team at the annual retreat"` — not `alt="team"` or `alt="IMG_0423.jpg"`.
 
 [The alt Attribute - YouTube](https://www.youtube.com/watch?v=fqdTtB7-Ohw)
 
-### Image Display Characteristics
+## The `width` and `height` Attributes
 
-Do you think it displays as inline or block?
+The `width` and `height` attributes tell the browser how much space the image needs. Setting them helps the browser reserve space before the image loads, which prevents the page layout from jumping around.
+
+These values are in pixels. You do not write `px` — just the number: `width="300"`.
+
+## Image Display Characteristics
+
+Images display as **inline** elements by default. This means they sit on the same line as surrounding text, like a large character. Unlike most inline elements, images do have a height and width that you can set.
 
 [Image Display - YouTube](https://www.youtube.com/watch?v=9VjAvtQyWF8)
 
-### Making the Image Clickable
+## Making Images Clickable
+
+To make an image into a link, wrap the `<img>` element inside an `<a>` element.
 
 [Making Images Clickable - YouTube](https://www.youtube.com/watch?v=3IQrWz_JTnI)
+
+<InteractiveCode
+  html={`<!-- A clickable image -->
+<a href="https://example.com/gallery">
+  <img src="gallery-thumb.jpg"
+       alt="Open the photo gallery"
+       width="200" height="150">
+</a>`}
+/>
+
+Try changing the width and height. Notice how the image size changes but the link still works.
+
+## The `loading` Attribute
+
+The `loading="lazy"` attribute tells the browser to wait to load the image until it is about to appear on the screen. This makes the page load faster, especially on pages with many images.
+
+```html
+<img src="photo.jpg" alt="A mountain view" loading="lazy">
+```
+
+## Figure and Figcaption
+
+The `<figure>` element wraps an image together with a caption. The `<figcaption>` element holds the caption text.
+
+```html
+<figure>
+  <img src="office.jpg" alt="Our open-plan office space">
+  <figcaption>Our team works in a collaborative open-plan office.</figcaption>
+</figure>
+```
+
+Using `<figure>` and `<figcaption>` helps search engines and assistive technology understand that the caption belongs to the image.
+
+<Quiz>
+
+Which two attributes are required on every `<img>` element?
+
+- [x] src
+- [ ] width
+- [ ] loading
+- [x] alt
+
+---
+
+What does `loading="lazy"` do?
+
+- [ ] Makes the image blurry
+- [ ] Loads the image immediately
+- [x] Delays loading until the image is near the viewport
+- [ ] Removes the alt text
+
+---
+
+The `<img>` element displays as [[inline]] by default.
+
+</Quiz>

@@ -1,0 +1,116 @@
+---
+title: Image Types
+description: Understanding vector and raster image formats for the web
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+Every image on the web is either a **vector** image or a **raster** image. The difference matters because each type has strengths and weaknesses.
+
+## Vector vs. Raster
+
+Think of the difference like this:
+
+- **Vector images** are made of math — lines, curves, and shapes defined by formulas. You can scale a vector image to any size and it stays sharp. Logos, icons, and illustrations are usually vectors.
+- **Raster images** are made of pixels — a grid of tiny colored squares. If you zoom in too far, you see the individual pixels. Photographs are always raster.
+
+<InteractiveCode
+  html={`<!-- This is SVG (Scalable Vector Graphics) — it is code, not pixels -->
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- A circle -->
+  <circle cx="100" cy="80" r="50" fill="steelblue" />
+  <!-- A rectangle -->
+  <rect x="50" y="120" width="100" height="60" rx="10" fill="coral" />
+  <!-- Text -->
+  <text x="100" y="200" text-anchor="middle" font-family="sans-serif">
+    Vector graphics are code
+  </text>
+</svg>`}
+/>
+
+Try changing the `fill` colors or the `r` (radius) of the circle. Because SVG is code, every part can be edited.
+
+## Common Raster Formats
+
+| Format | Extension | Best For | Transparency | Animation |
+|---|---|---|---|---|
+| JPEG | .jpg or .jpeg | Photographs and complex images with many colors | No | No |
+| PNG | .png | Images that need transparency (logos, icons, screenshots) | Yes | No |
+| GIF | .gif | Simple animations and low-color images | Yes (not alpha) | Yes |
+| WebP | .webp | Modern replacement for JPEG and PNG (smaller files) | Yes | Yes |
+
+### JPEG
+
+JPEG is the standard format for photographs. It compresses well, which means small file sizes, but it uses **lossy compression** — some image data is discarded to save space. Every time you save a JPEG, you lose a little quality.
+
+### PNG
+
+PNG uses **lossless compression** — no data is lost. This makes PNG ideal for screenshots, logos, and any image with crisp edges or text. PNG also supports transparency, so you can have a logo with no rectangular background box.
+
+### GIF
+
+GIF is limited to 256 colors, which makes it a poor choice for photographs. But GIF supports simple animations, which is why it is still popular for short looping clips.
+
+### WebP
+
+WebP is a modern format created by Google. It supports both lossy and lossless compression, transparency, and animation — all in a smaller file than JPEG or PNG. Most browsers support WebP, and it is becoming the standard for the web.
+
+## Vector Format: SVG
+
+SVG (Scalable Vector Graphics) is the only vector format used on the web. SVG images are written as XML code, which means they can be created and edited in a text editor.
+
+Advantages of SVG:
+- Scales to any size without losing quality
+- File sizes are usually very small for simple graphics
+- Can be styled with CSS and made interactive with JavaScript
+- Individual parts of the image can be targeted and changed
+
+<InteractiveCode
+  html={`<!-- Try editing this SVG — change colors, sizes, or add shapes -->
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="300" height="200" fill="#f0f0f0" rx="15" />
+
+  <!-- Sun -->
+  <circle cx="250" cy="50" r="30" fill="#FFD700" />
+
+  <!-- House body -->
+  <rect x="80" y="80" width="140" height="100" fill="#8B4513" />
+
+  <!-- Roof -->
+  <polygon points="60,80 150,20 240,80" fill="#A52A2A" />
+
+  <!-- Door -->
+  <rect x="130" y="130" width="40" height="50" fill="#654321" />
+
+  <!-- Window -->
+  <rect x="95" y="100" width="30" height="30" fill="#87CEEB" />
+</svg>`}
+/>
+
+Try changing the house color or adding a chimney. Every part of an SVG is editable code.
+
+<Quiz>
+
+Which image format is best for a photograph on a website?
+
+- [ ] PNG
+- [x] JPEG
+- [ ] GIF
+- [ ] SVG
+
+---
+
+Which of the following are true about SVG?
+
+- [x] It is a vector format
+- [x] It scales to any size without losing quality
+- [ ] It is made of pixels
+- [x] It can be edited in a text editor
+
+---
+
+A PNG image is useful because it supports [[transparency]].
+
+</Quiz>

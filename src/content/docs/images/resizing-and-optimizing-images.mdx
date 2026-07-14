@@ -1,0 +1,91 @@
+---
+title: Resizing and Optimizing Images
+description: Tools and techniques for resizing and optimizing web images
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+A photo straight from a camera might be 4000 pixels wide and several megabytes in size. The web does not need that much detail. Large images slow down your page, frustrate visitors, and hurt your search ranking.
+
+**Resizing** means making the image smaller in dimensions. **Optimizing** means reducing the file size while keeping acceptable quality.
+
+## Lossy vs. Lossless Compression
+
+When you optimize an image, you choose between two types of compression:
+
+- **Lossy compression** discards some image data to reduce file size. The quality loss is often invisible, but it is permanent. JPEG and WebP both support lossy compression.
+- **Lossless compression** keeps every pixel exactly as it was. The file size reduction comes from more efficient encoding. PNG uses lossless compression.
+
+The right choice depends on the image. A photograph can tolerate lossy compression because the human eye does not notice small color changes in a complex scene. A logo with crisp edges should use lossless compression to stay sharp.
+
+## How to Resize and Optimize
+
+### Step 1: Choose the right dimensions
+
+Decide the maximum width the image will ever be displayed on your page. For a full-width banner, that might be 1920 pixels. For a thumbnail, 150 pixels. Do not use an image larger than its display size.
+
+### Step 2: Use an editing tool
+
+Desktop tools:
+- **Adobe Photoshop** — industry standard for image editing
+- **Adobe Express Online** — free browser-based tool
+- **ImageResizer** for Windows
+
+VS Code extension:
+- **Image Resizer** extension resizes images directly inside your editor
+
+Browser tools:
+- **Squoosh** — free online tool that lets you compare quality side by side
+
+### Step 3: Choose the right format
+
+Use JPEG for photographs, PNG for images needing transparency, and WebP for the best of both worlds.
+
+[Resizing and Optimizing Images - YouTube](https://www.youtube.com/watch?v=PFAKZ1HDPI0)
+
+<InteractiveCode
+  html={`<!-- In HTML, you control the display size with width and height.
+     The actual file should already be resized before you use it. -->
+
+<!-- A thumbnail -- should be a small file -->
+<img src="thumb.jpg" alt="Thumbnail" width="150" height="150">
+
+<!-- A hero image -- wider but still optimized -->
+<img src="hero.jpg" alt="Hero banner" width="1200" height="600">
+
+<!-- A logo with transparency -- PNG or WebP -->
+<img src="logo.png" alt="Company logo" width="200" height="80">
+
+<!-- Mark the image for lazy loading to save bandwidth -->
+<img src="gallery-photo.jpg" alt="Gallery photo" loading="lazy">`}
+/>
+
+This code shows how different images might be used at different sizes on the same page. The heavy resizing work should be done before these files are added to your project.
+
+<Quiz>
+
+What is the difference between lossy and lossless compression?
+
+- [ ] Lossy is faster; lossless is slower
+- [x] Lossy discards data to reduce file size; lossless keeps all data
+- [ ] Lossy is for PNG; lossless is for JPEG
+- [ ] There is no difference
+
+---
+
+Which tool lets you compare image quality side by side in a browser?
+
+- [ ] Adobe Photoshop
+- [ ] ImageResizer for Windows
+- [x] Squoosh
+- [ ] Image Resizer VS Code extension
+
+---
+
+True or False: You should use an image that is 4000 pixels wide for a thumbnail that displays at 150 pixels.
+
+- [ ] True
+- [x] False
+
+</Quiz>

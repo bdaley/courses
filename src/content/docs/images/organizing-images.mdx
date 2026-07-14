@@ -1,0 +1,69 @@
+---
+title: Organizing Images
+description: Best practices for organizing image files in web projects
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+Before you add images to a website, you need to decide where to put them. A well-organized project is easier to maintain, share, and debug.
+
+## Folder Structure
+
+The most common practice is to store all images inside a single folder named `images` or `img` at the root of your project:
+
+```
+my-website/
+├── index.html
+├── about.html
+├── contact.html
+├── css/
+│   └── style.css
+└── images/
+    ├── logo.svg
+    ├── hero-banner.jpg
+    ├── about-team.jpg
+    └── contact-map.png
+```
+
+For larger sites with many images, you might add subfolders:
+
+```
+images/
+├── logos/
+│   └── logo.svg
+├── photos/
+│   ├── hero-banner.jpg
+│   └── about-team.jpg
+└── icons/
+    ├── arrow-right.svg
+    └── checkmark.svg
+```
+
+## File Naming Conventions
+
+Follow these rules when naming image files:
+
+- **Use lowercase letters only** — `MyPhoto.jpg` can cause issues on some servers. Use `my-photo.jpg` instead.
+- **Use hyphens between words** — `about-team.jpg` is easier to read than `aboutteam.jpg` or `about_team.jpg`.
+- **Be descriptive** — `hero-banner.jpg` tells you what the image is. `img001.jpg` does not.
+- **Avoid spaces** — `hero banner.jpg` will break URLs. Use hyphens instead.
+
+<Quiz>
+
+What is the best file name for a photo of a company team?
+
+- [ ] Team Photo.jpg
+- [ ] team_photo.jpg
+- [x] team-photo.jpg
+- [ ] TP001.jpg
+
+---
+
+Where should images be stored in a web project?
+
+- [ ] In the same folder as HTML files
+- [x] In a dedicated images folder
+- [ ] In the CSS folder
+- [ ] Anywhere — it does not matter
+
+</Quiz>
