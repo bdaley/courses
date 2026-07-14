@@ -23,50 +23,62 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Getting Started',
+					collapsed: true,
 					items: [{ autogenerate: { directory: 'getting-started' } }]
 				},
 				{
 					label: 'HTML Basics',
+					collapsed: true,
 					items: [{ autogenerate: { directory: 'html-basics' } }]
 				},
 				{
 					label: 'Images',
+					collapsed: true,
 					items: [{ autogenerate: { directory: 'images' } }]
 				},
 				{
 					label: 'HTML5 & Semantic Markup',
+					collapsed: true,
 					items: [{ autogenerate: { directory: 'html5-semantic-markup' } }]
 				},
 				{
 					label: 'CSS Basics',
+					collapsed: true,
 					items: [{ autogenerate: { directory: 'css-basics' } }]
 				},
 				{
 					label: 'The Box Model',
+					collapsed: true,
 					items: [{ autogenerate: { directory: 'the-box-model' } }]
 				},
 				{
 					label: 'CSS Layout',
+					collapsed: true,
 					items: [{ autogenerate: { directory: 'css-layout' } }]
 				},
 				{
 					label: 'Web Design Process',
+					collapsed: true,
 					items: [{ autogenerate: { directory: 'web-design-process' } }]
 				},
 				{
 					label: 'DevTools',
+					collapsed: true,
 					items: [{ autogenerate: { directory: 'devtools' } }]
 				},
 				{
 					label: 'Responsive Web Design',
+					collapsed: true,
 					items: [{ autogenerate: { directory: 'responsive-web-design' } }]
 				},
 				{
 					label: 'Bootstrap',
+					collapsed: true,
 					items: [{ autogenerate: { directory: 'bootstrap' } }]
 				},
 				{
 					label: "What's Next?",
+					collapsed: true,
 					items: [{ autogenerate: { directory: 'whats-next' } }]
 				},
 			],

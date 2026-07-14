@@ -1,0 +1,240 @@
+---
+title: CSS Units
+description: Understanding the different units of measurement in CSS
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+CSS has many units for sizing things — fonts, widths, margins, padding, and more. Each unit behaves differently, and choosing the right one makes your pages more flexible and accessible.
+
+## Absolute Units
+
+**Absolute units** have a fixed size. They don't change based on anything else.
+
+### Pixels (px)
+
+The most common absolute unit. One pixel equals one dot on the screen.
+
+```css
+h1 {
+  font-size: 32px;
+}
+
+.box {
+  width: 300px;
+}
+```
+
+Pixels give you precise control. Use them for:
+- Borders (`border: 2px solid black`)
+- Small spacing
+- Anywhere you need an exact, predictable size
+
+The downside: they don't scale. If a user has a visual impairment and increases their default font size, pixel-sized text won't change.
+
+<InteractiveCode
+  html={`<div class="box-px">This box is 200px wide.</div>
+<div class="box-px narrow">This box is 100px wide.</div>`}
+  css={`.box-px {
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.narrow {
+  width: 100px;
+}`}
+/>
+
+Try changing `width: 100px` to `width: 250px`. Notice the pixel precision.
+
+## Relative Units
+
+**Relative units** are calculated based on something else — like the parent element's size, the root font size, or the viewport. They make designs more flexible.
+
+### Percentages (%)
+
+A percentage is relative to the parent element's size:
+
+```css
+.child {
+  width: 50%;  /* half the parent's width */
+}
+```
+
+<InteractiveCode
+  html={`<div class="parent">
+  <div class="child">50% width</div>
+</div>`}
+  css={`.parent {
+  width: 400px;
+  height: 100px;
+  background-color: #ecf0f1;
+}
+
+.child {
+  width: 50%;
+  height: 100%;
+  background-color: #e74c3c;
+  color: white;
+  text-align: center;
+  line-height: 100px;
+}`}
+/>
+
+### em
+
+`1em` equals the **font size of the current element** (or its parent). If no font size is set, `1em = 16px` (the browser default).
+
+```css
+.parent {
+  font-size: 20px;
+}
+
+.child {
+  font-size: 1.5em;  /* 30px (1.5 × 20px) */
+  padding: 1em;       /* 30px (same as current font-size) */
+}
+```
+
+`em` units compound — each nested element multiplies. This can be useful for scalable designs, but can also lead to unexpected sizes.
+
+<InteractiveCode
+  html={`<div class="level-1">
+  Level 1 (font-size: 20px)
+  <div class="level-2">
+    Level 2 (1.5em = 30px)
+    <div class="level-3">
+      Level 3 (1.5em = 45px)
+    </div>
+  </div>
+</div>`}
+  css={`.level-1 {
+  font-size: 20px;
+  background: #3498db;
+  padding: 1em;
+  color: white;
+}
+
+.level-2 {
+  font-size: 1.5em;
+  background: #2ecc71;
+  padding: 1em;
+}
+
+.level-3 {
+  font-size: 1.5em;
+  background: #e74c3c;
+  padding: 1em;
+}`}
+/>
+
+### rem
+
+`1rem` (root em) equals the **font size of the root element** (usually 16px by default). Unlike `em`, `rem` does NOT compound — it's always relative to the root.
+
+```css
+html {
+  font-size: 16px;  /* the default, set by browser */
+}
+
+h1 {
+  font-size: 2rem;  /* 32px — always 2 × 16px */
+}
+
+p {
+  font-size: 1rem;  /* 16px */
+}
+
+.small {
+  font-size: 0.875rem;  /* 14px */
+}
+```
+
+**Best practice:** Use `rem` for font sizes. It respects the user's browser settings, doesn't compound unexpectedly, and makes your page accessible.
+
+<InteractiveCode
+  html={`<h1>Heading with rem</h1>
+<p>Body text at 1rem (16px by default).</p>
+<p class="small">Small text at 0.875rem.</p>
+
+<div class="card">
+  <h2>Card Title</h2>
+  <p>Card text using rem stays consistent regardless of nesting.</p>
+</div>`}
+  css={`h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.small {
+  font-size: 0.875rem;
+  color: #888;
+}
+
+.card {
+  background-color: #ecf0f1;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+}`}
+/>
+
+### Viewport Units
+
+Viewport units are relative to the **browser window** size:
+
+| Unit | Relative to |
+|---|---|
+| `vw` | 1% of the viewport width |
+| `vh` | 1% of the viewport height |
+
+```css
+.hero {
+  height: 100vh;     /* full height of the browser window */
+  width: 100vw;      /* full width of the browser window */
+}
+
+.half-width {
+  width: 50vw;       /* half the browser window */
+}
+```
+
+Resize your browser window and elements using viewport units will adjust automatically.
+
+<Quiz>
+Which unit is relative to the browser's default font size and does NOT compound?
+- [ ] px
+- [ ] em
+- [x] rem
+- [ ] %
+
+Which unit would you use for a full-screen hero section?
+- [ ] 100px
+- [ ] 100%
+- [ ] 100em
+- [x] 100vh
+
+True or false: 1em always equals 16px.
+- [ ] True
+- [x] False
+
+A user increases their browser's default font size for accessibility. Which unit will respect that change?
+- [ ] px
+- [x] rem
+- [ ] cm
+- [ ] pt
+</Quiz>

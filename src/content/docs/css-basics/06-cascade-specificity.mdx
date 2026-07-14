@@ -1,0 +1,245 @@
+---
+title: The Cascade & Specificity
+description: Understanding how CSS resolves conflicting rules
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+CSS stands for **Cascading** Style Sheets. The "cascade" is the algorithm that decides which CSS rule wins when multiple rules target the same element.
+
+Two main factors determine the winner: **specificity** and **source order**.
+
+## Specificity
+
+**Specificity** is a score the browser calculates for each selector. More specific selectors override less specific ones.
+
+Here's the hierarchy from **least** to **most** specific:
+
+| Selector type | Example | Specificity |
+|---|---|---|
+| Element selectors | `p`, `h1`, `div` | Low |
+| Class selectors | `.highlight`, `.nav` | Medium |
+| ID selectors | `#logo`, `#header` | High |
+
+If two rules conflict, the one with higher specificity wins:
+
+```css
+/* Specificity: element (1 element) */
+p {
+  color: blue;
+}
+
+/* Specificity: class (higher than element) */
+.highlight {
+  color: red;  /* THIS wins over blue for elements with class="highlight" */
+}
+
+/* Specificity: ID (higher than class) */
+#special {
+  color: green;  /* THIS wins for the element with id="special" */
+}
+```
+
+<InteractiveCode
+  html={`<p>Plain paragraph — element selector applies.</p>
+
+<p class="highlight">Paragraph with a class — class selector wins.</p>
+
+<p class="highlight" id="special">Paragraph with both class and ID — ID selector wins.</p>`}
+  css={`p {
+  color: #3498db;
+  font-size: 18px;
+}
+
+.highlight {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+#special {
+  color: #27ae60;
+  font-size: 24px;
+  background-color: #ecf0f1;
+  padding: 10px;
+}`}
+/>
+
+Notice how each paragraph has a different color. The most specific selector always wins.
+
+<Quiz>
+Which selector has the highest specificity?
+- [ ] p
+- [x] #footer
+- [ ] .footer
+- [ ] div p
+
+What color will text be if both a class and an ID target the same element?
+- [ ] The class color (more reusable)
+- [x] The ID color (higher specificity)
+- [ ] The browser default
+- [ ] They blend together
+</Quiz>
+
+## Source Order
+
+When two selectors have the **same specificity**, the one that comes **last** in the CSS wins:
+
+```css
+/* Both are class selectors — same specificity */
+.intro {
+  color: blue;
+}
+
+.intro {
+  color: red;  /* This wins because it comes last */
+}
+```
+
+This is why the order of your CSS rules matters.
+
+<InteractiveCode
+  html={`<p class="order-demo">Which color will apply?</p>`}
+  css={`.order-demo {
+  color: #e74c3c;
+}
+
+.order-demo {
+  color: #3498db;  /* This wins — it's the last rule for the same selector */
+}`}
+/>
+
+Try swapping the two `.order-demo` blocks — the last one always wins.
+
+## The Full Picture: Cascade + Specificity
+
+The browser follows this process for every element:
+
+1. **Collect** all CSS rules that apply to the element
+2. **Sort** by specificity (more specific = higher priority)
+3. **Sort** by source order (last rule wins among ties)
+
+```css
+/* Rule 1: element selector — specificity: 0,0,1 */
+p {
+  color: gray;
+}
+
+/* Rule 2: class selector — specificity: 0,1,0 */
+.warning {
+  color: orange;
+}
+
+/* Rule 3: ID selector — specificity: 1,0,0 */
+#critical {
+  color: red;
+}
+
+/* Rule 4: element + class — specificity: 0,1,1 */
+p.warning {
+  color: darkorange;  /* More specific than just .warning alone */
+}
+```
+
+<InteractiveCode
+  html={`<h1>Cascade Demo</h1>
+
+<p>This is a plain paragraph.</p>
+
+<p class="message">This paragraph has a class.</p>
+
+<p class="message" id="unique">This paragraph has a class AND an ID.</p>
+
+<p class="message" id="unique" style="color: purple;">This has inline CSS too.</p>`}
+  css={`p {
+  color: #7f8c8d;
+  font-size: 16px;
+}
+
+.message {
+  color: #2980b9;
+  font-weight: bold;
+}
+
+#unique {
+  color: #27ae60;
+  font-style: italic;
+}`}
+/>
+
+Watch what happens with each paragraph. The fourth one uses inline CSS (`style="color: purple;"`) which beats even an ID selector.
+
+## Inline Styles
+
+Inline CSS (the `style` attribute on an HTML element) has the **highest specificity** — it beats any selector in your stylesheet:
+
+```html
+<p style="color: red;">This will be red, no matter what your CSS says.</p>
+```
+
+This is why inline CSS is dangerous — it's hard to override later. Use it sparingly, if at all.
+
+<Quiz>
+What happens when two CSS rules have the same specificity?
+- [x] The one that appears later in the file wins
+- [ ] The one that appears first wins
+- [ ] Both are applied equally
+- [ ] The browser picks randomly
+
+Which has the highest priority in the cascade?
+- [ ] An ID selector
+- [ ] A class selector
+- [x] An inline style attribute
+- [ ] An element selector
+
+True or false: Putting a rule later in the CSS file always makes it win.
+- [ ] True
+- [x] False
+</Quiz>
+
+## The `!important` Exception
+
+The `!important` flag forces a rule to the highest priority, beating even inline styles:
+
+```css
+p {
+  color: red !important;
+}
+```
+
+```html
+<p style="color: blue;">This text will be RED because of !important</p>
+```
+
+**Avoid `!important`** in almost all cases. It breaks the normal cascade and makes your CSS harder to debug. If you're using `!important` frequently, it's usually a sign that your specificity structure needs work.
+
+<InteractiveCode
+  html={`<p id="important-demo" class="demo-text" style="color: orange;">
+  Three rules target this paragraph. Which wins?
+</p>`}
+  css={`#important-demo {
+  color: #e74c3c;
+}
+
+.demo-text {
+  color: #3498db !important;  /* This wins because of !important */
+}
+
+p {
+  color: #2ecc71;
+}`}
+/>
+
+<Quiz>
+What does !important do?
+- [ ] Makes the rule load faster
+- [x] Forces the rule to the highest priority
+- [ ] Adds a warning icon to the element
+- [ ] Makes the text bold
+
+Should you use !important often?
+- [ ] Yes, it makes styling easier
+- [x] No, it makes CSS harder to debug
+- [ ] Only for class selectors
+- [ ] Only for text colors
+</Quiz>

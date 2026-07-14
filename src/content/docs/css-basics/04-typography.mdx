@@ -1,0 +1,298 @@
+---
+title: Typography
+description: Styling text with CSS font and text properties
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+Typography is one of the most visible things CSS controls. The right font choices can completely change how a website feels.
+
+## Font Family
+
+The `font-family` property sets which typeface to use:
+
+```css
+p {
+  font-family: Arial, sans-serif;
+}
+```
+
+You provide a **fallback stack** — a comma-separated list. The browser tries the first font, and if it's not available, moves to the next.
+
+**Generic families** go at the end as a last resort:
+
+| Generic family | Examples | Look |
+|---|---|---|
+| `serif` | Times New Roman, Georgia | Small lines (serifs) at letter ends |
+| `sans-serif` | Arial, Helvetica, Verdana | Clean, no serifs |
+| `monospace` | Courier New, Consolas | All letters same width |
+
+```css
+/* Good font stacks */
+body {
+  font-family: Georgia, serif;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+}
+```
+
+## Font Size
+
+The `font-size` property controls how big text appears:
+
+```css
+h1 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 16px;
+}
+```
+
+(We'll cover different units like `px`, `em`, and `rem` in the [CSS Units](/css-basics/05-units/) section.)
+
+## Font Weight
+
+The `font-weight` property controls how **bold** text is:
+
+```css
+strong {
+  font-weight: bold;  /* or 700 */
+}
+
+.light-text {
+  font-weight: 300;   /* lighter than normal */
+}
+```
+
+Common values: `normal` (400), `bold` (700). You can also use numbers from 100 to 900.
+
+## Font Style
+
+The `font-style` property controls italics:
+
+```css
+em {
+  font-style: italic;
+}
+```
+
+<InteractiveCode
+  html={`<h1>Typography in Action</h1>
+
+<p class="serif">This paragraph uses a serif font.</p>
+
+<p class="sans">This paragraph uses a sans-serif font.</p>
+
+<p class="heavy">This text is very bold.</p>
+
+<p class="italic">This text is italicized.</p>`}
+  css={`h1 {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  color: #2c3e50;
+}
+
+.serif {
+  font-family: Georgia, serif;
+  font-size: 20px;
+}
+
+.sans {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.heavy {
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.italic {
+  font-style: italic;
+  font-size: 18px;
+}`}
+/>
+
+Try changing `font-weight: 900` to `font-weight: 300` and see how the text gets lighter.
+
+<Quiz>
+What does the second font in font-family: Arial, Helvetica, sans-serif do?
+- [ ] It is applied after Arial, making a layered effect
+- [x] It is a fallback if Arial is not available
+- [ ] It is ignored
+- [ ] It determines the font size
+
+Which of these would you use for a code snippet?
+- [x] font-family: 'Courier New', monospace;
+- [ ] font-family: 'Comic Sans MS', cursive;
+- [ ] font-family: Georgia, serif;
+- [ ] font-family: 'Times New Roman', serif;
+</Quiz>
+
+## Line Height
+
+The `line-height` property controls the space *between* lines of text:
+
+```css
+p {
+  line-height: 1.6;  /* 1.6 times the font size */
+}
+```
+
+A value of `1.6` is good for readability in long paragraphs. A value of `1` would make lines touch.
+
+## Text Alignment
+
+The `text-align` property controls horizontal alignment:
+
+```css
+h1 {
+  text-align: center;
+}
+```
+
+| Value | Effect |
+|---|---|
+| `left` | Aligned to the left (default) |
+| `center` | Centered |
+| `right` | Aligned to the right |
+| `justify` | Stretched to fill the full width |
+
+## Text Decoration
+
+The `text-decoration` property adds lines to text:
+
+```css
+a {
+  text-decoration: none;  /* removes underline from links */
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+```
+
+<InteractiveCode
+  html={`<article>
+  <h1>Article Title</h1>
+  <p class="intro">This is the introduction paragraph. It is styled to stand out with a larger line height and a subtle left border.</p>
+  <p class="body-text">This is a body paragraph. Notice the comfortable spacing between lines. Research shows that line heights between 1.4 and 1.8 improve reading speed and comprehension.</p>
+  <p class="footer-note">This text is centered and styled as a footer note.</p>
+</article>
+
+<p><a href="#">This is a link</a> — the underline has been removed.</p>`}
+  css={`h1 {
+  text-align: center;
+  font-family: Georgia, serif;
+  color: #2c3e50;
+}
+
+.intro {
+  line-height: 1.8;
+  font-size: 18px;
+  border-left: 4px solid #3498db;
+  padding-left: 15px;
+  color: #555;
+}
+
+.body-text {
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.footer-note {
+  text-align: center;
+  font-style: italic;
+  color: #999;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #e74c3c;
+}`}
+/>
+
+<Quiz>
+Which line-height value is best for reading long paragraphs?
+- [ ] 1
+- [x] 1.6
+- [ ] 0.5
+- [ ] 3
+
+Which property removes the underline from links?
+- [x] text-decoration: none;
+- [ ] text-decoration: remove;
+- [ ] text-transform: none;
+- [ ] link-style: none;
+</Quiz>
+
+## Using Google Fonts
+
+Your computer only has certain fonts installed. To use a wider variety, you can import fonts from Google Fonts.
+
+1. Go to [fonts.google.com](https://fonts.google.com/)
+2. Pick a font and click "Get font"
+3. Copy the `<link>` tag Google provides
+4. Paste it in your HTML `<head>`
+5. Use the font name in your CSS `font-family`
+
+```html
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+```
+
+<InteractiveCode
+  html={`<head>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <h1>Google Fonts in Action</h1>
+  <p>This page uses Playfair Display for the heading and Source Sans 3 for the body text. Both are loaded from Google Fonts.</p>
+</body>`}
+  css={`h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  color: #2c3e50;
+}
+
+p {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #444;
+}`}
+/>
+
+Try changing `'Playfair Display'` to `'Roboto'` in the CSS — you'll need to add the Roboto font link in the HTML panel first.
+
+<Quiz>
+Where do you put the Google Fonts `<link>` tag?
+- [ ] In the CSS file
+- [ ] At the bottom of the HTML body
+- [x] In the HTML `<head>`
+- [ ] In a JavaScript file
+
+Which font property would you use to make text bold?
+- [ ] font-style
+- [ ] font-size
+- [x] font-weight
+- [ ] text-decoration
+</Quiz>

@@ -4,47 +4,142 @@ description: Week 5 - Introduction to Cascading Style Sheets
 ---
 
 import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
 
-Most of the basics will be covered by your assignments in HuskyCT. However, these videos highlight some of the most important or most often misunderstood aspects of using CSS.
+CSS — Cascading Style Sheets — is the language that controls how HTML looks.
 
-## Example
+Think of it this way: HTML is the **structure** of a house (walls, roof, rooms). CSS is the **paint, wallpaper, furniture, and lighting** — everything that makes it look good.
+
+## CSS Syntax
+
+Every CSS rule follows the same pattern:
+
+```css
+selector {
+  property: value;
+}
+```
+
+| Part | Meaning | Example |
+|---|---|---|
+| **Selector** | Which HTML element(s) to style | `p` selects all `<p>` elements |
+| **Property** | What aspect to change | `color` controls text color |
+| **Value** | How to change it | `red` makes the text red |
+
+Here it is in action:
 
 <InteractiveCode
-  css={`/* Element selector */
-p {
-  color: #333;
-  font-size: 16px;
+  html={`<h1>My Heading</h1>
+<p>This paragraph is styled with CSS.</p>
+<p>So is this one, but with different colors.</p>`}
+  css={`p {
+  color: navy;
+  font-size: 18px;
 }
 
-/* Class selector */
-.highlight {
-  background-color: yellow;
-  font-weight: bold;
-}
-
-/* ID selector */
-#logo {
-  width: 200px;
-  border: none;
+h1 {
+  color: firebrick;
+  text-align: center;
 }`}
 />
 
-## CSS Reference
+<Quiz>
+What does the selector in a CSS rule do?
+- [ ] It stores the CSS file on the server
+- [x] It identifies which HTML elements to style
+- [ ] It picks which color to use
+- [ ] It creates new HTML elements
+</Quiz>
 
-In the following videos, you'll see a few basic CSS properties used, but there are so many more available. Tympanus has a great reference resource for CSS properties and instructions for their use.
+## Three Ways to Add CSS
 
-When I teach this class in person, I usually tell students that they'll need to memorize every CSS property on this page for an upcoming quiz. That joke doesn't work as well online. But please click through some of the properties on this website. You don't need to memorize them all. Just try to take inventory of what is possible. You can always Google something like "[CSS background blending](https://www.google.com/search?q=CSS+background+blending)" to determine the correct syntax to use.
+There are three places you can write CSS. Each has a different use.
 
-[CSS Reference (Tympanus/Codrops)](https://tympanus.net/codrops/css_reference/)
+### 1. External CSS — Best for real websites
 
-## Attaching CSS to a Document
+Write CSS in a separate `.css` file and link it in your HTML `<head>`:
 
-[Attaching CSS - YouTube](https://youtu.be/QgU2pG_xujY)
+```html
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+```
 
-## IDs vs. Classes
+**Why this is best:** One CSS file can style many pages. Change one file, update your whole site.
 
-[IDs vs. Classes - YouTube](https://youtu.be/Mt-jCfL3pPY)
+### 2. Internal CSS — Good for single-page experiments
 
-## A Simple Cascade Example
+Write CSS inside a `<style>` tag in your HTML `<head>`:
 
-[Cascade Example - YouTube](https://youtu.be/CDxwflPyTk0)
+```html
+<head>
+  <style>
+    p { color: navy; }
+  </style>
+</head>
+```
+
+Useful for testing, but not for multi-page sites.
+
+### 3. Inline CSS — Avoid for most things
+
+Write CSS directly on an HTML element using the `style` attribute:
+
+```html
+<p style="color: navy;">This text is navy.</p>
+```
+
+This works, but it mixes content with presentation. If you want to change the color of every paragraph, you'd have to edit each one individually.
+
+<InteractiveCode
+  html={`<!-- External method (simulated with inline) -->
+<p style="color: red;">This uses inline CSS.</p>
+
+<!-- Internal method (simulated with a class) -->
+<style>
+  .internal-style {
+    color: blue;
+    font-size: 20px;
+  }
+</style>
+<p class="internal-style">This uses internal CSS.</p>
+
+<!-- External is not shown here but is the recommended approach -->`}
+  css={`/* In a real project, this code would be in a separate .css file */
+body {
+  font-family: Arial, sans-serif;
+}`}
+/>
+
+<Quiz>
+You are building a 5-page website. Which method of adding CSS is best?
+
+- [ ] Inline CSS on every element
+- [x] External CSS file linked from each page
+- [ ] Internal CSS in every page's `<head>`
+- [ ] It doesn't matter, they all work the same
+
+Which of these is the correct CSS syntax?
+
+- [ ] `p { color: blue; }`
+- [x] `p { color: blue; }`
+- [ ] `p { color: blue; }`
+- [ ] `p: color: blue;`
+
+_For fill-in: CSS stands for [[Cascading Style Sheets]]_
+</Quiz>
+
+## Comments in CSS
+
+Use `/*` and `*/` to add notes that won't affect the output:
+
+```css
+/* This is a comment. Browsers ignore it. */
+p {
+  color: gray; /* Comments can go inline too */
+}
+```
+
+## What's Next
+
+Now that you know what CSS is and how to attach it, move on to learning about [CSS Selectors](/css-basics/02-selectors/) — how to target specific elements on your page.

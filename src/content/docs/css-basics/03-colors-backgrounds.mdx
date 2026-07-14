@@ -1,0 +1,226 @@
+---
+title: Colors & Backgrounds
+description: Using colors and background properties in CSS
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+Two of the most common things you'll do with CSS are changing text color and adding background colors or images.
+
+## Text Color: The `color` Property
+
+The `color` property changes the color of text. You can specify colors in several ways.
+
+### Named Colors
+
+CSS recognizes 140 named colors like `red`, `blue`, `green`, `navy`, `firebrick`, and `rebeccapurple`:
+
+```css
+p {
+  color: navy;
+}
+```
+
+### Hex Codes
+
+A **hex code** (short for hexadecimal) is a six-character code starting with `#`. It lets you pick from over 16 million colors:
+
+```css
+p {
+  color: #2c3e50;
+}
+```
+
+- `#ff0000` = red, `#00ff00` = green, `#0000ff` = blue
+- Pairs stand for Red, Green, Blue: `#RRGGBB`
+- `#000000` = black, `#ffffff` = white
+
+Tools like the [Adobe Color wheel](https://color.adobe.com/) or your browser's DevTools color picker can help you find hex codes.
+
+### rgb()
+
+The `rgb()` function lets you specify red, green, and blue values from 0 to 255:
+
+```css
+p {
+  color: rgb(44, 62, 80); /* same as #2c3e50 */
+}
+```
+
+<InteractiveCode
+  html={`<h1>Colorful Page</h1>
+
+<p class="named">This uses a named color.</p>
+
+<p class="hex">This uses a hex code.</p>
+
+<p class="rgb">This uses rgb().</p>`}
+  css={`h1 {
+  color: #2c3e50;
+  text-align: center;
+}
+
+.named {
+  color: firebrick;
+}
+
+.hex {
+  color: #27ae60;
+}
+
+.rgb {
+  color: rgb(52, 152, 219);
+}`}
+/>
+
+Try changing the color values in the CSS panel. What happens when you change `#27ae60` to `#e74c3c`?
+
+## Background Color: The `background-color` Property
+
+Sets the background color of any element:
+
+```css
+.box {
+  background-color: #f1c40f;
+}
+```
+
+<InteractiveCode
+  html={`<div class="card">
+  <h2>Card Title</h2>
+  <p>This card has a background color.</p>
+</div>
+
+<div class="card alert">
+  <h2>Warning</h2>
+  <p>This card has a different background color.</p>
+</div>`}
+  css={`.card {
+  background-color: #ecf0f1;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.alert {
+  background-color: #f39c12;
+  color: white;
+}
+
+h2 {
+  margin-top: 0;
+}`}
+/>
+
+<Quiz>
+Which CSS property changes the text color?
+- [ ] font-color
+- [ ] text-color
+- [x] color
+- [ ] background-color
+
+What does #ff0000 represent?
+- [ ] Green
+- [ ] Blue
+- [ ] Black
+- [x] Red
+
+Which is NOT a valid way to specify a color in CSS?
+- [ ] red
+- [ ] #ff0000
+- [x] color(red)
+- [ ] rgb(255, 0, 0)
+</Quiz>
+
+## Background Images: The `background-image` Property
+
+You can use an image as a background instead of a solid color:
+
+```css
+.banner {
+  background-image: url("banner.jpg");
+}
+```
+
+The `url()` function points to the image file, just like the `src` attribute in HTML images.
+
+### Background Size
+
+The `background-size` property controls how the image fits:
+
+```css
+.banner {
+  background-image: url("banner.jpg");
+  background-size: cover;  /* Scales to fill the element, may crop */
+}
+```
+
+| Value | What it does |
+|---|---|
+| `cover` | Scales image to cover the whole area (may crop edges) |
+| `contain` | Scales image to fit entirely inside (may leave empty space) |
+| `100% 100%` | Stretches image to fill exactly (may distort) |
+
+### Avoiding Image Repetition
+
+By default, background images repeat (tile) to fill the space. You can control this:
+
+```css
+.banner {
+  background-image: url("pattern.png");
+  background-repeat: no-repeat;   /* Show image once */
+  /* or */
+  background-repeat: repeat-x;    /* Repeat horizontally only */
+  /* or */
+  background-repeat: repeat-y;    /* Repeat vertically only */
+}
+```
+
+<InteractiveCode
+  html={`<div class="banner">
+  <h2>Welcome to My Site</h2>
+</div>
+
+<div class="pattern-box">
+  <p>This box has a repeating pattern.</p>
+</div>`}
+  css={`.banner {
+  background-image: url("https://placehold.co/800x300/3498db/ffffff?text=Banner");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.banner h2 {
+  color: white;
+  font-size: 36px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.pattern-box {
+  background-image: url("https://placehold.co/100x100/e74c3c/ffffff?text=+");
+  background-repeat: repeat;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 10px;
+}`}
+/>
+
+Try changing `background-size: cover` to `background-size: contain` to see the difference.
+
+<Quiz>
+What value of background-size scales the image to fill the whole element, even if it gets cropped?
+- [ ] contain
+- [x] cover
+- [ ] fill
+- [ ] stretch
+
+By default, a background image will:
+- [x] Repeat to fill the whole element
+- [ ] Show only once in the top-left corner
+- [ ] Stretch to fill the element
+- [ ] Be centered
+</Quiz>

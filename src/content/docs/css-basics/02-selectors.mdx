@@ -1,0 +1,248 @@
+---
+title: CSS Selectors
+description: How to target HTML elements with CSS selectors
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+A **selector** is the part of a CSS rule that picks which HTML elements to style. There are many types of selectors, and each gives you a different level of control.
+
+## Element Selector
+
+Targets all elements of a given type:
+
+```css
+p {
+  color: red;
+}
+```
+
+This turns every `<p>` on the page red. Simple, but broad.
+
+## Class Selector
+
+Targets elements with a specific `class` attribute. Classes are reusable — you can put the same class on many elements.
+
+In CSS, class names start with a dot (`.`):
+
+```css
+.highlight {
+  background-color: yellow;
+}
+```
+
+```html
+<p class="highlight">This paragraph has a yellow background.</p>
+<p>This paragraph does not.</p>
+```
+
+**Use a class** when you want to apply the same style to multiple elements.
+
+## ID Selector
+
+Targets a single element with a specific `id` attribute. IDs must be unique — each ID can only appear once on a page.
+
+In CSS, ID names start with a hash (`#`):
+
+```css
+#logo {
+  width: 200px;
+}
+```
+
+```html
+<img id="logo" src="logo.png" alt="Logo">
+```
+
+**Use an ID** when you need to target exactly one element (for a unique page element or for linking).
+
+<InteractiveCode
+  html={`<h1>My Page</h1>
+
+<p class="intro">Welcome to my website.</p>
+
+<p>Here is a paragraph about me.</p>
+
+<p class="intro">Here is another intro paragraph.</p>
+
+<div id="footer">Copyright 2025</div>`}
+  css={`/* Element selector — targets every <p> */
+p {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Class selector — targets elements with class="intro" */
+.intro {
+  font-size: 20px;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+/* ID selector — targets the element with id="footer" */
+#footer {
+  background-color: #34495e;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}`}
+/>
+
+Try adding `class="intro"` to the second paragraph or changing the `#footer` padding value.
+
+<Quiz>
+Which selector would you use to style all paragraphs on a page the same way?
+- [ ] .paragraph
+- [ ] #paragraph
+- [x] p
+- [ ] *paragraph
+
+Which selector targets an element with class="warning"?
+- [ ] #warning
+- [x] .warning
+- [ ] warning
+- [ ] *warning
+
+True or false: An ID must be unique on a page.
+- [x] True
+- [ ] False
+</Quiz>
+
+## Descendant Selector
+
+Targets elements that are nested inside another element. Use a space between selectors:
+
+```css
+article p {
+  color: blue;
+}
+```
+
+This targets `<p>` elements that are inside an `<article>` — but not paragraphs elsewhere on the page.
+
+## Grouping Selectors
+
+Apply the same styles to multiple selectors at once using a comma:
+
+```css
+h1, h2, h3 {
+  font-family: Georgia, serif;
+}
+```
+
+This saves you from repeating the same rule three times.
+
+<InteractiveCode
+  html={`<article>
+  <h2>Section Title</h2>
+  <p>This paragraph is inside the article.</p>
+  <p>So is this one.</p>
+</article>
+
+<p>This paragraph is outside the article and is NOT targeted.</p>
+
+<h1>Main Heading</h1>
+<h2>Subheading</h2>
+<h3>Sub-subheading</h3>`}
+  css={`/* Descendant: only <p> inside <article> */
+article p {
+  color: #2c3e50;
+  font-size: 18px;
+}
+
+/* Grouping: same font for all headings */
+h1, h2, h3 {
+  font-family: Georgia, serif;
+  color: #8e44ad;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}`}
+/>
+
+<Quiz>
+Which selector targets only `<p>` elements inside a `<section>`?
+- [ ] section, p
+- [x] section p
+- [ ] p section
+- [ ] section > p is the only way
+
+What does `h1, h2, h3 { color: red; }` do?
+- [x] Makes all h1, h2, and h3 elements red
+- [ ] Makes h1 red, then h2 red, then h3 red
+- [ ] Only makes h3 red
+- [ ] Makes elements that are h1 inside h2 inside h3 red
+</Quiz>
+
+## Pseudo-classes
+
+A **pseudo-class** targets elements based on their *state* or *position*. It starts with a colon (`:`).
+
+The most common one is `:hover` — it applies styles when the user's mouse is over an element:
+
+```css
+a:hover {
+  color: orange;
+}
+```
+
+Other useful pseudo-classes:
+
+| Pseudo-class | When it applies |
+|---|---|
+| `:hover` | Mouse is over the element |
+| `:first-child` | Element is the first child of its parent |
+| `:last-child` | Element is the last child of its parent |
+
+<InteractiveCode
+  html={`<ul>
+  <li>First item</li>
+  <li>Second item</li>
+  <li>Third item</li>
+</ul>
+
+<p><a href="#">Hover over this link</a></p>`}
+  css={`li:first-child {
+  font-weight: bold;
+}
+
+li:last-child {
+  color: #888;
+}
+
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #e74c3c;
+  text-decoration: underline;
+}`}
+/>
+
+Hover your mouse over the link to see the `:hover` effect. Try changing the colors.
+
+<Quiz>
+What does the :hover pseudo-class do?
+- [ ] Makes an element shake
+- [x] Applies styles when the mouse is over the element
+- [ ] Hides the element until clicked
+- [ ] Makes the element stay in place when scrolling
+
+Which pseudo-class targets the first child inside a parent?
+- [ ] :first-element
+- [ ] :nth(1)
+- [x] :first-child
+- [ ] :start
+</Quiz>
