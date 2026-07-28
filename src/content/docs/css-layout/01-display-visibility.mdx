@@ -1,0 +1,107 @@
+---
+title: Display & Visibility
+description: Understanding CSS display and visibility properties
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+Every HTML element has a default `display` value that controls how it behaves on the page. Block elements stack vertically; inline elements sit side-by-side within text. Understanding these defaults — and how to change them — is the first step to controlling layout.
+
+## Block vs Inline
+
+<InteractiveCode
+  html={`<h2>Block elements</h2>
+<p>Each block element starts on a <strong>new line</strong> and takes the full width available.</p>
+<div>This div is also a block element.</div>
+
+<h2>Inline elements</h2>
+<p>Inline elements like <a href="#">links</a>, <strong>bold text</strong>, and <em>italic text</em> sit within the flow of a line.</p>`}
+  css={`strong { color: #c00; }
+em { color: #060; }`}
+/>
+
+## Changing the display value
+
+You can override an element's default display with CSS.
+
+<InteractiveCode
+  html={`<div class="block">display: block</div>
+<div class="inline">display: inline</div>
+<div class="inline">display: inline</div>
+<div class="inline-block">display: inline-block</div>
+<div class="inline-block">display: inline-block</div>
+<div class="hidden">display: none</div>`}
+  css={`div {
+  background: steelblue;
+  color: white;
+  padding: 10px;
+  margin: 5px 0;
+}
+.inline {
+  display: inline;
+  background: tomato;
+}
+.inline-block {
+  display: inline-block;
+  width: 150px;
+  background: mediumseagreen;
+}
+.hidden {
+  display: none;
+}`}
+/>
+
+- `display: block` — Takes full width, starts on a new line (default for `<div>`, `<p>`, `<h1>`)
+- `display: inline` — Flows within text, only takes needed space (default for `<a>`, `<strong>`, `<span>`)
+- `display: inline-block` — Flows inline like text, but you can set width/height/padding like a block
+- `display: none` — Removes the element entirely (it takes no space on the page)
+
+<Quiz id="display-values-quiz">
+Which display value lets you set a width on an element while keeping it inline with surrounding text?
+
+- [ ] block
+- [ ] inline
+- [x] inline-block
+- [ ] none
+</Quiz>
+
+## visibility: hidden vs display: none
+
+Both hide an element, but in different ways.
+
+<InteractiveCode
+  html={`<div class="box visible">Visible</div>
+<div class="box invisible">visibility: hidden</div>
+<div class="box gone">display: none</div>
+<div class="box visible">Still visible</div>`}
+  css={`div {
+  background: steelblue;
+  color: white;
+  padding: 20px;
+  margin: 5px;
+}
+.invisible {
+  visibility: hidden;
+}
+.gone {
+  display: none;
+}`}
+/>
+
+Notice that `visibility: hidden` hides the content but **keeps the space** — there is still a gap where the box was. `display: none` removes both the content and the space.
+
+<Quiz id="visibility-quiz">
+Which CSS property hides an element but keeps its space on the page?
+
+- [ ] display: none
+- [x] visibility: hidden
+- [ ] Both
+- [ ] Neither
+</Quiz>
+
+[Display & Visibility - YouTube](https://youtu.be/D87N7bfK6xk)
+
+:::note
+[Here are the slides](https://docs.google.com/presentation/d/1oqT99SRIMs4wDrEQC494HLPLVCqS4WHYCbdBKNnmans/edit?usp=sharing) for the video.
+:::

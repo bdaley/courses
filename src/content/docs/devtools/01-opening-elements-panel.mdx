@@ -1,0 +1,110 @@
+---
+title: Opening DevTools & The Elements Panel
+description: How to open browser DevTools and use the Elements panel to inspect and edit HTML
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+## Opening DevTools
+
+There are several ways to open DevTools:
+
+- **Right-click** anywhere on a page and select **Inspect** (or **Inspect Element** in Firefox)
+- **Keyboard shortcuts:**
+
+| Browser | Windows / Linux | Mac |
+|---|---|---|
+| Chrome / Edge | `Ctrl+Shift+I` | `Cmd+Option+I` |
+| Firefox | `Ctrl+Shift+I` | `Cmd+Option+I` |
+| Safari | — | `Cmd+Option+I` |
+
+Try it now: right-click anywhere on this page and choose **Inspect**.
+
+## The Elements Panel
+
+When DevTools opens, you will usually land on the **Elements** panel (called **Inspector** in Firefox). This panel shows your page's HTML structure as a tree of elements.
+
+### Selecting Elements
+
+Move your mouse over different lines in the Elements panel. As you hover, the corresponding element highlights on the page. Click any line to select it — that element's styles appear in the Styles panel to the right.
+
+You can also use the **element picker** — the cursor-with-a-box icon in the top-left corner of DevTools. Click it, then click any element on the page. DevTools automatically selects that element in the HTML tree.
+
+<InteractiveCode
+  html={`<div class="example-card">
+  <h2>Welcome!</h2>
+  <p>This is a sample card with a heading, paragraph, and a list.</p>
+  <ul>
+    <li>First item</li>
+    <li>Second item</li>
+    <li>Third item</li>
+  </ul>
+</div>`}
+  css={`.example-card {
+  border: 2px solid #2c7be5;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 320px;
+  font-family: system-ui, sans-serif;
+}
+.example-card h2 {
+  color: #2c7be5;
+  margin-top: 0;
+}`}
+/>
+
+**Try this:** Open real DevTools on this page. Find any heading, paragraph, or list in the Elements panel. Hover over different elements and watch how they highlight on the page. Use the element picker to click directly on the card above.
+
+### Editing HTML Live
+
+You can edit any element's HTML directly in the Elements panel:
+
+- **Edit text:** Double-click the text inside an element and type to change it
+- **Edit attributes:** Double-click an attribute value (like `class="card"`) and change it
+- **Delete an element:** Right-click an element and choose **Delete Element**
+- **Add an attribute:** Right-click an element and choose **Add Attribute**
+- **Copy HTML:** Right-click and choose **Copy** → **Copy OuterHTML**
+
+All changes are **temporary** — they disappear when you refresh the page. This makes DevTools a safe space to experiment without breaking your files.
+
+<InteractiveCode
+  html={`<div class="practice-card">
+  <h2>My To-Do List</h2>
+  <ul>
+    <li>Learn HTML</li>
+    <li>Learn CSS</li>
+    <li>Build a website</li>
+  </ul>
+</div>`}
+  css={`.practice-card {
+  font-family: system-ui, sans-serif;
+  max-width: 300px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}`}
+/>
+
+**Practice:** In real DevTools, find any heading or paragraph on this page in the Elements panel. Double-click the text and change it. Then right-click another element and add a new attribute. Refresh the page — everything is back to normal.
+
+<Quiz id="devtools-open-quiz">
+Which keyboard shortcut opens DevTools in Chrome on Windows or Linux?
+
+- [ ] Ctrl+Alt+I
+- [ ] Ctrl+Shift+P
+- [x] Ctrl+Shift+I
+- [ ] F12
+
+</Quiz>
+
+<Quiz id="devtools-temporary-quiz">
+When you edit HTML in the Elements panel, what happens to your changes when you refresh the page?
+
+- [ ] They are saved automatically
+- [ ] A prompt asks you to save
+- [x] They disappear
+- [ ] They are saved only if you right-click and choose "Save"
+
+</Quiz>

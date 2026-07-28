@@ -1,61 +1,321 @@
 ---
 title: Responsive Web Design
-description: Week 11 - Making websites work on any device
+description: Making websites work on any device — phones, tablets, and desktops
 ---
 
 import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
 
-## Introduction
+## What is Responsive Web Design?
 
-Please watch the two videos below for an introduction on the topic of responsive web design.
+**Responsive Web Design (RWD)** is the practice of building a single website that automatically adapts to look good on any screen size — phone, tablet, laptop, or desktop. Instead of building one site for mobile and a different one for desktop, you build one site that responds to the viewer's device.
+
+Please watch the two videos below for an introduction:
 
 [Responsive Web Design Intro (Part 1) - Loom](https://www.loom.com/share/c3221a73ec7243f899f55a0bf4bb0830)
 
 [Responsive Web Design Intro (Part 2) - Loom](https://www.loom.com/share/bd30d8a89fb1453bbfe1e14b92cadd5c)
 
-## Using Media Queries
+<Quiz id="rwd-what-is">
+What does responsive web design allow a website to do?
+
+- [ ] Look exactly the same on every device
+- [x] Adapt its layout to fit different screen sizes
+- [ ] Only work on mobile phones
+- [ ] Require separate HTML for each device
+
+Which best describes responsive web design?
+
+- [ ] A separate mobile version of a website
+- [x] One website that adjusts to any screen size
+- [ ] An app that replaces a website
+- [ ] A print stylesheet for paper output
+</Quiz>
+
+## Mobile-First Design
+
+When you build a responsive site, you need to decide which screen size to design for first. **Mobile-first** means you start with the mobile layout and then add styles for larger screens as needed.
+
+Think of it like building a house:
+
+- Start with a small, functional room (mobile layout)
+- Add walls and expand outward for more space (tablet layout)
+- Add even more rooms for the full house (desktop layout)
+
+You never remove anything — you only add.
+
+### Why start with mobile?
+
+1. **Forces focus.** A small screen forces you to prioritize the most important content. Everything else is extra.
+2. **Progressive enhancement.** You start with a base that works everywhere and add features for bigger screens. Every device gets a working layout.
+3. **The mobile web is huge.** More than half of web traffic comes from mobile devices. Starting with mobile means most visitors get a great experience.
+
+### Mobile-first means `min-width`
+
+In CSS, mobile-first means you write **base styles** for mobile (no media query needed), then use `min-width` media queries to add styles for larger screens. You will see this in the next section.
+
+<Quiz id="rwd-mobile-first">
+What does "mobile-first" mean in web design?
+
+- [ ] Designing for desktop first, then shrinking for mobile
+- [x] Starting with the mobile layout and adding for larger screens
+- [ ] Only designing for mobile phones and ignoring desktop
+- [ ] Building a mobile app instead of a website
+
+Mobile-first design uses [[min-width]] media queries to add styles for larger screens.
+</Quiz>
+
+## Media Queries
+
+A **media query** is a CSS feature that lets you apply styles only when certain conditions are true — like "the screen is at least 768 pixels wide."
+
+Think of it like a responsive light switch: in a small room (mobile), you turn on one lamp (base styles). In a larger room (wider screen), the `@media` rule turns on more lights (additional styles).
+
+### Syntax
+
+```css
+/* Base styles apply everywhere — no media query needed */
+body {
+  background: #f0f0f0;
+  font-size: 16px;
+}
+
+/* Additional styles apply when viewport is 768px or wider */
+@media (min-width: 768px) {
+  body {
+    background: #e0e0e0;
+    font-size: 18px;
+  }
+}
+```
+
+The `@media (min-width: 768px)` rule says: "If the viewport is at least 768px wide, apply these styles on top of the base styles."
+
+### Common breakpoints
+
+You can pick any width you want, but these are common starting points:
+
+| Breakpoint | Typical device |
+|---|---|
+| 768px | Tablet (portrait) |
+| 1024px | Desktop / tablet (landscape) |
+| 1200px+ | Large desktop |
+
+Your content should dictate the exact values. As you resize your browser and watch the layout, pick breakpoints where things start to look cramped.
+
+### Live example
+
+Resize the preview below. On mobile everything stacks vertically. At 768px and wider, the main content and sidebar sit side by side.
 
 <InteractiveCode
-  css={`/* Base styles for mobile-first design */
-.container {
-  display: flex;
-  flex-direction: column;
+  html={`<header>My Website</header>
+<div class="content">
+  <main>
+    <h2>Welcome</h2>
+    <p>This layout stacks vertically on mobile and switches to a two-column layout on wider screens using a media query.</p>
+  </main>
+  <aside>
+    <h3>Links</h3>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </aside>
+</div>
+<footer>&copy; 2024 My Website</footer>`}
+  css={`* {
+  box-sizing: border-box;
 }
 
-/* Tablet: 768px and wider */
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+}
+
+header {
+  background: #1e293b;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+main {
+  background: white;
+  padding: 20px;
+}
+
+aside {
+  background: #e2e8f0;
+  padding: 20px;
+}
+
+aside ul {
+  list-style: none;
+  padding: 0;
+}
+
+aside a {
+  color: #1e293b;
+  text-decoration: none;
+}
+
+footer {
+  background: #1e293b;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* Tablet and wider */
 @media (min-width: 768px) {
-  .container {
-    flex-direction: row;
+  .content {
+    display: flex;
   }
 
-  .sidebar {
-    width: 250px;
+  main {
+    flex: 2;
   }
 
-  .main-content {
+  aside {
     flex: 1;
-  }
-}
-
-/* Desktop: 1024px and wider */
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
   }
 }`}
 />
 
+Try changing `768px` to `500px`. The layout switches earlier. Change it to `1024px` and it switches later. This is how you control exactly where your layout breaks.
+
+<Quiz id="rwd-media-queries">
+What does `@media (min-width: 768px)` mean?
+
+- [ ] Apply styles when the screen is exactly 768px wide
+- [x] Apply styles when the screen is 768px or wider
+- [ ] Apply styles when the screen is 768px or narrower
+- [ ] Apply styles only to tablets
+
+In mobile-first design, which type of media query do you use?
+
+- [ ] max-width
+- [x] min-width
+- [ ] exact-width
+- [ ] screen-width
+</Quiz>
+
 [Media Queries - Loom](https://www.loom.com/share/57f31d03684e4d34a475380aafc2c701)
 
-## Additional Reading
+## From Stacked to Multi-Column
 
-Please read through the following guides:
+Here is the skill you will use most often: **converting a stacked mobile layout into a multi-column layout.**
+
+The pattern is always the same:
+
+1. **On mobile:** Use `flex-direction: column` so items stack vertically.
+2. **On wider screens:** Use a media query to switch to `flex-direction: row` so items sit side by side.
+
+### Example: Feature Cards
+
+Here are three feature cards. On mobile they stack. On wider screens they form a three-column row.
+
+<InteractiveCode
+  html={`<section class="features">
+  <h2>What We Offer</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Design</h3>
+      <p>Clean, modern designs tailored to your brand. We start with wireframes and build up from there.</p>
+    </div>
+    <div class="card">
+      <h3>Development</h3>
+      <p>Semantic HTML, modern CSS, and progressive enhancement. Your site works everywhere.</p>
+    </div>
+    <div class="card">
+      <h3>Support</h3>
+      <p>Ongoing maintenance and updates so your site stays secure and up to date.</p>
+    </div>
+  </div>
+</section>`}
+  css={`* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  margin: 20px;
+  background: #f8fafc;
+}
+
+.features h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #1e293b;
+}
+
+/* Mobile: cards stack vertically */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #3b82f6;
+}
+
+/* Tablet and wider: cards go side by side */
+@media (min-width: 768px) {
+  .cards {
+    flex-direction: row;
+  }
+
+  .card {
+    flex: 1;
+  }
+}`}
+/>
+
+Resize the preview. On mobile, the three cards stack in a single column. At 768px and wider, they spread into a three-column row.
+
+Try changing the `768px` in the media query to `500px`. The cards switch to a row layout at a narrower width. What breakpoint feels right to you?
+
+<Quiz id="rwd-stacked-to-columns">
+On mobile, a mobile-first layout typically uses which `flex-direction` value to stack items vertically?
+
+- [ ] row
+- [x] column
+- [ ] row-reverse
+- [ ] column-reverse
+
+To convert a stacked mobile layout into a multi-column desktop layout, you change `flex-direction` from `[[column]]` to `[[row]]` inside a media query.
+
+Which CSS feature do you use to apply styles only at certain screen widths?
+
+- [ ] Flexbox
+- [ ] The box model
+- [x] Media queries
+- [ ] CSS selectors
+</Quiz>
+
+## Additional Resources
 
 - [RWD: Media Queries (w3schools)](https://www.w3schools.com/css/css_rwd_mediaqueries.asp)
-- [RWD: Images (w3schools)](https://www.w3schools.com/css/css_rwd_images.asp)
-
-## Helpful Resources
-
 - [Responsive Web Design Patterns (Brad Frost)](https://bradfrost.github.io/this-is-responsive/patterns.html)
 - [RWD Inspiration - mediaqueri.es](https://mediaqueri.es/)
+
+## What You Learned
+
+- Responsive Web Design means one website that adapts to any screen size
+- Mobile-first means starting with the mobile layout and adding styles for larger screens using `min-width` media queries
+- Media queries (`@media`) let you apply CSS conditionally based on viewport width
+- Common breakpoints include 768px (tablet) and 1024px (desktop)
+- The core layout pattern: stack items with `flex-direction: column` on mobile, switch to `flex-direction: row` at wider screens

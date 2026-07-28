@@ -1,0 +1,123 @@
+---
+title: Positioning
+description: Understanding CSS positioning (static, relative, absolute, fixed, sticky)
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+The `position` property lets you take elements out of the normal document flow and place them exactly where you want.
+
+## position: static (default)
+
+Every element starts with `position: static`. It flows in normal document order — top to bottom, left to right. You rarely write this; it's the default.
+
+## position: relative
+
+Moves an element relative to where it would normally be. The original space is preserved.
+
+<InteractiveCode
+  html={`<div class="box normal">Normal</div>
+<div class="box offset">Relative (offset)</div>
+<div class="box normal">Normal</div>`}
+  css={`.box {
+  background: steelblue;
+  color: white;
+  padding: 20px;
+  margin: 5px;
+  width: 200px;
+}
+.offset {
+  position: relative;
+  top: 20px;
+  left: 30px;
+  background: tomato;
+}`}
+/>
+
+## position: absolute
+
+Removes the element from normal flow completely and positions it relative to its nearest positioned ancestor (any ancestor with `position` set to something other than `static`). If none exists, it positions relative to the page body.
+
+<InteractiveCode
+  html={`<div class="card">
+  <div class="badge">NEW</div>
+  <p>This card has an absolutely positioned badge in the top-right corner.</p>
+</div>`}
+  css={`.card {
+  position: relative;
+  background: #f4f4f4;
+  padding: 30px 20px 20px;
+  border: 1px solid #ddd;
+  width: 300px;
+}
+.badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: tomato;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 0.8rem;
+}`}
+/>
+
+## position: fixed
+
+Positions the element relative to the viewport. It stays in the same place even when the page scrolls.
+
+<InteractiveCode
+  html={`<p>Scroll this page to see the fixed bar stay at the bottom.</p>
+<p style="margin-top: 300px;">Keep scrolling...</p>
+<p style="margin-top: 300px;">Almost there...</p>
+<p style="margin-top: 300px;">See? The bar never moves.</p>
+<div class="bar">Fixed Bottom Bar</div>`}
+  css={`.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}`}
+/>
+
+## position: sticky
+
+Acts like `relative` until the element hits a scroll threshold, then "sticks" like `fixed`.
+
+<InteractiveCode
+  html={`<h2>Section A</h2>
+<p>Content before the sticky heading...</p>
+<p>More content...</p>
+<h2 class="sticky">Section B (sticky)</h2>
+<p>Content after the sticky heading...</p>
+<p style="margin-top: 300px;">Scroll down — the heading sticks to the top as you pass it.</p>
+<p style="margin-top: 300px;">Keep going...</p>`}
+  css={`.sticky {
+  position: sticky;
+  top: 0;
+  background: steelblue;
+  color: white;
+  padding: 10px;
+}`}
+/>
+
+<Quiz id="positioning-quiz">
+Match each position value to its behavior:
+
+- `relative` → offset from [[normal position]]
+- `absolute` → positioned relative to nearest [[positioned ancestor]]
+- `fixed` → stays in place when [[scrolling]]
+- `sticky` → switches from relative to [[fixed]] at a scroll point
+</Quiz>
+
+[Positioning - YouTube](https://youtu.be/1KlDnXuJkrY)
+
+:::note
+[Here are the slides](https://docs.google.com/presentation/d/1AzDXL9ZF_MASJYUYITOl8LTkligiHppSLMHSTAnTa7w/edit?usp=sharing) for the video.
+:::

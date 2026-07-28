@@ -1,0 +1,76 @@
+---
+title: Centered Layouts
+description: Techniques for centering content with CSS
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+Centering is one of the most common tasks in CSS. There are two main techniques you will use.
+
+## Using Margin Auto
+
+Centers a block element horizontally by setting its left and right margins to `auto`. The element must have a defined width.
+
+<InteractiveCode
+  html={`<div class="container">
+  <p>This container is centered horizontally using margin: 0 auto.</p>
+</div>`}
+  css={`body {
+  background: #eee;
+}
+.container {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  text-align: center;
+  border-radius: 8px;
+}`}
+/>
+
+## Using Flexbox
+
+Flexbox makes centering both horizontally **and vertically** trivially easy. Put `display: flex` on the parent, then use `justify-content` and `align-items`.
+
+<InteractiveCode
+  html={`<div class="parent">
+  <div class="child">Perfectly Centered</div>
+</div>`}
+  css={`.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  background: #f4f4f4;
+  border: 2px dashed #999;
+}
+.child {
+  background: steelblue;
+  color: white;
+  padding: 30px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}`}
+/>
+
+<Quiz id="centering-quiz">
+Which flexbox properties do you need to center an item both horizontally and vertically?
+
+- [ ] justify-content and flex-direction
+- [x] justify-content and align-items
+- [ ] align-items and flex-wrap
+- [ ] gap and flex
+
+What does `margin: 0 auto` do?
+
+- [ ] Centers content vertically
+- [x] Centers a block element horizontally
+- [ ] Removes all margins
+- [ ] Adds equal margins on all sides
+</Quiz>
+
+[Centering with Margin Auto - YouTube](https://www.youtube.com/watch?v=FJlVLyslEKc&feature=youtu.be)
+
+[Centering with Flexbox - YouTube](https://www.youtube.com/watch?v=wGTCH0iZD7Y&feature=youtu.be)

@@ -12,12 +12,13 @@
   },
   "dependencies": {
     "@astrojs/react": "^6.0.1",
-    "@astrojs/starlight": "^0.41.3",
+    "@astrojs/starlight": "^0.41.4",
     "@codesandbox/sandpack-react": "^2.20.0",
-    "astro": "^7.0.7",
+    "astro": "^7.1.4",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "sharp": "^0.35.3",
+    "starlight-image-zoom": "^0.15.0",
     "starlight-quiz": "^1.0.0"
   }
 }

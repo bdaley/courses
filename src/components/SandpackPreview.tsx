@@ -10,9 +10,10 @@ import { useEffect, useState } from "react";
 interface Props {
   html?: string;
   css?: string;
+  externalResources?: string[];
 }
 
-export default function SandpackPreview({ html, css }: Props) {
+export default function SandpackPreview({ html, css, externalResources }: Props) {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
@@ -54,6 +55,7 @@ export default function SandpackPreview({ html, css }: Props) {
       <SandpackProvider
         template="static"
         files={files}
+        options={externalResources ? { externalResources } : undefined}
         theme={theme === "dark" ? defaultDark : defaultLight}
       >
         <SandpackCodeEditor

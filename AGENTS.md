@@ -55,6 +55,8 @@ guides/              # manual sidebar entries defined in astro.config.mjs
 
 Quizzes can be added to any `.mdx` page using the `<Quiz>` component from `starlight-quiz/components`.
 
+**Important: When a page has more than one `<Quiz>`, each quiz MUST have a unique `id` and a `title` prop.** Without them, the progress tracker gives every quiz the same fallback id hash and only one shows up in the sidebar progress widget. Single-quiz pages can omit these props.
+
 ```astro
 ---
 import { Quiz } from 'starlight-quiz/components';
@@ -100,4 +102,24 @@ import InteractiveCode from '../../../components/InteractiveCode.astro';
 - Renders a split-pane code editor with live preview
 - Only one of `html` or `css` is required; if only `css` is provided, a default HTML shell is used
 - Pages using this component must be `.mdx` (not `.md`)
+
+## Image Zoom (starlight-image-zoom)
+
+All Markdown/MDX images on the site automatically get click-to-zoom functionality via the `starlight-image-zoom` plugin. No component import or per-image config is needed — it hooks into Starlight's `MarkdownContent` override globally.
+
+**Configuration** (in `astro.config.mjs`):
+
+```js
+import starlightImageZoom from 'starlight-image-zoom';
+
+// In the starlight plugins array:
+plugins: [starlightImageZoom({ showCaptions: true })],
+```
+
+- `showCaptions` (default `true`) — shows the image alt text as a caption in the zoomed overlay
+- Works with Markdown `![alt](src)`, HTML `<img>`, and Astro `<Image>` / `<Picture>` syntax
+- No client-side third-party dependencies; uses the native `<dialog>` element
+
+**Plugin reference:** https://starlight-image-zoom.vercel.app/getting-started/
+**Configuration options:** https://starlight-image-zoom.vercel.app/configuration/
 

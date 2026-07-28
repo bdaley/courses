@@ -3,19 +3,22 @@ import react from '@astrojs/react';
 import starlight from '@astrojs/starlight';
 import { unified } from '@astrojs/markdown-remark';
 import { remarkYouTube } from './src/plugins/remark-youtube';
+import starlightImageZoom from 'starlight-image-zoom';
 import starlightQuiz from 'starlight-quiz';
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://bdaley.github.io",
 	base: '/dmd-1070-5070/',
+	markdown: {
+		processor: unified({ remarkPlugins: [remarkYouTube] }),
+	},
 	integrations: [
 		react(),
-		unified({ remarkPlugins: [remarkYouTube] }),
 		starlight({
 			title: 'DMD 1070/5070',
-			plugins: [starlightQuiz()],
-			customCss: ['./src/styles/video-embed.css'],
+			plugins: [starlightQuiz(), starlightImageZoom()],
+			customCss: ['./src/styles/video-embed.css', './src/styles/custom.css'],
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/bdaley/dmd-1070-5070' },
 				{ icon: 'twitter', label: 'Twitter', href: 'https://twitter.com/uconnwebprof' },
@@ -72,9 +75,9 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: 'responsive-web-design' } }]
 				},
 				{
-					label: 'Bootstrap',
+					label: 'CSS Frameworks',
 					collapsed: true,
-					items: [{ autogenerate: { directory: 'bootstrap' } }]
+					items: [{ autogenerate: { directory: 'css-frameworks' } }]
 				},
 				{
 					label: "What's Next?",

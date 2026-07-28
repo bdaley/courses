@@ -1,0 +1,296 @@
+---
+title: Flexbox
+description: Introduction to CSS Flexbox layout — the primary layout method for this course
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+Before Flexbox existed, web designers had to use floats, `inline-block`, and absolute positioning to build page layouts. It was difficult, fragile, and nothing ever lined up the way you expected. Flexbox changed all of that.
+
+Flexbox (short for *Flexible Box Layout*) is a CSS layout mode designed to distribute space and align items within a container — even when you don't know the exact size of each item.
+
+## Flex Container & Flex Items
+
+Two things must be true for Flexbox to work:
+
+1. A **flex container** — any element with `display: flex`
+2. **Flex items** — the direct children of that container
+
+Everything inside the container becomes a flex item and follows Flexbox rules.
+
+<InteractiveCode
+  html={`<div class="container">
+  <div class="item">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+</div>`}
+  css={`.container {
+  display: flex;
+  background: #eee;
+  padding: 10px;
+}
+.item {
+  padding: 20px;
+  background: steelblue;
+  color: white;
+  margin: 5px;
+  font-size: 1.2rem;
+}`}
+/>
+
+Try removing `display: flex` from the container and see what happens. The items stack vertically (the default block behavior). Add it back — they line up in a row.
+
+<Quiz id="flexbox-container-items">
+Flexbox only affects the direct children of the container — not grandchildren.
+
+- [x] True
+- [ ] False
+</Quiz>
+
+## Main Axis & Cross Axis
+
+Flexbox works along two axes. By default:
+
+- **Main axis** — runs left to right (horizontal / row)
+- **Cross axis** — runs top to bottom (vertical / column)
+
+You can swap them with `flex-direction`.
+
+<InteractiveCode
+  html={`<div class="container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+</div>`}
+  css={`.container {
+  display: flex;
+  flex-direction: column;
+  background: #eee;
+  padding: 10px;
+}
+.item {
+  padding: 20px;
+  background: tomato;
+  color: white;
+  margin: 5px;
+}`}
+/>
+
+Try changing `flex-direction` to `row`, `row-reverse`, or `column-reverse` and watch how the items rearrange.
+
+### flex-direction
+
+| Value | Main axis direction |
+|---|---|
+| `row` | Left to right (default) |
+| `row-reverse` | Right to left |
+| `column` | Top to bottom |
+| `column-reverse` | Bottom to top |
+
+<Quiz id="flexbox-axis-quiz">
+Which flex-direction value stacks items vertically from top to bottom?
+
+- [ ] row
+- [ ] row-reverse
+- [x] column
+- [ ] column-reverse
+</Quiz>
+
+## justify-content — Main Axis Alignment
+
+`justify-content` controls how items are spaced along the **main axis**.
+
+<InteractiveCode
+  html={`<div class="container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+</div>`}
+  css={`.container {
+  display: flex;
+  justify-content: center;
+  background: #eee;
+  padding: 10px;
+}
+.item {
+  padding: 20px;
+  background: mediumseagreen;
+  color: white;
+}`}
+/>
+
+Try each value: `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly`.
+
+## align-items — Cross Axis Alignment
+
+`align-items` controls how items are positioned along the **cross axis**.
+
+<InteractiveCode
+  html={`<div class="container">
+  <div class="item">Short</div>
+  <div class="item">Taller<br>item</div>
+  <div class="item">Tallest<br>item<br>here</div>
+</div>`}
+  css={`.container {
+  display: flex;
+  align-items: center;
+  background: #eee;
+  padding: 10px;
+  min-height: 150px;
+}
+.item {
+  padding: 15px;
+  background: rebeccapurple;
+  color: white;
+}`}
+/>
+
+Try `flex-start`, `flex-end`, `center`, `stretch`, `baseline`.
+
+<Quiz id="justify-align-quiz">
+Match each property to what it controls:
+
+- `justify-content` → [[main axis]] alignment
+- `align-items` → [[cross axis]] alignment
+</Quiz>
+
+## flex-wrap — Handling Overflow
+
+By default, flex items try to fit on one line. If they don't fit, they shrink. `flex-wrap: wrap` lets items flow onto multiple lines.
+
+<InteractiveCode
+  html={`<div class="container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+</div>`}
+  css={`.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: #eee;
+  padding: 10px;
+}
+.item {
+  padding: 20px 30px;
+  background: coral;
+  color: white;
+  font-size: 1.2rem;
+}`}
+/>
+
+The items wrap to new lines when they run out of space.
+
+## gap — Spacing Between Items
+
+Use `gap` to add space between flex items without adding margin to individual items. You used it in the example above — it's the simplest way to create consistent spacing.
+
+## The flex Shorthand
+
+Each flex item can grow, shrink, or stay fixed. The `flex` shorthand controls all three at once:
+
+```
+flex: grow shrink basis;
+```
+
+<InteractiveCode
+  html={`<div class="container">
+  <div class="item sidebar">Sidebar</div>
+  <div class="item main">Main Content</div>
+  <div class="item sidebar">Sidebar</div>
+</div>`}
+  css={`.container {
+  display: flex;
+  gap: 10px;
+  background: #eee;
+  padding: 10px;
+}
+.item {
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+.sidebar {
+  flex: 0 0 150px;
+  background: #666;
+}
+.main {
+  flex: 1;
+  background: steelblue;
+}`}
+/>
+
+- `flex: 1` — Take up remaining space (same as `flex: 1 1 0`)
+- `flex: 0 0 150px` — Fixed at 150px, never grows or shrinks
+- `flex: 1 1 auto` — Grows and shrinks as needed
+
+<Quiz id="flex-grow-quiz">
+What does `flex: 1` do to a flex item?
+
+- [ ] Makes it invisible
+- [x] Lets it grow to fill available space
+- [ ] Locks it at a fixed width
+- [ ] Centers it in the container
+</Quiz>
+
+## Putting It All Together
+
+Here is a common page layout using flexbox — a header, two columns, and a footer.
+
+<InteractiveCode
+  html={`<header>Header</header>
+<div class="content">
+  <main>Main Content</main>
+  <aside>Sidebar</aside>
+</div>
+<footer>Footer</footer>`}
+  css={`body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header, footer {
+  background: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.content {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+  padding: 10px;
+}
+main {
+  flex: 2;
+  background: #f4f4f4;
+  padding: 20px;
+}
+aside {
+  flex: 1;
+  background: #e0e0e0;
+  padding: 20px;
+}`}
+/>
+
+## Video & Slides
+
+[Flexbox - YouTube](https://youtu.be/DiYgQVjFAdQ)
+
+:::note
+[Here are the slides](https://docs.google.com/presentation/d/1Sk_ma3X1EFgPNfef3R46p0vBShwl3LnTzv-oaMCvUYo/edit?usp=sharing) for the video.
+:::
+
+## Practice Examples
+
+Ready to practice what you learned? Try these step-by-step examples:
+
+- [Example: Navigation](/css-layout/flexbox/example-navigation/)
+- [Example: Simple Two-Column Layout](/css-layout/flexbox/example-simple-two-column-layout/)
+- [Example: flex-basis & flex-grow](/css-layout/flexbox/example-flex-basis-and-flex-grow/)

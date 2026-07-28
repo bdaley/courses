@@ -1,0 +1,90 @@
+---
+title: Floats
+description: Using CSS floats (and why not to use them for layout)
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+The `float` property was originally created so text could wrap around images — like in a magazine or newspaper. Web designers later repurposed it to build entire page layouts, but that was never what floats were designed for.
+
+**In this course, you will use Flexbox for layouts.** Floats are presented here so you understand what they do (you may encounter them in older code), but they should not be used for creating page layouts.
+
+## When floats ARE appropriate: text wrapping
+
+Wrapping text around an image is the one correct use of float.
+
+<InteractiveCode
+  html={`<div class="media">
+  <img src="https://placehold.co/150" alt="Placeholder" class="float-img">
+  <p>This text wraps around the floated image, just like in a magazine article. The float property was made for exactly this kind of layout — letting content flow around an element.</p>
+</div>`}
+  css={`img.float-img {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  width: 150px;
+}
+.media {
+  background: #f4f4f4;
+  padding: 15px;
+}`}
+/>
+
+## The clearfix
+
+When you float an element inside a container, the container can collapse because the floated element is no longer part of the normal flow. The **clearfix** technique fixes this.
+
+```css
+.container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+```
+
+## What NOT to do
+
+**Do not use floats to create columns or page layouts.** This is an outdated technique that causes more problems than it solves. Here is what older websites used to do (for your reference only):
+
+```css
+/* ❌ OLD WAY — do NOT do this */
+.column {
+  float: left;
+  width: 50%;
+}
+```
+
+**Use Flexbox instead:**
+
+```css
+/* ✅ MODERN WAY */
+.container {
+  display: flex;
+}
+.column {
+  flex: 1;
+}
+```
+
+<Quiz id="floats-quiz">
+Which of these is a correct use of the float property?
+
+- [x] Wrapping text around an image
+- [ ] Creating a two-column page layout
+- [ ] Building a navigation bar
+- [ ] Centering content on the page
+
+What should you use instead of floats for page layout?
+
+- [ ] More floats
+- [x] Flexbox
+- [ ] Tables
+- [ ] Absolute positioning
+</Quiz>
+
+[Floats - YouTube](https://youtu.be/NDRP2paDucs)
+
+:::note
+[Here are the slides](https://docs.google.com/presentation/d/1yLxSaQrpMS5Pr3kEClwIim3fHEr0MF57gYeusqgb-7o/edit?usp=sharing) for the video.
+:::

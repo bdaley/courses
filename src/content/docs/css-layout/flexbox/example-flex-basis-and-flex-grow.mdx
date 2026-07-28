@@ -4,34 +4,66 @@ description: Understanding flex-basis and flex-grow properties
 ---
 
 import InteractiveCode from '../../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+`flex-basis` sets the starting size of a flex item before extra space is distributed. `flex-grow` controls how much of the remaining space an item should take up.
 
 <InteractiveCode
+  html={`<div class="flex-container">
+  <div class="item-fixed">Fixed 200px</div>
+  <div class="item-stretch">Grows to fill space</div>
+</div>
+
+<div class="flex-container" style="margin-top: 20px;">
+  <div class="item-sidebar">Sidebar 250px</div>
+  <div class="item-main">Main (grows)</div>
+</div>`}
   css={`.flex-container {
   display: flex;
 }
 
-/* flex-grow: 0 — item won't grow beyond its basis */
 .item-fixed {
   flex-grow: 0;
   flex-basis: 200px;
+  background: #666;
+  color: white;
+  padding: 15px;
 }
 
-/* flex-grow: 1 — item will fill available space */
 .item-stretch {
-  flex-grow: 1;   /* Takes up remaining space */
+  flex-grow: 1;
   flex-basis: 0;
+  background: steelblue;
+  color: white;
+  padding: 15px;
 }
 
-/* Shorthand: flex: grow shrink basis */
 .item-sidebar {
-  flex: 0 0 250px;   /* Fixed at 250px, won't grow or shrink */
+  flex: 0 0 250px;
+  background: #666;
+  color: white;
+  padding: 15px;
 }
 
 .item-main {
-  flex: 1 1 auto;    /* Grows and shrinks as needed */
+  flex: 1 1 auto;
+  background: steelblue;
+  color: white;
+  padding: 15px;
 }`}
 />
 
+Try changing `flex-grow: 0` to `flex-grow: 1` on `.item-fixed` — it starts growing too. Try changing `flex: 0 0 250px` to `flex: 0 0 150px` on the sidebar.
+
 Here's [the cheatsheet that is referenced in the video below](https://yoksel.github.io/flex-cheatsheet/).
+
+<Quiz id="flex-basis-quiz">
+What does `flex: 0 0 250px` do?
+
+- [x] Keeps the item at a fixed width of 250px
+- [ ] Makes the item grow to fill space up to 250px
+- [ ] Hides the item when it reaches 250px
+- [ ] Centers the item at 250px
+</Quiz>
 
 [Example: flex-basis & flex-grow - YouTube](https://youtu.be/dnlQW08zXJ0)

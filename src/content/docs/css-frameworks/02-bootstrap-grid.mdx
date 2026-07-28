@@ -1,0 +1,192 @@
+---
+title: The Bootstrap Grid
+description: How Bootstrap's 12-column mobile-first grid system works
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+## How the Grid Works
+
+The grid is the heart of Bootstrap. It is **mobile-first** and uses a **12-column layout**.
+
+Every grid layout follows this structure:
+
+```
+container → row → column
+```
+
+1. **Container** (`.container` or `.container-fluid`) — wraps everything and provides responsive horizontal padding
+2. **Row** (`.row`) — creates a horizontal group of columns with negative margins to offset column padding
+3. **Column** (`.col-*`) — defines how many of the 12 imaginary columns an element should span
+
+A row is always divided into 12 imaginary columns. You tell Bootstrap how many of those 12 your element should take up.
+
+```
+One row = 12 columns total
+
+  col-6      |      col-6
+(6 + 6 = 12)
+
+  col-4   |   col-4   |   col-4
+(4 + 4 + 4 = 12)
+
+  col-3 | col-3 | col-3 | col-3
+(3 + 3 + 3 + 3 = 12)
+
+  col-8      |      col-4
+(8 + 4 = 12)
+```
+
+If the column numbers in a row add up to more than 12, the extra columns wrap to the next line.
+
+## Grid Breakpoints — Mobile First
+
+Just like the media queries you learned in Responsive Web Design, Bootstrap's grid uses breakpoints. The column classes tell Bootstrap at which screen width a column should switch from stacked to side-by-side.
+
+| Class | Breakpoint | Typical Device |
+|---|---|---|
+| `.col-*` | Always horizontal | All sizes |
+| `.col-sm-*` | 576px+ | Small devices |
+| `.col-md-*` | 768px+ | Medium (tablets) |
+| `.col-lg-*` | 992px+ | Large (desktops) |
+| `.col-xl-*` | 1200px+ | Extra large |
+
+The naming pattern: **`col-<breakpoint>-<number-of-columns>`**
+
+Below 768px, columns with `col-md-*` will stack vertically. At 768px and wider, they sit side by side.
+
+## Simple Grid Example
+
+<InteractiveCode
+  externalResources={['https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css']}
+  html={`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Bootstrap Grid</title>
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="mb-4">Bootstrap Grid</h1>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <div class="p-3 text-white bg-primary rounded">
+          Column 1
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 text-white bg-success rounded">
+          Column 2
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 text-white bg-warning rounded">
+          Column 3
+        </div>
+      </div>
+    </div>
+
+    <p>Resize the preview to see the columns stack on narrow screens.</p>
+  </div>
+</body>
+</html>`}
+/>
+
+Try changing `col-md-4` to `col-md-6` on one of the columns. The total becomes 6 + 4 + 4 = 14, which is more than 12, so the extra column wraps. Try changing all three to `col-lg-3` to make them span 3 columns each on large screens.
+
+<Quiz id="css-frameworks-grid">
+Bootstrap's grid is divided into how many imaginary columns?
+
+- [ ] 10
+- [ ] 16
+- [x] 12
+- [ ] 8
+
+What class creates a column that spans 6 of 12 columns on medium screens?
+
+- [ ] col-6
+- [x] col-md-6
+- [ ] md-col-6
+- [ ] column-6
+
+The Bootstrap grid follows which HTML structure?
+
+- [ ] column → row → container
+- [x] container → row → column
+- [ ] row → container → column
+- [ ] column → container → row
+</Quiz>
+
+## Combining Breakpoints
+
+You can combine multiple breakpoint classes on one element to create different layouts at different screen sizes.
+
+```html
+<div class="col-12 col-md-6 col-lg-4">Item</div>
+```
+
+This single column:
+- Takes **full width** on mobile (`col-12`)
+- Takes **half width** on medium screens (`col-md-6`)
+- Takes **one third** on large screens (`col-lg-4`)
+
+Try it in the editor below:
+
+<InteractiveCode
+  externalResources={['https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css']}
+  html={`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Combined Breakpoints</title>
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="mb-4">Combined Breakpoints</h1>
+
+    <div class="row g-3">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="p-3 bg-info text-white rounded">Card 1</div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="p-3 bg-info text-white rounded">Card 2</div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="p-3 bg-info text-white rounded">Card 3</div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="p-3 bg-info text-white rounded">Card 4</div>
+      </div>
+    </div>
+
+    <p class="mt-3">Resize the preview. The cards go from 1 column (mobile) to 2 (medium) to 4 (large).</p>
+  </div>
+</body>
+</html>`}
+/>
+
+Change `col-lg-3` to `col-lg-6` on each card to get a two-column layout on large screens. Experiment with different combinations to see how the grid responds.
+
+<Quiz id="css-frameworks-breakpoints">
+What does a class like `col-md-6` tell Bootstrap?
+
+- [ ] Span 6 columns, always
+- [x] Span 6 columns on medium screens and wider
+- [ ] Span 6 columns only on mobile
+- [ ] Span 6 rows
+
+Which class would you add alongside `col-md-6` to make a column take full width on mobile?
+
+- [ ] col-sm-12
+- [x] col-12
+- [ ] col-mobile-12
+- [ ] mobile-col-12
+</Quiz>
+
+Next, you will explore some of Bootstrap's most useful components.

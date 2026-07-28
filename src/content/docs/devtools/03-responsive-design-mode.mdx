@@ -1,0 +1,118 @@
+---
+title: Responsive Design Mode
+description: Testing and debugging responsive layouts with the device toolbar
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+When you change the size of your browser window, does your layout hold up? **Responsive Design Mode** (also called the device toolbar) lets you test your page at different screen sizes without resizing your whole browser window.
+
+## Opening the Device Toolbar
+
+| Browser | How to Open |
+|---|---|
+| Chrome / Edge | Click the **Toggle Device Toolbar** icon (a phone-and-tablet icon next to the element picker) or press `Ctrl+Shift+M` (Win/Linux) / `Cmd+Shift+M` (Mac) |
+| Firefox | Click the **Responsive Design Mode** icon (two overlapping rectangles) or press `Ctrl+Shift+M` |
+
+## Testing at Different Screen Sizes
+
+Once the device toolbar is open, you can:
+
+- **Select a preset device** from the dropdown at the top — iPhone, iPad, Pixel, Surface, and many more
+- **Drag the handles** on the right and bottom edges of the viewport to resize freely
+- **Type exact dimensions** in the width and height fields
+- **Rotate the device** with the orientation button (rotate icon)
+
+The page re-renders with every size change. Any media queries you have written will activate and deactivate as you cross breakpoints.
+
+<InteractiveCode
+  html={`<div class="page">
+  <header>Header</header>
+  <div class="content">
+    <main>Main Content</main>
+    <aside>Sidebar</aside>
+  </div>
+  <footer>Footer</footer>
+</div>`}
+  css={`body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+}
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+}
+header, footer {
+  background: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.content {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+main {
+  flex: 2;
+  background: #f4f4f4;
+  padding: 20px;
+}
+aside {
+  flex: 1;
+  background: #e0e0e0;
+  padding: 20px;
+}
+@media (max-width: 600px) {
+  .content {
+    flex-direction: column;
+  }
+}`}
+/>
+
+**Try this:** Open real DevTools and enter Responsive Design Mode. Start with a wide viewport, then slowly drag the right handle narrower. Watch the layout change from side-by-side to stacked at 600px — that is the media query activating.
+
+## Media Query Breakpoint Rulers
+
+When the device toolbar is open in Chrome, you will see **media query breakpoint rulers** above the Styles panel. These are colored bars that represent your media queries:
+
+- **Blue bars** — `max-width` media queries (styles for screens up to this width)
+- **Orange bars** — `min-width` media queries (styles for screens at least this width)
+- **Green bars** — combined `min-width` and `max-width` ranges
+
+Click any bar to resize the viewport to that breakpoint. This is the fastest way to test how your layout looks at each breakpoint without dragging the viewport manually.
+
+## Touch Emulation
+
+When you select a mobile preset (like iPhone or iPad), DevTools automatically enables **touch emulation**. This simulates touch events instead of mouse events — useful for testing:
+
+- Mobile navigation menus that open on tap
+- The difference between `:hover` (desktop, triggered by mouse) and `:focus` (mobile, triggered by tap)
+- How elements respond to touch versus click
+
+You can also enable touch emulation manually by selecting "Touch" from the device toolbar's touch dropdown.
+
+<Quiz id="responsive-mode-quiz">
+What keyboard shortcut opens the device toolbar in Chrome?
+
+- [ ] Ctrl+Shift+I
+- [x] Ctrl+Shift+M
+- [ ] Ctrl+Shift+D
+- [ ] Ctrl+Shift+T
+
+What do the colored bars above the Styles panel represent?
+
+- [ ] JavaScript errors on the page
+- [ ] Console log messages grouped by type
+- [x] Media query breakpoints in your CSS
+- [ ] Image file sizes
+
+When you select a mobile preset in the device toolbar, what does DevTools automatically enable?
+
+- [ ] Dark mode
+- [ ] Screen recording
+- [x] Touch emulation
+- [ ] Performance monitoring
+
+</Quiz>

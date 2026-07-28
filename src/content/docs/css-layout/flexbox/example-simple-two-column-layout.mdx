@@ -4,6 +4,9 @@ description: Creating a two-column layout with Flexbox
 ---
 
 import InteractiveCode from '../../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+Two equal columns side by side is the most basic Flexbox layout. A single `display: flex` on the container and `flex: 1` on each column is all it takes.
 
 <InteractiveCode
   html={`<div class="container">
@@ -21,5 +24,16 @@ import InteractiveCode from '../../../../components/InteractiveCode.astro';
   background: #f4f4f4;
 }`}
 />
+
+Try changing the `gap` value or adding a third column (`<div class="column">Center</div>`).
+
+<Quiz id="two-column-quiz">
+What happens if you add a third column to the example above?
+
+- [ ] The container breaks
+- [x] All three columns share equal width
+- [ ] Only the first two columns show
+- [ ] They stack vertically
+</Quiz>
 
 [Example: Simple Two-Column Layout - YouTube](https://youtu.be/eKMeJSXa2eU)

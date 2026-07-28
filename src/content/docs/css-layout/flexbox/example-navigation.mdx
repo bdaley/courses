@@ -4,6 +4,9 @@ description: Creating a navigation bar with Flexbox
 ---
 
 import InteractiveCode from '../../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+This example uses Flexbox to build a horizontal navigation bar. Each link stretches evenly across the bar.
 
 <InteractiveCode
   html={`<nav>
@@ -38,5 +41,16 @@ import InteractiveCode from '../../../../components/InteractiveCode.astro';
   background: #555;
 }`}
 />
+
+Try removing `flex: 1` from `.nav-list li` — the items shrink to only fit their content. Try changing `gap` to `10px` to add spacing between items.
+
+<Quiz id="nav-example-quiz">
+What does `flex: 1` on each nav item do?
+
+- [ ] Makes them stack vertically
+- [x] Makes each item take equal width
+- [ ] Removes them from the layout
+- [ ] Centers the text
+</Quiz>
 
 [Example: Navigation - YouTube](https://youtu.be/cR6Q_c5SaIc)

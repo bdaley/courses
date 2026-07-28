@@ -1,0 +1,235 @@
+---
+title: Inspecting & Editing CSS
+description: Using the Styles panel to debug CSS — understanding the cascade, editing properties, and inspecting flexbox layouts
+---
+
+import InteractiveCode from '../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+The **Styles panel** (usually on the right side of DevTools, next to the Elements panel) is the most important tool for debugging CSS. When you select an element in the Elements panel, the Styles panel shows every CSS rule that applies to it and lets you edit them in real time.
+
+## Understanding the Cascade in DevTools
+
+One of the hardest things for beginners is figuring out why a CSS rule isn't taking effect. DevTools makes this visible.
+
+When you select an element, the Styles panel lists all applicable rules, ordered from most specific to least specific. If a property has a **line through it** (strikethrough), that means it was written but was overridden by a more specific rule or by a later declaration.
+
+<InteractiveCode
+  html={`<div class="notice">
+  <p class="highlight">What color should this text be?</p>
+</div>`}
+  css={`.notice p {
+  color: #333;
+}
+p {
+  color: red;
+}
+.highlight {
+  color: steelblue;
+}`}
+/>
+
+In real DevTools, selecting the `<p class="highlight">` element would show:
+- `.highlight { color: steelblue; }` — applied (wins due to specificity)
+- `.notice p { color: #333; }` — shown but overridden (strikethrough)
+- `p { color: red; }` — shown but overridden (strikethrough)
+
+The strikethrough tells you exactly which rules are being ignored and why — saving you from guessing.
+
+**Try this:** In real DevTools, inspect any styled element on this page. Look at the Styles panel. See if any properties have strikethrough. They are crossed out because another rule with higher specificity or the same specificity appearing later in the stylesheet won instead.
+
+## Editing CSS Properties Live
+
+The Styles panel lets you edit CSS in real time:
+
+- **Change a value:** Click any property value (like `steelblue` or `16px`), type a new value, and press Enter
+- **Add a new property:** Click the blank line at the end of any rule block and start typing
+- **Remove a property:** Click the property name or value and delete it, or right-click and choose **Remove Declaration**
+- **Toggle a property:** Uncheck the checkbox next to a property to temporarily disable it — great for testing whether a rule actually matters
+
+All changes are temporary and disappear on refresh. Use this to experiment freely before committing to your source files.
+
+<Quiz id="css-strikethrough-quiz">
+What does a strikethrough (line through) on a CSS property in the Styles panel mean?
+
+- [ ] The property has an error in its syntax
+- [ ] The property is deprecated and will stop working
+- [ ] The browser doesn't support this property
+- [x] The property was written but overridden by another rule
+
+Which of the following lets you temporarily disable a CSS property to see its effect?
+
+- [ ] Double-clicking the property name
+- [x] Unchecking the checkbox next to the property
+- [ ] Right-clicking and choosing "Delete"
+- [ ] Pressing the Delete key
+
+</Quiz>
+
+## The Computed Panel
+
+Next to the Styles panel is the **Computed** panel (sometimes shown as a tab). It shows the final, resolved value for every CSS property on the selected element — after specificity, inheritance, and the cascade have all been applied.
+
+Click any property in the Computed panel to see exactly which rule and source file provides that value. This is the fastest way to answer "where is this style coming from?"
+
+For example, if your text is 14px but you wrote `font-size: 16px` in your stylesheet, the Computed panel tells you the 14px is coming from a different rule. Click the 14px value and it shows you: "font-size: 14px from reset.css line 12" — no more digging through your stylesheet for the culprit.
+
+## The Box Model Viewer
+
+At the bottom of the Styles panel (or in the Computed panel, depending on your browser), you will find an interactive diagram of the box model. It shows:
+
+- **Content** area
+- **Padding** (lighter shade)
+- **Border** (darker outline)
+- **Margin** (lightest shade)
+
+Each value is clickable — you can edit them directly from the diagram. This is the fastest way to understand why an element is wider or taller than you expect.
+
+<InteractiveCode
+  html={`<div class="box">This box has width: 300px, padding: 30px, and a 5px border. How wide is it really?</div>`}
+  css={`.box {
+  width: 300px;
+  padding: 30px;
+  border: 5px solid #2c7be5;
+  background: #e8f0fe;
+  font-family: system-ui, sans-serif;
+}`}
+/>
+
+In DevTools, the box model diagram would show this element as 370px total width (300 + 30 + 30 + 5 + 5). This is the default `content-box` behavior.
+
+**Try this:** In real DevTools, inspect this box and find the box model diagram. Look at the numbers. Then add `box-sizing: border-box` to the `.box` rule in the Styles panel — watch the diagram change.
+
+## The Color Picker
+
+Anywhere you see a small colored square next to a color value in the Styles panel, click it to open the **color picker**. It includes:
+
+- A **visual palette** to pick colors by clicking
+- An **eyedropper** tool — click it, then click any color on the page to sample it
+- **Contrast ratio** information — if your text color has poor contrast against the background, DevTools warns you
+- **Format switching** — toggle between hex, RGB, HSL, and named colors
+
+The eyedropper is especially useful for matching colors from images or other design elements on the page without guessing hex codes.
+
+## Toggling Element States
+
+Interactive elements (links, buttons, form fields) change appearance when hovered, focused, or clicked. Toggling these states in DevTools lets you debug their styles without having to interact with the element.
+
+In Chrome: select an element in the Elements panel, click the **:hov** button, and check the state you want to simulate — `:hover`, `:focus`, `:active`, or `:visited`.
+
+<InteractiveCode
+  html={`<a href="#" class="btn">Hover over me</a>`}
+  css={`.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #2c7be5;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-family: system-ui, sans-serif;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.btn:hover {
+  background: #1a5bb5;
+}
+.btn:focus {
+  outline: 3px solid #ffb74d;
+}`}
+/>
+
+**Try this:** In real DevTools, select the link above in the Elements panel, open the :hov panel, and enable the `:hover` state. The background changes — you can now inspect and edit the hover styles without keeping your mouse over the element.
+
+<Quiz id="css-states-quiz">
+Which DevTools feature lets you simulate a hover state on an element?
+
+- [ ] The color picker
+- [ ] The Computed tab
+- [x] The :hov panel (element state toggling)
+- [ ] The element picker tool
+
+</Quiz>
+
+## Debugging Flexbox Layouts
+
+Flexbox is powerful, but sometimes items don't line up the way you expect. DevTools has special features to help you understand what's happening.
+
+### The Flex Badge
+
+When you select a flex container (an element with `display: flex`), a **flex badge** appears next to it in the Elements panel. Click the badge to see a visual overlay showing:
+
+- Dashed lines indicating the **main axis** and **cross axis** direction
+- Alignment indicators showing how `justify-content` and `align-items` are distributing space
+- Sizing information for each flex item
+
+### Inspecting Flex Items
+
+Select any flex item to see its flex properties in the Styles panel:
+- `flex-grow`, `flex-shrink`, `flex-basis` values
+- Actual computed dimensions compared to the `flex-basis`
+- The box model showing the item's true size
+
+### Common Problems DevTools Helps You Fix
+
+| Problem | What to Look For in DevTools |
+|---|---|
+| **Items not wrapping** | Check if `flex-wrap` is set. Items on one line with no wrapping usually means `flex-wrap: nowrap` (the default) |
+| **Items too big / overflowing** | Check the box model — padding and border may be adding unexpected width. Try `box-sizing: border-box` |
+| **Alignment looks wrong** | Click the flex badge to see axis overlays. Check `align-items` and `justify-content` values |
+| **A gap appears unexpectedly** | Check for margin on flex items, or `gap` on the container. Both show in the Styles panel and box model |
+| **An item does not grow as expected** | Inspect the flex item — `flex-grow: 0` means it will not grow. Check the `flex` shorthand |
+| **Content overflows a flex item** | Look at `min-width` or `min-height` — flex items default to `min-width: auto`, which can prevent shrinking |
+
+<InteractiveCode
+  html={`<div class="flex-container">
+  <div class="item">Home</div>
+  <div class="item">About</div>
+  <div class="item">Services</div>
+  <div class="item">Blog</div>
+  <div class="item special">Contact Us Today</div>
+</div>`}
+  css={`.flex-container {
+  display: flex;
+  gap: 8px;
+  background: #f0f0f0;
+  padding: 12px;
+  font-family: system-ui, sans-serif;
+}
+.item {
+  background: steelblue;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.special {
+  background: tomato;
+  flex-shrink: 0;
+}`}
+/>
+
+In this example, the "Contact Us Today" item has `flex-shrink: 0`. If the container is too narrow, that item will not shrink, which can cause overflow. In real DevTools:
+
+1. Select the container to see the `flex` badge and axis overlays
+2. Select "Contact Us Today" to find `flex-shrink: 0` in the Styles panel
+3. Uncheck `flex-shrink: 0` — see how the item now shrinks to fit
+4. Add `flex-wrap: wrap` to the container — items wrap instead of overflow
+
+**Try this:** In the sandbox above, notice that "Contact Us Today" is wider than the other items. In a real project, DevTools would reveal this instantly. The box model viewer would show the item's computed width, and the flex badge overlay would highlight whether items fit on one line.
+
+<Quiz id="flexbox-debug-quiz">
+What appears next to a flex container in the Elements panel to indicate it uses flexbox?
+
+- [ ] A color swatch
+- [x] A flex badge
+- [ ] A checkbox
+- [ ] A warning icon
+
+If a flex item is overflowing its container and you see `flex-shrink: 0` in the Styles panel, what is happening?
+
+- [ ] The item is shrinking too much
+- [x] The item is prevented from shrinking, causing overflow
+- [ ] The item is growing to fill space
+- [ ] The item is hidden
+
+</Quiz>

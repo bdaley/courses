@@ -4,9 +4,10 @@ import SandpackPreview from "./SandpackPreview";
 export interface Props {
   html?: string;
   css?: string;
+  externalResources?: string[];
 }
 
-const { html, css } = Astro.props;
+const { html, css, externalResources } = Astro.props;
 ---
 
-<SandpackPreview {html} {css} client:load />
+<SandpackPreview {html} {css} {externalResources} client:load />
