@@ -28,6 +28,8 @@ By the end of the course, students should be able to design, build, and deploy a
 
 DMD 4025 is a capstone course preparing students for life after graduation: portfolios, career planning, networking, and the job hunt. Its content is currently a structural skeleton.
 
+When importing or verifying DMD 4025 content, use the `gitbook-dmd` MCP server's `searchDocumentation` and `getPage` tools to pull content from the GitBook source.
+
 **Interactive components** (Sandpack live code editors and Starlight Quiz formative assessments) should be used liberally throughout all sections to encourage hands-on experimentation and self-check learning.
 
 ## Project type

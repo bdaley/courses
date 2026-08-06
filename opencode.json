@@ -28,6 +28,13 @@
             "description": "Run any Astro CLI command"
         }
     },
+    "mcp": {
+        "gitbook-dmd": {
+            "type": "remote",
+            "url": "https://uconn-dmd.gitbook.io/dmd-4025/~gitbook/mcp",
+            "enabled": true
+        }
+    },
     "formatter": {
         "prettier": {
             "command": [
