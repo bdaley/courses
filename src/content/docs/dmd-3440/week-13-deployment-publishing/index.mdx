@@ -1,0 +1,116 @@
+---
+title: Week 13 — Deployment & Publishing
+description: From Expo project to app store listing
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+Your app is built and tested. This week you'll learn what it takes to get a real mobile app to users: **building a release version**, understanding **store requirements**, and producing the **promotional assets** that make an app store listing.
+
+## Mobile App Publishing Workflows
+
+A finished Expo project doesn't just upload itself. The journey looks like:
+
+1. **Build a release binary** — a production `.ipa` (iOS) or `.aab` (Android)
+2. **Test the release build** — on real hardware, not just Expo Go
+3. **Submit to the stores** — through App Store Connect and the Play Console
+4. **Pass review** — the stores check for quality, policy, and privacy compliance
+5. **Go live** — users can install it
+
+For a professional Expo project, this build-and-submit pipeline is handled by **EAS (Expo Application Services)** — builds compiled in the cloud, no Xcode or Android Studio required.
+
+[Expo: EAS Build introduction](https://docs.expo.dev/build/introduction/)
+
+[Expo: EAS Submit](https://docs.expo.dev/submit/introduction/)
+
+## App Store and Google Play Requirements
+
+The stores are gatekeepers. Both require, before anything ships:
+
+**On both platforms:**
+- A store listing (name, description, screenshots, app icon)
+- Privacy information — what data your app collects and why
+- A testable build that doesn't crash and follows platform guidelines
+
+**iOS (App Store):**
+- An **Apple Developer account** (annual fee)
+- Review by Apple's team; apps must follow the [App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
+
+**Android (Google Play):**
+- A **Google Play Developer account** (one-time fee)
+- Review against the [Google Play policy center](https://play.google/developer-content-policy/)
+
+This course stops at *preparing* these — you'll build a **deployment package**, not actually pay for accounts or submit to the stores.
+
+[App Store: How to submit](https://developer.apple.com/app-store/submission/)
+
+[Google Play Console](https://play.google.com/console/about/)
+
+<Quiz id="week13-stores">
+Before submitting to either app store, your app needs:
+
+- [ ] Nothing but the code
+- [x] A store listing, privacy info, and a working build that follows guidelines
+- [ ] A million downloads
+- [ ] A physical storefront
+</Quiz>
+
+## Screenshots and Promotional Assets
+
+The store listing is your app's marketing page. The assets matter:
+
+- **App icon** — a square icon that represents the app (both stores specify exact sizes)
+- **Screenshots** — 5–10 images showing your app in action, per store spec
+- **Description** — what the app does, who it's for, and its best features
+- **Feature graphic** (Android) — a wide banner image
+
+For your screenshots, showcase the **core task** — the home screen, the main flow, the best feature. This is where your Week 4 design work gets its public face.
+
+[App Store: Product page](https://developer.apple.com/help/app-store-connect/reference/product-page-overview/)
+
+[Google Play: Store listing](https://support.google.com/googleplay/android-developer/answer/9859455)
+
+<Quiz id="week13-screenshots">
+What are store screenshots for?
+
+- [ ] They're decorative
+- [x] They market the app by showing its real screens and core value
+- [ ] They replace the app icon
+- [ ] They're only used in testing
+</Quiz>
+
+## Project Packaging and Documentation
+
+A professional submission includes more than the build:
+
+- **README** — what the app does, how to run it, and the tech stack
+- **Source code** — cleanly organized in a repository (e.g., GitHub)
+- **Version number** — a `1.0.0` style version in your app config
+- **Release notes** — what's in this version
+
+Treat your repo like a portfolio piece — someone with no context should be able to read the README and run the app.
+
+## Lab: Create a Mock App Store Listing
+
+Produce a **deployment package** for your final project:
+
+1. **App icon** — design one and add it to your project's app config
+2. **Screenshots** — capture 5+ real screenshots of your running app
+3. **Description** — write the app's store description
+4. **README** — document the project in your repo
+5. **Version** — set a version number and test a release build via EAS Build if possible
+
+**Deliverable:** your deployment package — the mock listing (icon, screenshots, description, README, version).
+
+### Final Project Focus
+
+Final testing and preparation: your app should be feature-complete, polished, and ready for the Week 14 presentation.
+
+## Learn More
+
+- [Expo: EAS Build](https://docs.expo.dev/build/introduction/)
+- [Expo: Create a development build](https://docs.expo.dev/develop/development-builds/create-a-build/)
+- [Apple: App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
+- [Google Play: Policy center](https://play.google/developer-content-policy/)
+- [App Store Connect](https://appstoreconnect.apple.com/)
+- [Google Play Console](https://play.google.com/console/about/)

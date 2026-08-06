@@ -186,6 +186,88 @@ export default defineConfig({
 						},
 					],
 				},
+				{
+					label: 'DMD 3440/5440 · Introduction to Mobile Application Development',
+					items: [
+						{ slug: 'dmd-3440' },
+						{ slug: 'dmd-3440/syllabus' },
+						{
+							label: 'Week 1 · Introduction',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-01-introduction' } }],
+						},
+						{
+							label: 'Week 2 · React Native Fundamentals',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-02-rn-fundamentals' } }],
+						},
+						{
+							label: 'Week 3 · User-Centered Design',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-03-user-centered-design' } }],
+						},
+						{
+							label: 'Week 4 · Wireframing & Prototyping',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-04-wireframing-prototyping' } }],
+						},
+						{
+							label: 'Week 5 · Navigation & App Architecture',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-05-navigation-architecture' } }],
+						},
+						{
+							label: 'Week 6 · Coding with AI',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-06-ai-assisted-development' } }],
+						},
+						{
+							label: 'Week 7 · State Management & Data Flow',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-07-state-management' } }],
+						},
+						{
+							label: 'Week 8 · Local Data & Persistence',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-08-local-data-persistence' } }],
+						},
+						{
+							label: 'Week 9 · APIs & External Data',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-09-apis-external-data' } }],
+						},
+						{
+							label: 'Week 10 · Device Features & Native Capabilities',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-10-device-features' } }],
+						},
+						{
+							label: 'Week 11 · Accessibility & Inclusive Design',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-11-accessibility' } }],
+						},
+						{
+							label: 'Week 12 · Testing & User Feedback',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-12-testing-user-feedback' } }],
+						},
+						{
+							label: 'Week 13 · Deployment & Publishing',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-13-deployment-publishing' } }],
+						},
+						{
+							label: 'Week 14 · Final Project Presentations',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/week-14-final-project' } }],
+						},
+						{
+							label: 'Assignments',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/assignments' } }],
+						},
+					],
+				},
 			],
 		}),
 	],

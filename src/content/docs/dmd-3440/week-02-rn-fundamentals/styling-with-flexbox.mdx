@@ -1,0 +1,151 @@
+---
+title: Styling with Flexbox
+description: Laying out your UI with styles and Flexbox
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+React Native has no CSS. Instead, components are styled with JavaScript objects and a layout engine called **Flexbox**. If you've styled anything with modern CSS, this will feel familiar.
+
+## The StyleSheet
+
+Styles are defined with `StyleSheet.create` and attached to components via a `style` prop:
+
+```jsx
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function Card() {
+  return (
+    <View style={styles.card}>
+      <Text style={styles.title}>My Card</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 20,
+    margin: 12,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+});
+```
+
+Note the naming: properties are **camelCase** (`backgroundColor`, `borderRadius`, `fontSize`), not kebab-case like CSS.
+
+[React Native: StyleSheet reference](https://reactnative.dev/docs/stylesheet)
+
+[React Native: Height and Width](https://reactnative.dev/docs/height-and-width)
+
+## Flexbox — React Native's Layout Engine
+
+Flexbox is how you position and size components within a container. The same concepts power modern web CSS layouts.
+
+**Two things must be true:**
+
+1. A **flex container** — a `View` with `display: 'flex'` (the default in React Native)
+2. **Flex items** — the direct children of that container
+
+Every layout in React Native starts with a container's `flexDirection`:
+
+| Value | Main axis direction |
+|---|---|
+| `column` | Top to bottom (**default in React Native**) |
+| `row` | Left to right |
+| `column-reverse` | Bottom to top |
+| `row-reverse` | Right to left |
+
+This is one difference from the web: React Native defaults to `column`, not `row`.
+
+<Quiz id="week2-flex-direction">
+What is the default `flexDirection` in React Native?
+
+- [x] column
+- [ ] row
+- [ ] column-reverse
+- [ ] row-reverse
+</Quiz>
+
+## Aligning with justify-content & align-items
+
+Two properties control where items sit:
+
+- **`justifyContent`** — positions items along the **main axis**
+- **`alignItems`** — positions items along the **cross axis**
+
+Common values include `flex-start`, `center`, `flex-end`, and (for `justifyContent`) `space-between` and `space-around`.
+
+```jsx
+<View style={styles.row}>
+  <Text>A</Text>
+  <Text>B</Text>
+  <Text>C</Text>
+</View>
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+});
+```
+
+This centers three items vertically and spreads them evenly across the row.
+
+<Quiz id="week2-justify">
+With `flexDirection: 'row'`, which property spreads items out horizontally across the container?
+
+- [ ] alignItems
+- [x] justifyContent
+- [ ] flexWrap
+- [ ] padding
+</Quiz>
+
+## The flex Property — Filling Space
+
+Each item's `flex` value says how much of the remaining space it should grab. It's the workhorse of responsive layouts.
+
+```jsx
+<View style={styles.container}>
+  <View style={styles.sidebar} />
+  <View style={styles.main} />
+</View>
+
+const styles = StyleSheet.create({
+  container: { flexDirection: 'row', flex: 1 },
+  sidebar: { flex: 1, backgroundColor: '#ccc' },
+  main: { flex: 3, backgroundColor: '#eee' },
+});
+```
+
+Here the sidebar takes 1 part of the space and the main area takes 3 parts — a 1:3 split that adapts to *any* screen size. That's the power of Flexbox for responsive mobile layouts.
+
+[React Native: Flexbox guide](https://reactnative.dev/docs/flexbox)
+
+[Fireship: CSS Flexbox in 100 Seconds](https://www.youtube.com/watch?v=K74l26pE4YA)
+
+[Flexbox Froggy](https://flexboxfroggy.com/) — a fun way to practice Flexbox
+
+<Quiz id="week2-flex">
+In the example above, how much horizontal space does the `main` area take relative to the `sidebar`?
+
+- [ ] The same amount
+- [x] Three times as much
+- [ ] Four times as much
+- [ ] None
+</Quiz>
+
+## Learn More
+
+- [React Native: Flexbox guide](https://reactnative.dev/docs/flexbox)
+- [React Native: StyleSheet](https://reactnative.dev/docs/stylesheet)
+- [React Native: Height and Width](https://reactnative.dev/docs/height-and-width)
+- [React Native: View style props](https://reactnative.dev/docs/view-style-props)
+- [Flexbox Froggy](https://flexboxfroggy.com/)

@@ -1,0 +1,105 @@
+---
+title: Week 12 — Testing & User Feedback
+description: Usability testing, gathering feedback, and prioritizing revisions
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+You've designed and built your app. Now the hard part: finding out whether it actually works for other people. **Usability testing** is watching real users try your app — and it's the fastest way to find problems you'll never spot yourself.
+
+## Usability Testing Methods
+
+**Usability testing** means observing a user working through your app while you watch (and don't help). It's not a demo — you're looking for where they struggle.
+
+A simple, effective format:
+
+1. **Choose a task** — "Add a route to your favorites, then check tomorrow's schedule"
+2. **Ask the user to complete it** — out loud, thinking aloud as they go
+3. **Watch silently** — no hints, no rescuing. Note everything they hesitate on or get wrong
+4. **Debrief** — ask what was confusing and what they expected to happen
+
+Even **5 users** catches most major problems. You don't need a lab — a classmate, a quiet room, and a phone will do.
+
+[Nielsen Norman Group: Usability Testing 101](https://www.nngroup.com/articles/usability-testing-101/)
+
+[Usability.gov: Usability testing](https://www.usability.gov/how-to-and-tools/methods/usability-testing.html)
+
+<Quiz id="week12-test-role">
+During a usability test, the facilitator should:
+
+- [x] Watch silently and note struggles, not help the user
+- [ ] Complete the task for the user
+- [ ] Explain the design before the user tries
+- [ ] Only test with the app's developer
+</Quiz>
+
+## Gathering User Feedback
+
+Beyond a formal test, gather feedback from many directions:
+
+- **Peer critique** — classmates review your project; you review theirs
+- **Think-aloud sessions** — capture users' running commentary as they use your app
+- **Surveys / quick questions** — "What was the most confusing part?"
+- **Beta testers** — let a few people use the app freely for a day, then interview them
+
+Record feedback as **observations**, not opinions: "the user tapped the logo expecting to go home" beats "the user didn't like it."
+
+## Identifying Friction Points
+
+As you watch, look for **friction points** — moments where the user pauses, frowns, mis-taps, or asks for help. Common ones in mobile apps:
+
+- **Hidden actions** — features users can't find
+- **Unexpected behavior** — taps that don't do what users expected
+- **Too many steps** — tasks that take longer than they should
+- **Unclear labels** — text that means something different to users than to you
+
+Mark each observation with *where* it happened and *why* it mattered. This evidence is what makes your revisions defensible.
+
+<Quiz id="week12-friction">
+A friction point is best described as:
+
+- [ ] A bug in the compiler
+- [ ] A missing dependency
+- [x] A moment where the user struggles, hesitates, or mis-taps
+- [ ] A styling preference
+</Quiz>
+
+## Prioritizing Revisions
+
+You'll collect more feedback than you can fix. **Prioritize** with two questions:
+
+1. **How severe?** — does it block the task, frustrate, or just annoy?
+2. **How common?** — how many users hit it, how often?
+
+A quick prioritization grid:
+
+| | Rare | Common |
+|---|---|---|
+| **Severe** | Fix if cheap | **Fix now** |
+| **Annoying** | Track it | Fix this round |
+
+Fix the *severe + common* items first, then the cheap wins. Log the rest for future versions. Perfect is the enemy of shipped.
+
+## Lab: Peer Testing Sessions
+
+This week is structured peer testing:
+
+1. **You test** — run a usability test on a classmate's project (with their permission)
+2. **They test yours** — swap, and gather their feedback
+3. **Write it up** — produce a brief **user testing report** listing:
+   - What you asked the user to do
+   - What you observed (the friction points)
+   - What you'll fix, in priority order
+
+**Deliverable:** your brief user testing report.
+
+### Final Project Focus
+
+Use the findings to drive your final polish this week: fix the prioritized issues, complete the remaining features, and get your app as close to finished as you can before deployment and presentation.
+
+## Learn More
+
+- [NN/g: Usability Testing 101](https://www.nngroup.com/articles/usability-testing-101/)
+- [NN/g: Usability testing study guide](https://www.nngroup.com/articles/usability-testing/)
+- [Usability.gov: Usability testing](https://www.usability.gov/how-to-and-tools/methods/usability-testing.html)
+- [React Native: Testing your app](https://reactnative.dev/docs/testing-overview)

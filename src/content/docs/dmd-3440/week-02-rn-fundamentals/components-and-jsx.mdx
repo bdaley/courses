@@ -1,0 +1,118 @@
+---
+title: Components & JSX
+description: The building blocks of a React Native screen
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+Everything you see in a React Native app is a **component** — a reusable piece of UI. Text is a component. An image is a component. A button is a component. Your whole app is a tree of components nested inside each other.
+
+## Core Components
+
+React Native ships with a small set of built-in components. You'll use these constantly:
+
+| Component | Purpose |
+|---|---|
+| `View` | A container — like a `div` on the web. Used for layout |
+| `Text` | Displays text — like a `p` or `span` |
+| `Image` | Displays an image |
+| `TextInput` | A text field the user can type into |
+| `ScrollView` | A scrolling container |
+| `FlatList` | A performant scrolling list of data |
+| `Pressable` | An element that responds to taps |
+
+[React Native: Core Components and APIs](https://reactnative.dev/docs/components-and-apis)
+
+## JSX — Writing UI in Your Code
+
+React Native components are written in **JSX**, a syntax that looks like HTML but lives inside JavaScript. This file renders a "Hello World" screen:
+
+```jsx
+import { Text, View } from 'react-native';
+
+export default function App() {
+  return (
+    <View>
+      <Text>Hello World!</Text>
+    </View>
+  );
+}
+```
+
+Key things to notice:
+
+- The component is a **function** that returns UI
+- JSX tags map to components (`<View>` → the `View` component)
+- You must import every component you use (`import { Text, View } from 'react-native'`)
+
+<Quiz id="week2-jsx-tags">
+What do the `<View>` and `<Text>` tags in JSX represent?
+
+- [ ] HTML tags from the browser
+- [x] React Native components
+- [ ] Database tables
+- [ ] CSS classes
+</Quiz>
+
+## Your First Custom Component
+
+You can wrap components in your own functions to reuse them. This `ProfileCard` component can be used anywhere in your app:
+
+```jsx
+import { Text, View } from 'react-native';
+
+function ProfileCard() {
+  return (
+    <View>
+      <Text>Alex Chen</Text>
+      <Text>Digital Media & Design</Text>
+    </View>
+  );
+}
+```
+
+Once defined, you use it just like a built-in component:
+
+```jsx
+export default function App() {
+  return (
+    <View>
+      <ProfileCard />
+      <ProfileCard />
+    </View>
+  );
+}
+```
+
+## Rules of JSX
+
+Three rules trip up beginners:
+
+1. **One root element** — a component must return a single top-level element. Wrap siblings in a `<View>`
+2. **Use `{}` for JavaScript** — to put a variable or expression inside JSX, wrap it in curly braces: `{name}`
+3. **`camelCase` attributes** — JSX uses `backgroundColor`, not `background-color` (that's CSS, and React Native has no CSS)
+
+```jsx
+const name = 'Alex';
+
+return (
+  <View>
+    <Text>Hello, {name}!</Text>
+  </View>
+);
+```
+
+<Quiz id="week2-jsx-rules">
+Which of these is a correct way to include a JavaScript variable in JSX?
+
+- [ ] `<Text>Hello, $name!</Text>`
+- [ ] `<Text>Hello, {{name}}!</Text>`
+- [x] `<Text>Hello, {name}!</Text>`
+- [ ] `<Text>Hello, %name%!</Text>`
+</Quiz>
+
+## Learn More
+
+- [React.dev: Your first component](https://react.dev/learn/your-first-component)
+- [React.dev: Writing markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
+- [React Native: Core Components](https://reactnative.dev/docs/components-and-apis)

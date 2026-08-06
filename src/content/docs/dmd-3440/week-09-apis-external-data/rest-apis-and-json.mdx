@@ -1,0 +1,91 @@
+---
+title: REST APIs & JSON
+description: How your app talks to servers
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+Before fetching, let's understand the protocol: what a **REST API** is and what **JSON** looks like.
+
+## REST APIs
+
+**REST** (Representational State Transfer) is a style of web API organized around **resources** (things like routes, movies, users) and **endpoints** (URLs).
+
+A common pattern: the server hosts URLs, and clients request them.
+
+| Endpoint | What it does |
+|---|---|
+| `GET /routes` | List all routes |
+| `GET /routes/12` | Get one route |
+| `GET /routes/12/stops` | Get stops for that route |
+
+The key method for this course is **GET** — fetch data. (POST, PUT, DELETE create, update, and remove, but most of your final project will be reading.)
+
+The server responds with a **status code**:
+
+- `200 OK` — success
+- `404 Not Found` — the resource doesn't exist
+- `500 Internal Server Error` — the server failed
+
+Your app checks the status to decide whether the request succeeded.
+
+[MDN: REST glossary](https://developer.mozilla.org/en-US/docs/Glossary/REST)
+
+## JSON — The Data Format
+
+**JSON** (JavaScript Object Notation) is how most APIs return data. It's just text that looks exactly like JavaScript objects and arrays:
+
+```json
+{
+  "id": 12,
+  "name": "Farmington Ave",
+  "arrival": "5:42 PM",
+  "isFavorite": false
+}
+```
+
+Two things to remember in React Native:
+
+1. **It arrives as a string** — you parse it with `JSON.parse` (or the fetch API does it for you)
+2. **Keys are strings** — access fields with dot notation: `data.name`
+
+<Quiz id="week9-json">
+JSON is best described as:
+
+- [ ] A programming language
+- [x] A text format for structured data that looks like JS objects
+- [ ] A database
+- [ ] An image format
+</Quiz>
+
+## Find a Public API
+
+Hundreds of free, keyless APIs are available for practice. A good one for this course is the [PokéAPI](https://pokeapi.co/) (free, no key, no rate limits for classroom use) — or browse the [public APIs list](https://github.com/public-apis/public-apis).
+
+Try requesting one in your browser first so you can see the raw response:
+
+```
+https://pokeapi.co/api/v2/pokemon/pikachu
+```
+
+You'll see JSON with stats, types, and more. That's exactly what your app will fetch and display.
+
+[PokéAPI](https://pokeapi.co/)
+
+[Public APIs list](https://github.com/public-apis/public-apis)
+
+<Quiz id="week9-get">
+To *read* data from a REST API, you use the HTTP method:
+
+- [ ] POST
+- [x] GET
+- [ ] DELETE
+- [ ] HEADLESS
+</Quiz>
+
+## Learn More
+
+- [MDN: HTTP overview](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
+- [MDN: HTTP status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+- [MDN: Working with JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
+- [freeCodeCamp: What is REST?](https://www.freecodecamp.org/news/rest-api-tutorial-rest-client-rest-service-and-api-calls-explained-with-code-examples/)

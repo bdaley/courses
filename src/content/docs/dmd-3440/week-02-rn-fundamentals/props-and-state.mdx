@@ -1,0 +1,106 @@
+---
+title: Props & State
+description: How data flows into and through your components
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+Components are the *what* of your app. **Props** and **state** are the *how* — they're how data flows around. Confusing them is the single most common beginner mistake, so let's get the difference clear.
+
+## Props — Inputs You Can't Change
+
+**Props** (short for *properties*) are the inputs you pass to a component, kind of like arguments to a function. The component *receives* them but never changes them.
+
+```jsx
+function Greeting({ name }) {
+  return <Text>Hello, {name}!</Text>;
+}
+
+// Usage — pass props like HTML attributes
+<Greeting name="Alex" />
+<Greeting name="Sam" />
+```
+
+Here `name` is a prop. The same `Greeting` component renders different text depending on what you pass in. Props flow **down** — from parent to child.
+
+[React.dev: Passing props to a component](https://react.dev/learn/passing-props-to-a-component)
+
+<Quiz id="week2-props-quiz">
+Props are best described as:
+
+- [ ] Data a component creates for itself
+- [x] Inputs passed to a component that it does not change
+- [ ] Global variables
+- [ ] Database records
+</Quiz>
+
+## State — Memory That Can Change
+
+**State** is a component's own memory — data that changes over time as the user interacts. Think of a toggle switch: it remembers whether it's on or off.
+
+In React Native you create state with the **`useState` hook**:
+
+```jsx
+import { useState } from 'react';
+import { Pressable, Text, View } from 'react-native';
+
+export default function Toggle() {
+  const [isOn, setIsOn] = useState(false);
+
+  return (
+    <Pressable onPress={() => setIsOn(!isOn)}>
+      <Text>{isOn ? 'ON' : 'OFF'}</Text>
+    </Pressable>
+  );
+}
+```
+
+Read it like this:
+
+- `useState(false)` — create a piece of state, starting at `false`
+- `isOn` — the current value
+- `setIsOn` — the function you call to change it
+- Calling `setIsOn` triggers the component to **re-render** with the new value
+
+**That last point is the heart of React**: when state changes, the UI automatically updates. You never manually touch the screen; you just update state and let React redraw.
+
+[React.dev: State — a component's memory](https://react.dev/learn/state-a-components-memory)
+
+[React.dev: useState reference](https://react.dev/reference/react/useState)
+
+<Quiz id="week2-state-quiz">
+What happens to the UI when you call a state setter like `setIsOn(true)`?
+
+- [ ] Nothing
+- [ ] The whole app restarts
+- [x] The component re-renders with the new value
+- [ ] The screen goes blank
+</Quiz>
+
+## Props vs. State — A Quick Comparison
+
+| | Props | State |
+|---|---|---|
+| Where it lives | Passed in from a parent | Created inside the component |
+| Who changes it | The parent (when it passes new props) | The component itself |
+| Analogy | Arguments to a function | The component's own memory |
+| Does it re-render on change? | Only if the parent re-renders | Yes |
+
+**Rule of thumb:** data that comes from outside → props. data that changes because of user interaction → state.
+
+<Quiz id="week2-props-vs-state">
+You're building a counter app. The current count value that changes when a user taps a button should be:
+
+- [ ] A prop
+- [x] State
+- [ ] A fixed constant
+- [ ] Stored in the file name
+</Quiz>
+
+## Learn More
+
+- [React.dev: Passing props to a component](https://react.dev/learn/passing-props-to-a-component)
+- [React.dev: State — a component's memory](https://react.dev/learn/state-a-components-memory)
+- [React.dev: Render and commit](https://react.dev/learn/render-and-commit)
+- [React Native: Props tutorial](https://reactnative.dev/docs/tutorial#props)
+- [React Native: State tutorial](https://reactnative.dev/docs/tutorial#state)

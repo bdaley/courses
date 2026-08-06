@@ -1,0 +1,125 @@
+---
+title: Context API
+description: Sharing state across many components without prop drilling
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+When many components need the same data, threading it through every level via props gets tedious — that's **prop drilling**. The **Context API** lets a component provide data to *all* its descendants at once, without props in between.
+
+## The Problem: Prop Drilling
+
+Imagine a favorites system. The data lives in `App`, but a `FavoritesButton` deep inside the tree needs it:
+
+```
+App
+└── RoutesScreen
+    └── RouteCard
+        └── FavoritesButton   ← needs favorites
+```
+
+Without Context, you'd pass `favorites` and `onToggle` through `RoutesScreen` and `RouteCard`, even though neither uses them. That's prop drilling.
+
+## The Solution: Context
+
+Context has three parts: **create**, **provide**, **consume**.
+
+**1. Create** the context:
+
+```jsx
+import { createContext, useState } from 'react';
+
+const FavoritesContext = createContext(null);
+```
+
+**2. Provide** it from a component that owns the data — the provider wraps the tree, and any component inside can read it:
+
+```jsx
+export function FavoritesProvider({ children }) {
+  const [favorites, setFavorites] = useState([]);
+
+  return (
+    <FavoritesContext.Provider value={{ favorites, setFavorites }}>
+      {children}
+    </FavoritesContext.Provider>
+  );
+}
+```
+
+**3. Consume** it anywhere below with the `useContext` hook:
+
+```jsx
+import { useContext } from 'react';
+
+function FavoritesButton({ id }) {
+  const { favorites, setFavorites } = useContext(FavoritesContext);
+
+  const isFavorite = favorites.includes(id);
+
+  return (
+    <Pressable onPress={() => setFavorites(...)}>
+      <Text>{isFavorite ? '★ Saved' : '☆ Save'}</Text>
+    </Pressable>
+  );
+}
+```
+
+No props passed through the middle layers — `FavoritesButton` pulls exactly what it needs.
+
+[React.dev: Passing data deeply with context](https://react.dev/learn/passing-data-deeply-with-context)
+
+[React.dev: createContext reference](https://react.dev/reference/react/createContext)
+
+<Quiz id="week7-context-def">
+The main benefit of the Context API is:
+
+- [ ] Making code run faster
+- [x] Sharing data across many components without passing it through every level
+- [ ] Replacing useState
+- [ ] Styling components
+</Quiz>
+
+## When to Use Context — and When Not To
+
+Use Context when:
+
+- **Shared state** — many components across screens read the same data (favorites, theme, user)
+- **Wide and deep** — the data is needed far from where it lives
+
+Don't reach for Context for:
+
+- **Local state** — one component's own form input stays in `useState`
+- **One or two levels** of props — simple prop passing is clearer
+
+Context makes state *convenient*, but it also makes it *hidden* — a component's dependencies are less obvious. Prefer props for the simple cases.
+
+## Context + The Rest of the App
+
+Wrap your whole app (or a section) in the provider, and any screen can consume it:
+
+```jsx
+export default function App() {
+  return (
+    <FavoritesProvider>
+      {/* your navigation, screens, etc. */}
+    </FavoritesProvider>
+  );
+}
+```
+
+A favorites button on a route card, a saved tab, a counter in a header — all reading the same source of truth. That's the clean way to handle shared state in your final project.
+
+<Quiz id="week7-context-local">
+Which of these is best handled with local `useState` instead of Context?
+
+- [ ] A theme toggle used by every screen
+- [x] The text the user is currently typing in one form field
+- [ ] The current user's favorites
+- [ ] The app-wide shopping cart
+</Quiz>
+
+## Learn More
+
+- [React.dev: Passing data deeply with context](https://react.dev/learn/passing-data-deeply-with-context)
+- [React.dev: Scaling up with reducer and context](https://react.dev/learn/scaling-up-with-reducer-and-context)
+- [React Native: Context in the gallery tutorial](https://reactnative.dev/docs/context)

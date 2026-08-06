@@ -1,0 +1,94 @@
+---
+title: Prompting for Developers
+description: Prompting strategies for AI-assisted development
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+The quality of what you get from an AI depends on the quality of your **prompt**. Developers don't just ask for code — they give context, constraints, and a clear job description.
+
+## The Anatomy of a Good Prompt
+
+A strong developer prompt includes:
+
+1. **Role & context** — "You are a React Native developer. I'm building an Expo app with TypeScript."
+2. **The task** — what you want, specifically
+3. **Constraints** — libraries, versions, naming, style
+4. **The deliverable format** — "show me the component file and where to put it"
+
+Weak prompt:
+
+> "Make a login screen."
+
+Better prompt:
+
+> "I'm building an Expo app with React Native and TypeScript. I need a login screen component with email and password fields. Use React state for the inputs, style it with StyleSheet using our app's colors, and export a single `LoginScreen` component that accepts an `onLogin(email, password)` prop. Show the full component code."
+
+The better prompt got better results because it defined the job, the constraints, and the format.
+
+[OpenAI: Prompt engineering guide](https://platform.openai.com/docs/guides/prompt-engineering)
+
+[Anthropic: Prompt engineering overview](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)
+
+<Quiz id="week6-prompt-parts">
+Which of these is part of a strong developer prompt?
+
+- [ ] Just the word "code"
+- [x] Context, task, constraints, and desired format
+- [ ] Only the library name
+- [ ] A random greeting
+</Quiz>
+
+## AI-Assisted Prototyping
+
+AI can turn your Figma descriptions into starter UI fast. Describe the screen in words:
+
+> "Create a route list screen. Each row shows the route number on the left, the route name, and the next arrival time on the right. Use a FlatList and a reusable RouteRow component."
+
+The AI drafts the scaffolding; you wire it into your data and polish it. This is a fast way to try variations — but remember to verify what it produces against your real app structure.
+
+## AI-Assisted Debugging
+
+When your app errors, AI is a powerful debugger **if** you give it the right evidence. Paste:
+
+- The **error message** (the whole thing)
+- The **relevant code** (the file and line involved)
+- **What you expected** to happen
+- **What you've already tried**
+
+> "I'm getting 'Cannot read property 'map' of undefined' in RouteList.tsx. Here's the component and where I set state. The data loads from fetch on mount. I expected the list to render after data arrives. I already tried adding a loading guard."
+
+The AI will usually point at the gap between when state is set and when data exists — but verify the fix by running it.
+
+## AI-Assisted Documentation
+
+AI is great at docs: summarizing what a component does, writing a README, or turning code into an explanation. Prompt for *your* audience and level:
+
+> "Explain this component to a beginner — what it renders, what props it takes, and one gotcha about it. Keep it under 5 sentences."
+
+Then read what it wrote. Documentation you haven't verified is documentation that will confuse people later.
+
+<Quiz id="week6-debug-prompt">
+When pasting an error into an AI for debugging, you should include:
+
+- [ ] Nothing — the AI already knows
+- [ ] Only the error message
+- [x] The error, the relevant code, your expectation, and what you tried
+- [ ] Your entire project
+</Quiz>
+
+## Practice Activity
+
+Take a small piece of your Week 5 navigation code and prompt an AI to:
+
+1. Explain it in your own words
+2. Suggest one improvement with reasoning
+3. Write a brief doc comment for the component
+
+Then evaluate each response. Record your prompts and notes — they're your first **AI Development Journal** entries.
+
+## Learn More
+
+- [OpenAI: Prompt engineering guide](https://platform.openai.com/docs/guides/prompt-engineering)
+- [Anthropic: Prompt engineering overview](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)
+- [GitHub Docs: About Copilot chat](https://docs.github.com/en/copilot)

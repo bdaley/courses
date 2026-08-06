@@ -1,0 +1,85 @@
+---
+title: Navigation Patterns
+description: Stack, tab, and drawer navigation for mobile apps
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+Mobile users expect navigation to feel familiar. Three patterns cover most apps — and knowing *when* to use each is a core design skill.
+
+## Stack Navigation
+
+A **stack** pushes one screen on top of another, like cards in a deck. Tap a list item and a detail screen slides in; go back and it slides away.
+
+Use stacks for **drill-down flows**:
+
+```
+Home → Route Details → Stop Schedule → Bus Tracking
+```
+
+- Every level feels like a new "page"
+- A back control (arrow or gesture) returns to the previous screen
+- This is the pattern for detail views, forms, and any multi-step flow
+
+## Tab Navigation
+
+**Tabs** let users switch between top-level sections of an app — and on mobile, tab bars usually live at the **bottom** of the screen, in the thumb zone.
+
+Use tabs for **parallel sections** with equal importance:
+
+```
+[ Home ] [ Routes ] [ Favorites ] [ Settings ]
+```
+
+- Each tab is its own space, quickly reachable from anywhere
+- Users can switch instantly without losing their place
+- Don't use more than five tabs — after that, group sections
+
+## Drawer Navigation
+
+A **drawer** is a hidden panel that slides in from the side (a hamburger menu). It can hold many more destinations than a tab bar.
+
+Use drawers for **secondary or rarely-used sections**:
+
+- Settings, account, help, about
+- Apps with a lot of destinations that don't fit in five tabs
+
+**Caveat:** drawers hide their contents, so they're a weaker choice for important content. On mobile, favor tabs or stacks and use a drawer for the long tail.
+
+[Apple HIG: Navigation](https://developer.apple.com/design/human-interface-guidelines/navigation)
+
+[Material Design: Navigation](https://m3.material.io/foundations/content-design/navigation)
+
+<Quiz id="week5-tabs-vs-stack">
+Your app has a Home screen, a Detail screen reached from Home, and a top-level Favorites section. What combination should you use?
+
+- [ ] A drawer for everything
+- [x] Tabs for Home and Favorites, with a stack pushing the Detail screen
+- [ ] Three stacks
+- [ ] One long scrolling page
+</Quiz>
+
+<Quiz id="week5-drawer">
+When is a drawer navigation the best choice?
+
+- [ ] For your three most important sections
+- [ ] Never
+- [x] For many secondary destinations that don't fit in a tab bar
+- [ ] For checkout flows
+</Quiz>
+
+## Choosing the Right Pattern
+
+Ask two questions:
+
+1. **Are these sections of equal importance?** → Tabs
+2. **Does one screen drill into another?** → Stack
+
+Most apps use **tabs + stacks together**: tabs for the top level, a stack inside each tab for its details. That's exactly the pattern you'll implement in your final project.
+
+## Learn More
+
+- [Expo: Navigation patterns](https://docs.expo.dev/router/basics/notation/)
+- [React Navigation: Nested navigators](https://reactnavigation.org/docs/nesting-navigators/)
+- [Apple HIG: Navigation bars & tab bars](https://developer.apple.com/design/human-interface-guidelines/)
+- [Material Design: Navigation drawer](https://m3.material.io/components/navigation-drawer/overview)
