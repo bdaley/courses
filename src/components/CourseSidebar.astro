@@ -1,0 +1,75 @@
+---
+import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
+
+interface SidebarGroupEntry {
+	type: 'group';
+	label: string;
+	entries: SidebarEntry[];
+	collapsed: boolean;
+}
+
+type SidebarEntry =
+	| { type: 'link'; href: string; isCurrent: boolean; label: string }
+	| SidebarGroupEntry;
+
+function findFirstLink(entries: SidebarEntry[]): string | undefined {
+	for (const entry of entries) {
+		if (entry.type === 'link') return entry.href;
+		const href = findFirstLink(entry.entries);
+		if (href) return href;
+	}
+	return undefined;
+}
+
+function containsCurrent(entries: SidebarEntry[]): boolean {
+	return entries.some((entry) =>
+		entry.type === 'link' ? entry.isCurrent : containsCurrent(entry.entries)
+	);
+}
+
+const { sidebar } = Astro.locals.starlightRoute;
+
+const groups = sidebar.filter((entry): entry is SidebarGroupEntry => entry.type === 'group');
+const courses = groups.map((group) => ({
+	label: group.label,
+	href: findFirstLink(group.entries) ?? '/',
+}));
+const activeIndex = Math.max(0, groups.findIndex((group) => containsCurrent(group.entries)));
+const active = groups[activeIndex];
+---
+
+{
+	courses.length > 1 && (
+		<div class="course-switcher">
+			<label for="course-select">
+				<span class="sr-only">Select a course</span>
+			</label>
+			<select id="course-select">
+				{courses.map((course) => (
+					<option value={course.href} selected={course.href === courses[activeIndex]?.href}>
+						{course.label}
+					</option>
+				))}
+			</select>
+		</div>
+	)
+}
+
+<SidebarPersister>
+	<SidebarSublist sublist={active.entries} />
+</SidebarPersister>
+
+<div class="md:sl-hidden">
+	<MobileMenuFooter />
+</div>
+
+<script>
+	const select = document.querySelector<HTMLSelectElement>('#course-select');
+	if (select) {
+		select.addEventListener('change', () => {
+			if (select.value) window.location.href = select.value;
+		});
+	}
+</script>

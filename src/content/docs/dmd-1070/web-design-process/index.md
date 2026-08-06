@@ -32,15 +32,15 @@ We're going to focus on the items in bold.
 
 IA is a whole lot more than just figuring out how to organize a website in an appropriate hierarchy. However, our focus is on the more practical aspects of web design. As such, we're going to build "site maps" as a part of our web design process.
 
-- [Site Mapping](/web-design-process/site-mapping/)
+- [Site Mapping](site-mapping/)
 
 ### Site Design
 
 There's a lot that goes into design and it's not just about picking the right typography or colors. In this course, we'll focus on 3 steps that I have found to be the most important in our design process:
 
-- [Wireframing](/web-design-process/wireframes/)
-- [Style Tiles](/web-design-process/style-tiles/)
-- [Design](/web-design-process/designs/)
+- [Wireframing](wireframes/)
+- [Style Tiles](style-tiles/)
+- [Design](designs/)
 
 ### Site Construction
 

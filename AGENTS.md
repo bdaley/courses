@@ -13,7 +13,9 @@ npm run preview # serve built site locally
 
 ## Course context
 
-This site is an interactive learning companion for **DMD 1070** (undergraduate) and **DMD 5070** (graduate) at the University of Connecticut. DMD 1070 is an introductory course in web design and development covering:
+This site hosts supplemental learning content for multiple **Digital Media & Design** courses at the University of Connecticut, currently **DMD 1070/5070** (Web Design I) and **DMD 4025** (Putting It All Together).
+
+DMD 1070 is an introductory course in web design and development covering:
 
 - The design process and website planning
 - Image editing and resizing
@@ -24,15 +26,17 @@ This site is an interactive learning companion for **DMD 1070** (undergraduate) 
 
 By the end of the course, students should be able to design, build, and deploy a complete website.
 
+DMD 4025 is a capstone course preparing students for life after graduation: portfolios, career planning, networking, and the job hunt. Its content is currently a structural skeleton.
+
 **Interactive components** (Sandpack live code editors and Starlight Quiz formative assessments) should be used liberally throughout all sections to encourage hands-on experimentation and self-check learning.
 
 ## Project type
 
-Astro + Starlight documentation site. All content is Markdown under `src/content/docs/`. Sidebars are auto-generated from subdirectory structure (see `astro.config.mjs` sidebar config).
+Astro + Starlight documentation site. All content is Markdown under `src/content/docs/`. The site supports multiple courses: each course lives in its own top-level directory under `src/content/docs/` and has its own sidebar group defined in `astro.config.mjs`. The sidebar is scoped to the active course via the `CourseSidebar.astro` override, which adds a course selector dropdown.
 
 ## Deploy
 
-Published to GitHub Pages at `https://bdaley.github.io/dmd-1070-5070/` (configured via `site` and `base` in `astro.config.mjs`).
+Published to GitHub Pages at `https://bdaley.github.io/courses/` (configured via `site` and `base` in `astro.config.mjs`). The repo was renamed from `dmd-1070-5070` to `courses` to match the new base path.
 
 ## Tooling notes
 
@@ -42,12 +46,28 @@ Published to GitHub Pages at `https://bdaley.github.io/dmd-1070-5070/` (configur
 
 ## Content structure
 
+Each course is a top-level directory under `src/content/docs/` with its own `index.mdx` landing page. `src/content/docs/index.mdx` is the site-wide course picker.
+
 ```
 src/content/docs/
-  getting-started/   # auto-generated sidebar
-  reference/         # auto-generated sidebar
-guides/              # manual sidebar entries defined in astro.config.mjs
+  index.mdx              # site home → course picker (splash, no sidebar)
+  dmd-1070/              # Web Design I — course home + unit subdirectories
+    index.mdx
+    getting-started/
+    html-basics/
+    ...
+  dmd-4025/              # Putting It All Together — course home + unit subdirectories
+    index.mdx
+    career-planning/
+    portfolio/
+    ...
 ```
+
+To add a new course: create its directory under `src/content/docs/`, add a course `index.mdx`, then add a new top-level sidebar group in `astro.config.mjs`. No other code changes are required.
+
+**Sidebar behavior:** the `CourseSidebar.astro` override (`src/components/CourseSidebar.astro`) reads `Astro.locals.starlightRoute.sidebar`, treats each top-level sidebar group as a course, and renders a `<select>` switcher plus only the active course's entries. Keep the first item of each course group as `{ slug: '<course-dir>' }` so the switcher has a landing URL.
+
+**Pagination:** `prev`/`next` pagination follows the flattened sidebar order across all courses, so set `prev: false` on each course's `index.mdx` and `next: false` on each course's final page to stop pagination at course boundaries.
 
 **Note on `.md` vs `.mdx`:** Both `InteractiveCode` and `Quiz` are Astro/React components that must be imported, so any page using them **must** be `.mdx` (not `.md`). Plain `.md` files cannot use component imports.
 

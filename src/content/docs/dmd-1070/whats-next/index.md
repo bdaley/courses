@@ -1,6 +1,7 @@
 ---
 title: What's Next?
 description: Continuing your web design journey after this course
+next: false
 ---
 
 ### Take DMD 3470

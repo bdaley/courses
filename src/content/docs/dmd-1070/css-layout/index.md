@@ -15,10 +15,10 @@ In this course we will focus mostly on achieving design layouts using **Flexbox*
 
 ## In this Section
 
-- [Display & Visibility](/css-layout/01-display-visibility/)
-- [Positioning](/css-layout/02-positioning/)
-- [Floats](/css-layout/03-floats/)
-- [Flexbox](/css-layout/04-flexbox/) — the primary layout method for this course
-- [Centered Layouts](/css-layout/05-centered-layouts/)
-- [CSS Grid](/css-layout/06-css-grid/) — supplemental reference
-- [Helpful Layout Patterns](/css-layout/07-helpful-layout-patterns/)
+- [Display & Visibility](01-display-visibility/)
+- [Positioning](02-positioning/)
+- [Floats](03-floats/)
+- [Flexbox](04-flexbox/) — the primary layout method for this course
+- [Centered Layouts](05-centered-layouts/)
+- [CSS Grid](06-css-grid/) — supplemental reference
+- [Helpful Layout Patterns](07-helpful-layout-patterns/)

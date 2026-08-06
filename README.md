@@ -1,51 +1,40 @@
-# Starlight Starter Kit: Basics
+# UConn DMD Course Resources
 
-```
-npm create astro@latest -- --template starlight
-```
+Supplemental learning content for Digital Media & Design courses at the University of Connecticut. Built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build), published to GitHub Pages at `https://bdaley.github.io/courses/`.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/starlight/tree/main/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/starlight/tree/main/examples/basics)
+Courses hosted:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **DMD 1070/5070 — Web Design I**: the design process, HTML, CSS, and deploying a complete website.
+- **DMD 4025 — Putting It All Together**: portfolios, career planning, networking, and the job hunt.
 
 ## 🚀 Project Structure
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
 ```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   ├── docs/
-│   │   └── config.ts
-│   └── env.d.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+src/
+  content/
+    docs/
+      index.mdx              # site home → course picker
+      dmd-1070/              # Web Design I content
+      dmd-4025/              # Putting It All Together content
+  components/
+    CourseSidebar.astro      # course-scoped sidebar + switcher override
+    InteractiveCode.astro    # Sandpack live code editor
+    SandpackPreview.tsx
+astro.config.mjs             # site, base, and Starlight config
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
-
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
-
-Static assets, like favicons, can be placed in the `public/` directory.
+To add a new course: create its directory under `src/content/docs/`, add a course `index.mdx`, then add a top-level sidebar group in `astro.config.mjs`.
 
 ## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
 | `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:3000`      |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## 🚀 Deploy
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+Pushed to the `main` branch on GitHub, `.github/workflows/deploy.yml` builds and publishes to GitHub Pages. The repo must be named `courses` for the `/courses/` base path to resolve correctly on GitHub Pages.

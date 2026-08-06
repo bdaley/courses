@@ -9,80 +9,115 @@ import starlightQuiz from 'starlight-quiz';
 // https://astro.build/config
 export default defineConfig({
 	site: "https://bdaley.github.io",
-	base: '/dmd-1070-5070/',
+	base: '/courses/',
 	markdown: {
 		processor: unified({ remarkPlugins: [remarkYouTube] }),
 	},
 	integrations: [
 		react(),
 		starlight({
-			title: 'DMD 1070/5070',
+			title: 'UConn DMD Course Resources',
 			plugins: [starlightQuiz(), starlightImageZoom()],
 			customCss: ['./src/styles/video-embed.css', './src/styles/custom.css'],
+			components: {
+				Sidebar: './src/components/CourseSidebar.astro',
+			},
 			social: [
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/bdaley/dmd-1070-5070' },
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/bdaley/courses' },
 				{ icon: 'twitter', label: 'Twitter', href: 'https://twitter.com/uconnwebprof' },
 			],
 			sidebar: [
 				{
-					label: 'Getting Started',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'getting-started' } }]
+					label: 'DMD 1070 · Web Design I',
+					items: [
+						{ slug: 'dmd-1070' },
+						{
+							label: 'Getting Started',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-1070/getting-started' } }],
+						},
+						{
+							label: 'HTML Basics',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-1070/html-basics' } }],
+						},
+						{
+							label: 'Images',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-1070/images' } }],
+						},
+						{
+							label: 'HTML5 & Semantic Markup',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-1070/html5-semantic-markup' } }],
+						},
+						{
+							label: 'CSS Basics',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-1070/css-basics' } }],
+						},
+						{
+							label: 'The Box Model',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-1070/the-box-model' } }],
+						},
+						{
+							label: 'CSS Layout',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-1070/css-layout' } }],
+						},
+						{
+							label: 'Web Design Process',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-1070/web-design-process' } }],
+						},
+						{
+							label: 'DevTools',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-1070/devtools' } }],
+						},
+						{
+							label: 'Responsive Web Design',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-1070/responsive-web-design' } }],
+						},
+						{
+							label: 'CSS Frameworks',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-1070/css-frameworks' } }],
+						},
+						{
+							label: "What's Next?",
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-1070/whats-next' } }],
+						},
+					],
 				},
 				{
-					label: 'HTML Basics',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'html-basics' } }]
-				},
-				{
-					label: 'Images',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'images' } }]
-				},
-				{
-					label: 'HTML5 & Semantic Markup',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'html5-semantic-markup' } }]
-				},
-				{
-					label: 'CSS Basics',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'css-basics' } }]
-				},
-				{
-					label: 'The Box Model',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'the-box-model' } }]
-				},
-				{
-					label: 'CSS Layout',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'css-layout' } }]
-				},
-				{
-					label: 'Web Design Process',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'web-design-process' } }]
-				},
-				{
-					label: 'DevTools',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'devtools' } }]
-				},
-				{
-					label: 'Responsive Web Design',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'responsive-web-design' } }]
-				},
-				{
-					label: 'CSS Frameworks',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'css-frameworks' } }]
-				},
-				{
-					label: "What's Next?",
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'whats-next' } }]
+					label: 'DMD 4025 · Putting It All Together',
+					items: [
+						{ slug: 'dmd-4025' },
+						{
+							label: 'Career Planning',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-4025/career-planning' } }],
+						},
+						{
+							label: 'Portfolio',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-4025/portfolio' } }],
+						},
+						{
+							label: 'Networking & Online Presence',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-4025/networking-online-presence' } }],
+						},
+						{
+							label: 'Job Hunt',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-4025/job-hunt' } }],
+						},
+					],
 				},
 			],
 		}),
