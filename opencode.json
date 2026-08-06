@@ -8,7 +8,7 @@
         "ignore": [".astro", "dist", "node_modules"]
     },
     "permission": {
-        "bash": "ask"
+        "bash": "allow"
     },
     "command": {
         "dev": {
