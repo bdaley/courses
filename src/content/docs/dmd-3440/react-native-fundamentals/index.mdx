@@ -1,0 +1,77 @@
+---
+title: Overview
+description: Components, JSX, props and state, and styling
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+Welcome to the core of the course. In this unit you'll learn the building blocks of every React Native app: **components**, **JSX**, **props**, **state**, and **styling**. You'll also start thinking like a mobile designer — about touch targets, thumb zones, and platform conventions.
+
+Work through the pages in order:
+
+- [Components & JSX](components-and-jsx/) — the pieces that make up a screen
+- [Props & State](props-and-state/) — how data flows through your app
+- [Styling with Flexbox](styling-with-flexbox/) — laying out your UI
+- Then come back here for the **UX focus** and the lab
+
+## UX Focus: Designing for Touch
+
+Mobile interfaces are built for fingers, not mouse pointers. Two ideas matter most:
+
+- **Touch targets** — interactive elements need to be big enough to tap reliably. Apple recommends a minimum of **44 × 44 points** and Material Design recommends **48 × 48 dp**.
+- **Thumb zones** — most people hold their phone in one hand and tap with their thumb. The bottom of the screen is the easy zone; the top corners are hard to reach. Put frequently-used actions where thumbs naturally land.
+
+## Mobile Interface Conventions
+
+Users already know how phones work. Don't fight their expectations:
+
+- **Top** — usually the screen title and notifications
+- **Bottom** — tab bars for top-level navigation (the thumb zone)
+- **Back behavior** — Android users expect the back button to work predictably
+- **Platform differences** — a back arrow in the top-left is standard on iOS; Android often uses a system back gesture
+
+Read the platform guidance as you design:
+
+[Apple HIG: Touch](https://developer.apple.com/design/human-interface-guidelines/touch)
+
+[Material Design: Touch targets](https://m3.material.io/foundations/accessibility/designing-with-accessibility-in-mind#b03e2cf0-63f7-4dbe-a19e-b1d4f1e0fbe7)
+
+<Quiz id="week2-touch-quiz">
+What is the minimum recommended touch target size for mobile apps?
+
+- [ ] 20 × 20 points
+- [x] 44 × 44 points
+- [ ] 100 × 100 points
+- [ ] 5 × 5 points
+</Quiz>
+
+<Quiz id="week2-thumb-quiz">
+Where should the most frequently-used actions live for one-handed phone use?
+
+- [x] The bottom of the screen
+- [ ] The top corners
+- [ ] In the middle
+- [ ] On the back of the phone
+</Quiz>
+
+## Responsive Mobile Layouts
+
+A phone screen comes in many sizes — small, large, and everything between. "Responsive" means your layout adapts instead of breaking. In React Native you'll use:
+
+- **Flexbox** — the layout engine that stretches and shrinks content to fit any screen
+- **Relative sizing** — percentages, `flex` values, and `gap` instead of hard-coded pixel widths
+- **Safe areas** — padding to avoid the notch and rounded corners
+
+## Lab: Recreate an Existing App Screen
+
+Pick a simple, familiar app screen — a weather card, a music player, a settings list, a ride-hailing home screen. Recreate it as closely as you can with React Native components and Flexbox styling. Don't worry about behavior yet; focus on visual layout.
+
+**Deliverable:** your UI recreation exercise — a screenshot plus a link to your Expo project.
+
+## Learn More
+
+- [Expo: How to create your first Expo app](https://www.youtube.com/watch?v=m1-bc53EGh8)
+- [React Native: Core Components and APIs](https://reactnative.dev/docs/components-and-apis)
+- [React Native: A walkthrough of core components](https://reactnative.dev/docs/tutorial)
+- [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/)
+- [Material Design](https://m3.material.io/)

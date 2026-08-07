@@ -1,0 +1,115 @@
+---
+title: Camera & Photos
+description: Capturing images with the camera and picking from the photo library
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+Photos are the most common native feature in mobile apps. Expo provides **`expo-camera`** (capture) and **`expo-image-picker`** (camera capture *and* library picking). For most use cases, ImagePicker is the simpler and more flexible choice.
+
+## Install
+
+```bash
+npx expo install expo-camera expo-image-picker
+```
+
+[Expo: expo-camera](https://docs.expo.dev/versions/latest/sdk/camera/)
+
+[Expo: expo-image-picker](https://docs.expo.dev/versions/latest/sdk/imagepicker/)
+
+## Picking from the Photo Library
+
+The simplest approach — let the user pick an existing photo:
+
+```jsx
+import * as ImagePicker from 'expo-image-picker';
+
+async function pickImage() {
+  const result = await ImagePicker.launchImageLibraryAsync({
+    mediaTypes: ['images'],
+    allowsEditing: true,
+    quality: 1,
+  });
+
+  if (!result.canceled) {
+    setImage(result.assets[0].uri);
+  }
+}
+```
+
+Two things to notice:
+
+- `result.canceled` — the user can back out; always check before using the result
+- `result.assets[0].uri` — the local file URI of the picked image, which you can pass straight to an `<Image>` component
+
+## Taking a Photo with the Camera
+
+To capture with the camera, first **request permission**, then launch the camera:
+
+```jsx
+import * as ImagePicker from 'expo-image-picker';
+
+async function takePhoto() {
+  const { status } = await ImagePicker.requestCameraPermissionsAsync();
+
+  if (status !== 'granted') {
+    setError('Camera access is needed to take photos.');
+    return;
+  }
+
+  const result = await ImagePicker.launchCameraAsync({ quality: 1 });
+
+  if (!result.canceled) {
+    setImage(result.assets[0].uri);
+  }
+}
+```
+
+Note the flow: **request permission → check status → handle denial → capture**. That's the responsible permission pattern from this unit's main page.
+
+## Display the Image
+
+Once you have a URI, render it with the `Image` component:
+
+```jsx
+<Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+```
+
+Local files use `source={{ uri }}` — the same form you'd use for any URL.
+
+[React Native: Image](https://reactnative.dev/docs/image)
+
+<Quiz id="week10-canceled">
+Why do you check `result.canceled` after launching the image picker?
+
+- [ ] It's required for styling
+- [x] The user can cancel, and you should only use the image if they didn't
+- [ ] It fixes a bug in React Native
+- [ ] It converts the image format
+</Quiz>
+
+<Quiz id="week10-permission-status">
+What should you do if `requestCameraPermissionsAsync` returns a status other than "granted"?
+
+- [ ] Open the camera anyway
+- [x] Stop and show the user a clear message instead
+- [ ] Retry in a loop forever
+- [ ] Assume it worked
+</Quiz>
+
+## Lab
+
+Add a photo feature to your final project:
+
+1. Let the user pick an image from their library (e.g., a profile photo, a task image)
+2. Display the chosen image in your app
+3. Bonus: implement camera capture with a proper permission flow
+
+**Deliverable:** your camera/photos feature working in the app.
+
+## Learn More
+
+- [Expo: expo-image-picker](https://docs.expo.dev/versions/latest/sdk/imagepicker/)
+- [Expo: expo-camera](https://docs.expo.dev/versions/latest/sdk/camera/)
+- [Expo: Permissions guide](https://docs.expo.dev/guides/permissions/)
+- [React Native: Image](https://reactnative.dev/docs/image)

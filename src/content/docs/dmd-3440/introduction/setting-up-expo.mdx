@@ -1,0 +1,79 @@
+---
+title: Setting Up Expo & Your First App
+description: Install the development environment and build your first Expo application
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+This lab gets your **development environment** running and puts your first Expo app on a screen. By the end you'll have a personalized profile app running on your phone, an emulator, or the web.
+
+## What You Need
+
+- **Node.js** (a recent LTS version) — the JavaScript runtime that powers Expo. Install from [nodejs.org](https://nodejs.org/)
+- **VS Code** — your code editor
+- **Expo Go** — a free app from the App Store or Google Play that runs Expo projects on your phone
+
+## Create Your First App
+
+Open a terminal and run:
+
+```bash
+npx create-expo-app@latest my-profile-app
+cd my-profile-app
+npx expo start
+```
+
+`npx expo start` launches the Expo development server. From here you can:
+
+- Scan the QR code with **Expo Go** on your phone to run the app on a real device
+- Press `w` to open it in your web browser
+- Press `a` (Android) or `i` (iOS) to run it in an emulator
+
+:::note
+Not sure whether to test in Expo Go or a development build? Expo has a helpful video and guide on the difference.
+:::
+
+[Expo: How to create your first Expo app (Universal App tutorial #1)](https://www.youtube.com/watch?v=m1-bc53EGh8)
+
+[Expo Go & Development Builds: Which should you use?](https://www.youtube.com/watch?v=FdjczjkwQKE)
+
+[Expo docs: Create a new app](https://docs.expo.dev/get-started/creation/)
+
+## Understand the Project Structure
+
+A new Expo project has a few key files. Find them in your project:
+
+- **`app/`** — your screens (with Expo Router, each file becomes a screen). You'll work here all semester
+- **`package.json`** — the list of libraries your project depends on
+- **`app.json`** — Expo configuration for your app (name, icon, splash screen)
+
+<Quiz id="week1-project-structure">
+Where do the screens of your Expo app live?
+
+- [ ] package.json
+- [x] The app/ directory
+- [ ] node_modules/
+- [ ] app.json
+</Quiz>
+
+## Lab: Customize a Personal Profile App
+
+Your task is to make the starter app yours. Customize it into a simple **personal profile** screen. In the main screen file, change:
+
+1. The greeting text to your name
+2. Add a line describing your major or interests
+3. Change the background color or text styling
+4. Add at least one more element — an image, a second line of text, or a button
+
+Try editing the styles in the `StyleSheet.create` block to see how styling changes in real time with **fast refresh**. Save the file and the app updates instantly.
+
+## Deliverable
+
+Submit a screenshot of your running, personalized profile app, along with a short note about anything you found confusing during setup. This is your first of many deliverables that build toward the final project.
+
+## Learn More
+
+- [Expo docs: Start developing](https://docs.expo.dev/get-started/start-developing/)
+- [Expo docs: Tutorial — Using React Native and Expo](https://docs.expo.dev/tutorial/introduction/)
+- [Expo Snack](https://snack.expo.dev/) — run and share Expo apps entirely in your browser
+- [React Native docs: Getting started](https://reactnative.dev/docs/getting-started)

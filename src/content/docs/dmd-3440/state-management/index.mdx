@@ -1,0 +1,95 @@
+---
+title: Overview
+description: Application state, component communication, and data modeling
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+You met state in React Native Fundamentals (a component's own memory). This unit goes deeper: what happens when **multiple components** need the same data, and how you model the data your app manages.
+
+Work through the pages in order:
+
+- [useState & useEffect](use-state-and-effects/) — the hooks that manage state and side effects
+- [Context API](context-api/) — sharing state across many components
+- Then come back here for the lab
+
+## Application State
+
+**Application state** is all the data your app needs to remember while it runs: what the user typed, what they favorited, which screen they're on. You can divide it into two kinds:
+
+- **Local state** — matters to one component (a text field's contents)
+- **Shared state** — matters to many components (the user's favorites, the theme)
+
+The art of state management is choosing the *right place* for each piece of data: keep it local when you can, lift it up when others need it.
+
+<Quiz id="week7-shared-state">
+A favorites list that the Home screen, a list screen, and a detail screen all display should be:
+
+- [ ] A copy in each screen
+- [ ] Local state in the detail screen
+- [x] Shared state that all screens can read
+- [ ] Stored in the image assets
+</Quiz>
+
+## Component Communication
+
+Data flows in React in one direction — **down**, from parent to child, via props. When a child needs to tell a parent something, the parent passes down a *callback function* as a prop:
+
+```jsx
+function App() {
+  const [favorites, setFavorites] = useState([]);
+
+  return (
+    <RouteList
+      favorites={favorites}
+      onToggle={(id) => setFavorites(/* add or remove id */)}
+    />
+  );
+}
+```
+
+- Data (**favorites**) flows **down** into `RouteList`
+- Actions (**onToggle**) flow **up** from `RouteList` to `App`
+
+Mastering this one pattern — data down, callbacks up — solves most communication problems. When "prop drilling" (threading props through many layers) gets painful, that's when you reach for the [Context API](context-api/).
+
+## Data Modeling
+
+Before you write state logic, decide what your data **looks like**. Good data models make the rest easy.
+
+Think in **shapes**. A route and its favorites:
+
+```js
+// Route object
+{ id: 12, name: 'Farmington Ave', direction: 'To Downtown', stops: [...] }
+
+// Favorites — a set of route ids
+[12, 27, 45]
+```
+
+Ask three questions:
+
+1. **What is a single item?** — define its fields
+2. **What collections exist?** — routes, stops, favorites
+3. **What changes?** — which fields does the user edit (favorites) vs. which stay fixed
+
+Model data *before* building screens. Screens built on a clear model are far easier to build and far harder to break.
+
+## Lab: Build a Task Tracker, Notes App, or Favorites System
+
+Pick one of these small apps and build it:
+
+- **Task tracker** — add, complete, and remove tasks
+- **Note-taking app** — a list of notes with a detail view
+- **Favorites system** — favorite items from a list and view them in a separate screen
+
+Whatever you choose, demonstrate: local state for forms, shared state via props or Context, and a clear data model.
+
+**Deliverable:** your state management exercise — a working app plus a short note on where you used local vs. shared state.
+
+## Learn More
+
+- [React.dev: Managing state](https://react.dev/learn/managing-state)
+- [React.dev: Sharing state between components](https://react.dev/learn/sharing-state-between-components)
+- [React.dev: Thinking in React](https://react.dev/learn/thinking-in-react)
+- [React Native: State tutorial](https://reactnative.dev/docs/tutorial#state)

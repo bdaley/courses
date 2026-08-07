@@ -1,0 +1,122 @@
+---
+title: useState & useEffect
+description: The hooks that give your components memory and handle side effects
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+Hooks are functions that let components "hook into" React features. Two you'll use constantly are **`useState`** and **`useEffect`**.
+
+## useState — Memory for Your Component
+
+You met this in React Native Fundamentals. A quick refresher:
+
+```jsx
+import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <Pressable onPress={() => setCount(count + 1)}>
+      <Text>Tapped {count} times</Text>
+    </Pressable>
+  );
+}
+```
+
+- `useState(0)` creates state starting at `0`
+- `count` is the current value; `setCount` updates it
+- Calling `setCount` re-renders the component with the new value
+
+**Important:** never mutate state directly. `count = count + 1` won't re-render. Always use the setter.
+
+```jsx
+// ❌ This mutates and breaks React
+// count = count + 1;
+
+// ✅ This is how you change state
+setCount(count + 1);
+```
+
+For lists and objects, create a *new* value rather than changing the old one:
+
+```jsx
+const [favorites, setFavorites] = useState([]);
+setFavorites([...favorites, 12]);   // new array
+setFavorites(favorites.filter((id) => id !== 12));
+```
+
+[React.dev: useState reference](https://react.dev/reference/react/useState)
+
+[React.dev: Updating arrays in state](https://react.dev/learn/updating-arrays-in-state)
+
+<Quiz id="week7-setstate">
+What's the correct way to change state so the UI updates?
+
+- [ ] `count = count + 1`
+- [ ] `this.count++`
+- [x] `setCount(count + 1)`
+- [ ] `reload()`
+</Quiz>
+
+## useEffect — Side Effects
+
+**Effects** are things that happen *because* of rendering but aren't part of it — like fetching data, saving to storage, or subscribing to something. `useEffect` runs code after the component renders:
+
+```jsx
+import { useEffect, useState } from 'react';
+
+function RouteList() {
+  const [routes, setRoutes] = useState([]);
+
+  useEffect(() => {
+    // runs once when the component mounts
+    loadRoutes().then(setRoutes);
+  }, []);
+  // ↑ empty array = run once
+
+  return <FlatList data={routes} renderItem={...} />;
+}
+```
+
+The second argument is the **dependency array** — it controls *when* the effect runs:
+
+- `[]` — run once, when the component mounts
+- `[value]` — re-run whenever `value` changes
+- *(nothing)* — run after every render (rarely what you want)
+
+<Quiz id="week7-effect-deps">
+A `useEffect` with an empty dependency array `[]` runs:
+
+- [ ] After every render
+- [ ] When the user taps
+- [x] Once, when the component mounts
+- [ ] Never
+</Quiz>
+
+## The Usual Pattern: Fetch on Mount
+
+The most common combination in a mobile app is: **fetch data on mount, store it in state, render it**.
+
+```jsx
+const [routes, setRoutes] = useState([]);
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  async function load() {
+    const data = await getRoutes();
+    setRoutes(data);
+    setLoading(false);
+  }
+  load();
+}, []);
+```
+
+While `loading` is true you show a spinner; once data arrives you render the list. You'll build this properly in [APIs & External Data](../apis-and-external-data/).
+
+## Learn More
+
+- [React.dev: useEffect reference](https://react.dev/reference/react/useEffect)
+- [React.dev: Synchronizing with effects](https://react.dev/learn/synchronizing-with-effects)
+- [React.dev: You might not need an effect](https://react.dev/learn/you-might-not-need-an-effect)

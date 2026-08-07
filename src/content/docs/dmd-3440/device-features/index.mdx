@@ -1,0 +1,89 @@
+---
+title: Overview
+description: Camera, photos, location, notifications, and permissions
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+Phones aren't just screens — they're sensors, cameras, GPS receivers, and notification hubs. In this unit you'll tap into those **native capabilities** to make your app feel truly mobile.
+
+Work through the pages in order:
+
+- [Camera & Photos](camera-and-photos/) — capture and pick images
+- [Location & Notifications](location-and-notifications/) — where the user is, and telling them things
+- Then come back here for permissions and privacy
+
+## Mobile Sensors and Device Capabilities
+
+A modern phone is full of hardware your app can use:
+
+- **Camera** and photo library
+- **GPS / location services**
+- **Notifications** (push and local)
+- Accelerometer, gyroscope, and compass
+- Haptics (vibration feedback)
+- Biometrics (Face ID / fingerprint)
+
+Expo gives you all of these through the **Expo SDK** — one consistent API across iOS and Android.
+
+[Expo SDK reference](https://docs.expo.dev/versions/latest/)
+
+## Permissions — Ask Before You Use
+
+Access to cameras, location, and notifications is **protected**. Your app must ask, and the user can say no (and change their mind later).
+
+Three rules:
+
+1. **Ask at the right moment** — when the user actually needs the feature, not at launch
+2. **Explain why** — a short message before the system dialog, so users understand what they're granting
+3. **Handle denial** — build a graceful fallback for when the user says no
+
+Users are wary of apps that demand permissions for no clear reason. Respect the trust.
+
+## Enhancing UX Through Native Features
+
+Native features should serve your design, not decorate it:
+
+- **Camera** — scan a receipt, snap a profile photo, identify a plant
+- **Location** — "routes near me," weather at your coordinates
+- **Notifications** — remind the user their bus leaves in 10 minutes
+- **Haptics** — a tiny buzz confirming a successful save
+
+Each feature is a *capability that supports a user goal* from your user journey map — not a checkbox to tick off.
+
+<Quiz id="week10-permission-timing">
+When is the best time to ask the user for a permission like camera access?
+
+- [ ] Immediately at app launch, before anything else
+- [x] When the user performs the action that needs it
+- [ ] After the user finishes using the app
+- [ ] Never ask; just use the camera
+</Quiz>
+
+<Quiz id="week10-permission-deny">
+If a user denies a permission, your app should:
+
+- [ ] Crash
+- [ ] Ask again endlessly
+- [x] Continue with a graceful fallback and explain why the feature is limited
+- [ ] Use the feature anyway
+</Quiz>
+
+## Lab: Integrate One Device Feature
+
+Choose **one** native feature and integrate it into your final project:
+
+- **Camera** — take a photo and display it
+- **Photo library** — pick an image from the user's photos
+- **Location** — show the user's position or nearby data
+- **Notifications** — a local reminder related to your app's purpose
+
+Handle the permission flow properly: ask when needed, explain why, and provide a fallback when denied.
+
+**Deliverable:** your native capabilities exercise — the feature working in your app, plus a note on your permission UX.
+
+## Learn More
+
+- [Expo: Permissions](https://docs.expo.dev/guides/permissions/)
+- [Apple: Permissions](https://developer.apple.com/design/human-interface-guidelines/accessing-private-data)
+- [Android: Permissions overview](https://developer.android.com/guide/topics/permissions/overview)

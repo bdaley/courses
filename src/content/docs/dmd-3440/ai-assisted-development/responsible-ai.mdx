@@ -1,0 +1,93 @@
+---
+title: Responsible AI
+description: Verification, hallucinated code, security, privacy, and attribution
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+AI tools are powerful — which is exactly why responsible use matters. This page covers the risks you need to manage and the habits that keep you safe and honest.
+
+## Verification and Fact-Checking
+
+An AI's output is *plausible*, not *verified*. Every response deserves a check:
+
+- **Does it run?** Test it in your actual project
+- **Does it exist?** AI often invents libraries, components, and functions
+- **Is it current?** AI knowledge can trail library updates by months or years
+- **Is it your code now?** Understand and own whatever you commit
+
+The rule of thumb: **never commit code you can't explain**.
+
+## Hallucinated Code and APIs
+
+**Hallucination** is when an AI confidently invents something that doesn't exist — a `react-native` component, a method on a module, an API endpoint. It can be hard to spot because it *looks* right.
+
+How to protect yourself:
+
+- Check names against the **official docs** before using them
+- Prefer copy-pasting the *error message* over asking "why won't this work?"
+- When an AI suggests a package, verify it exists on npm and read its docs
+
+[Expo documentation](https://docs.expo.dev/) — the source of truth for Expo APIs
+
+[React Native documentation](https://reactnative.dev/docs/getting-started) — the source of truth for RN components
+
+<Quiz id="week6-hallucination-def">
+What is a hallucination in AI output?
+
+- [ ] A spelling mistake
+- [x] A confident, plausible-sounding claim or API that doesn't actually exist
+- [ ] A line of code with a bug
+- [ ] A slow response time
+</Quiz>
+
+## Security Considerations
+
+Generated code can quietly introduce security problems. Watch for:
+
+- **Storing secrets in code** — API keys, passwords, or tokens committed to your repo
+- **Trusting user input** — anything a user types or any URL data must be validated, not blindly used
+- **Insecure storage** — credentials belong in secure storage (see [Local Data & Persistence](../local-data-persistence/)), not plain text
+
+Rule of thumb: **if it's a secret, it doesn't go in code or in a chat with an AI.**
+
+## Privacy Considerations
+
+Two directions of privacy to manage:
+
+1. **Your data** — don't paste passwords, keys, personal data, or proprietary code into AI chat tools. Assume anything you paste is shared.
+2. **Your users' data** — apps that collect personal data have obligations. Design apps that collect the minimum, and read your platform's privacy guidance as you build.
+
+[Apple: Privacy](https://developer.apple.com/privacy/)
+
+[Google Play: User Data policies](https://play.google.com/about/privacy-security-deception/user-data/)
+
+<Quiz id="week6-privacy">
+Which of these is safe to paste into an AI chat tool?
+
+- [ ] A database password
+- [ ] An API secret key
+- [x] A snippet of your own component code with no secrets
+- [ ] A list of user email addresses
+</Quiz>
+
+## Attribution and Transparency
+
+Using AI in coursework carries an ethical and academic dimension. The practice in this course:
+
+- **Document** your AI use — that's your AI Development Journal
+- **Be transparent** about what AI did and what you did
+- **Don't submit AI output as your own work without understanding it**
+
+Your final project includes an **AI reflection** where you'll honestly describe how AI helped and where it fell short. That honesty is the professional practice this course is teaching.
+
+## Final Project Milestone
+
+Your AI Development Journal becomes part of your final submission, and the feature you build with AI is a real feature of your app. Start it now if you haven't.
+
+## Learn More
+
+- [GitHub: Trust and safety for Copilot](https://docs.github.com/en/copilot/responsible-use-of-github-copilot-chat)
+- [OWASP: AI security risks](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [Apple: App privacy](https://developer.apple.com/app-store/app-privacy-details/)
+- [Google Play Academy: Privacy & security](https://play.google.com/academy)

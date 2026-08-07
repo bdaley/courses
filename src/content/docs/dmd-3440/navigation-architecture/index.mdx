@@ -1,0 +1,73 @@
+---
+title: Overview
+description: Organizing your app's structure and planning scalable projects
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+Your prototype from Wireframing & Prototyping becomes real in this unit. You'll implement **navigation** in your Expo app and learn to organize a project so it stays manageable as it grows — the difference between an app that's fun to build and one that becomes a tangled mess.
+
+Work through the pages in order:
+
+- [Navigation Patterns](navigation-patterns/) — stacks, tabs, and drawers
+- [Expo Router](expo-router/) — how navigation works in your Expo project
+- Then come back here for app structure and the lab
+
+## Organizing Application Structure
+
+A well-organized project is one where you can always find the code you're looking for. Expo's file-based router gives you a natural structure: **each screen is a file in the `app/` directory**.
+
+A small project might look like:
+
+```
+my-profile-app/
+  app/
+    index.tsx          # Home screen
+    routes.tsx         # Routes list
+    settings.tsx       # Settings
+  components/
+    RouteCard.tsx
+    TabBar.tsx
+  constants/
+    colors.ts
+```
+
+Notice two ideas:
+
+- **Screens** live in `app/`; **reusable components** live in `components/`
+- Related screens group together, and shared values (like colors) get their own file
+
+## Planning Scalable Projects
+
+Your final project is small, but real apps are not. A few habits keep projects scalable from day one:
+
+1. **One component per file** — each file does one thing and has a clear name
+2. **Share the repeated stuff** — common styles, colors, and components in dedicated files
+3. **Name files after what they contain** — a file called `RouteCard.tsx` obviously contains the route card component
+4. **Keep screens thin** — screens compose components rather than containing thousands of lines
+
+<Quiz id="week5-structure">
+In an Expo project using file-based routing, where do your app's screens live?
+
+- [ ] In a database
+- [x] In the app/ directory as files
+- [ ] In a single giant file
+- [ ] In the assets folder
+</Quiz>
+
+## Lab: Implement Application Navigation
+
+Using your wireframe prototype as the blueprint:
+
+1. Give your app at least **two levels of navigation**: a tab bar for the main sections and a stack to push into detail screens
+2. Wire each prototype flow to a real screen
+3. Test the flows on your device — does navigation match your design?
+
+**Deliverable:** your working navigation prototype — a link to the Expo project with a short note on any flows that changed from the prototype.
+
+## Learn More
+
+- [Expo Router: Introduction](https://docs.expo.dev/router/introduction/)
+- [React Navigation](https://reactnavigation.org/)
+- [Apple HIG: Navigation](https://developer.apple.com/design/human-interface-guidelines/navigation)
+- [Material Design: Navigation](https://m3.material.io/foundations/content-design/navigation)

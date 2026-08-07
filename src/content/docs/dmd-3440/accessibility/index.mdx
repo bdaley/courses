@@ -1,0 +1,124 @@
+---
+title: Overview
+description: Making your app usable by everyone
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+**Accessibility** (a11y) means designing apps that work for people of all abilities — including users who are blind, low-vision, hard of hearing, or have limited motor control. It's not a feature bolted on at the end; it's a design discipline that makes your app better for *everyone*.
+
+## Mobile Accessibility Principles
+
+The core principles map to the W3C's POUR framework:
+
+- **Perceivable** — information can be seen or heard (contrast, text size, captions)
+- **Operable** — every action can be performed (large touch targets, no tiny targets)
+- **Understandable** — the app is clear and predictable (labels, consistent navigation)
+- **Robust** — it works across devices and assistive technology (screen readers)
+
+On mobile, the biggest wins come from four habits:
+
+1. **Labels for everything** — screen readers announce labels, not icons
+2. **Good contrast** — text must be readable against its background
+3. **Big enough touch targets** — remember the 44 × 44 points minimum from React Native Fundamentals
+4. **Don't rely on color alone** — error text is red *and* says "error"
+
+[W3C WAI: Accessibility fundamentals](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
+
+[Apple: Accessibility](https://developer.apple.com/accessibility/)
+
+[Android: Accessibility](https://developer.android.com/guide/topics/ui/accessibility)
+
+<Quiz id="week11-color">
+Why should color never be the only way to convey meaning?
+
+- [ ] It's a style preference
+- [x] Users with color blindness or screen readers can't perceive it
+- [ ] Colors are expensive
+- [ ] Printers are black and white
+</Quiz>
+
+## Accessibility in React Native
+
+React Native has built-in accessibility support. The most important tool is the **`accessibilityLabel`** — what a screen reader announces for an element.
+
+```jsx
+<Pressable
+  accessibilityLabel="Add a new task"
+  accessibilityRole="button"
+  onPress={onAdd}
+>
+  <Text>+</Text>
+</Pressable>
+```
+
+Without the label, a screen reader might announce just "+" — meaningless. With it, users hear "Add a new task, button."
+
+Key props:
+
+| Prop | Purpose |
+|---|---|
+| `accessibilityLabel` | What the screen reader announces |
+| `accessibilityRole` | What the element *is* (button, header, image) |
+| `accessibilityHint` | Extra guidance ("opens a form") |
+| `accessible` | Group a set of children into one focusable element |
+
+[React Native: Accessibility](https://reactnative.dev/docs/accessibility)
+
+<Quiz id="week11-label">
+What does `accessibilityLabel` do?
+
+- [ ] Changes the text color
+- [ ] Adds a caption under an image
+- [x] Provides the text a screen reader announces for an element
+- [ ] Hides the element from sighted users
+</Quiz>
+
+## Accessibility Testing Tools
+
+Test like a user with a screen reader:
+
+- **iOS** — VoiceOver (built in; turn on in Settings → Accessibility)
+- **Android** — TalkBack (built in; Settings → Accessibility)
+- Turn them on and **navigate your whole app blind**: can you complete every task using only the screen reader?
+
+Beyond screen readers, check:
+
+- **Dynamic Type / font scaling** — does your layout hold up at large text sizes?
+- **Contrast checkers** — verify text meets contrast guidelines
+- **Touch target size** — are all targets 44 × 44 points or larger?
+
+[Apple: VoiceOver](https://support.apple.com/guide/iphone/use-voiceover-iph3e2e3d1d/ios)
+
+[Android: TalkBack](https://support.google.com/accessibility/android/answer/6283677)
+
+## Inclusive Design Strategies
+
+Accessibility is part of a broader **inclusive design**: building for the full range of human diversity.
+
+- **Design for the extremes** — large text, small screens, one-handed use, low vision
+- **Don't assume ability** — a user might rely entirely on a screen reader
+- **Ask real users** — people with disabilities will find issues your tools won't
+- **Treat it as continuous** — improve access every iteration, not once at the end
+
+## Lab: Accessibility Review of Your Final Project
+
+Run an accessibility pass on your final project:
+
+1. **Screen reader walkthrough** — complete every main task using VoiceOver or TalkBack; note what fails
+2. **Contrast check** — flag any text that's hard to read
+3. **Touch targets** — verify every target is 44 × 44 points or larger
+4. **Labels** — confirm every icon and image has a meaningful `accessibilityLabel`
+
+**Deliverable:** your accessibility checklist and revision plan — what passed, what failed, and exactly what you'll change.
+
+### Final Project Milestone
+
+This is **Progress Check #2**. Bring your accessibility findings and your revision plan to class, and keep refining your project as you approach the final project.
+
+## Learn More
+
+- [React Native: Accessibility](https://reactnative.dev/docs/accessibility)
+- [W3C WAI: Accessibility fundamentals](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
+- [Apple: Accessibility on iPhone](https://www.apple.com/accessibility/iphone/)
+- [Google: Make your app more accessible](https://developer.android.com/guide/topics/ui/accessibility)

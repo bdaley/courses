@@ -1,0 +1,79 @@
+---
+title: Overview
+description: Using AI as a development tool, and evaluating AI-generated code
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+AI assistants (like ChatGPT, Claude, Copilot, and Cursor) are now a standard part of how software gets written — including mobile apps. In this unit you'll learn to use them **effectively and responsibly**: prompting like a developer, verifying what the AI gives you, and being transparent about your use.
+
+Work through the pages in order:
+
+- [Prompting for Developers](prompting-for-developers/) — how to talk to AI tools
+- [Responsible AI](responsible-ai/) — verification, security, privacy, and attribution
+- Then come back here for the lab: the **AI Development Journal**
+
+## AI as a Development Tool
+
+Think of an AI assistant as a very fast, very confident colleague — not an oracle. It's excellent at:
+
+- Explaining unfamiliar concepts and APIs
+- Drafting boilerplate and scaffolding
+- Suggesting fixes when you're stuck on an error
+- Refactoring and summarizing code
+- Writing documentation and comments
+
+It's *not* reliable for:
+
+- Exact API signatures from the latest library versions
+- Code you don't understand
+- Security or performance-sensitive logic — without verification
+
+## Evaluating AI-Generated Code
+
+The core skill in this unit is **evaluating** what the AI produces. Before you accept generated code, ask:
+
+1. **Do I understand every line?** If not, study it or ask the AI to explain it
+2. **Does it use current APIs?** AI models often hallucinate outdated or invented APIs
+3. **Does it fit my project?** Names, structure, and libraries should match your app
+4. **Does it actually run?** Paste it in and test it — an AI that "looks right" can still be broken
+5. **Is it correct, not just plausible?** Verify behavior with a real test case
+
+Treat AI output like code from Stack Overflow: a starting point that you understand and own before it goes into your app.
+
+<Quiz id="week6-evaluate">
+What should you do before using AI-generated code?
+
+- [ ] Trust it because the AI is smart
+- [ ] Copy it directly without reading it
+- [x] Understand it, check it uses real current APIs, and test it
+- [ ] Ship it immediately
+</Quiz>
+
+<Quiz id="week6-hallucinate">
+Which of these can an AI assistant confidently invent?
+
+- [ ] Realities
+- [ ] Test results
+- [x] Plausible-sounding APIs and function names
+- [ ] Nothing — AI is always right
+</Quiz>
+
+## The Lab: AI Development Journal
+
+In this unit you'll use AI assistance to develop a **small feature** for your project, and document the whole process. You'll submit an **AI Development Journal** containing:
+
+1. **Prompt history** — every prompt you sent, in order
+2. **Generated code** — what the AI produced, before your edits
+3. **Verification notes** — how you checked it: what you read, changed, and tested, and what was wrong or hallucinated
+4. **Reflection** — where the AI was genuinely helpful, where it misled you, and what you'd do differently
+
+This journal is also a **required component of your final project** (see the [final project brief](../assignments/final-project/)).
+
+**Deliverable:** your AI Development Journal, documenting one small feature built with AI assistance.
+
+## Learn More
+
+- [GitHub Docs: About GitHub Copilot](https://docs.github.com/en/copilot)
+- [Anthropic: Prompting guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)
+- [OpenAI: Prompt engineering guide](https://platform.openai.com/docs/guides/prompt-engineering)
