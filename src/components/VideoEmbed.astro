@@ -1,0 +1,61 @@
+---
+interface Props {
+  platform: 'youtube' | 'vimeo' | 'loom' | 'external';
+  id?: string;
+  url?: string;
+  title: string;
+}
+
+const { platform, id, url, title } = Astro.props;
+
+function getEmbedSrc() {
+  if (platform === 'youtube' && id) return `https://www.youtube.com/embed/${id}`;
+  if (platform === 'vimeo' && id) return `https://player.vimeo.com/video/${id}`;
+  if (platform === 'loom' && id) return `https://www.loom.com/embed/${id}`;
+  return null;
+}
+
+const embedSrc = getEmbedSrc();
+const isExternal = platform === 'external' || !embedSrc;
+---
+{isExternal ? (
+  <div class="video-external">
+    <p><strong>{title}</strong> is available on an external site.</p>
+    {url && <p><a href={url} target="_blank" rel="noopener noreferrer">Watch on external site →</a></p>}
+  </div>
+) : (
+  <div class="video-embed video-embed--{platform}">
+    <iframe
+      src={embedSrc}
+      title={title}
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
+)}
+
+<style>
+  .video-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    margin: 1.5rem 0;
+  }
+  .video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+  }
+  .video-external {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    background: var(--sl-color-gray-6);
+  }
+</style>

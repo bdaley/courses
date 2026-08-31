@@ -2,7 +2,12 @@ import { visit } from 'unist-util-visit';
 import type { Root, Paragraph, Link, Text } from 'mdast';
 
 export function remarkYouTube() {
-	return (tree: Root) => {
+	return (tree: Root, file: any) => {
+		// Only auto-embed on dedicated video pages (filenames ending with -video)
+		// Host/lesson pages should link to video pages via LinkCard instead
+		const filePath: string = file?.history?.[0] ?? file?.path ?? '';
+		if (!filePath.includes('-video.')) return;
+
 		const replacements: Array<{
 			videoId: string;
 			title: string;

@@ -4,6 +4,8 @@ description: Creating hyperlinks in HTML
 order: 8
 ---
 
+import { LinkCard } from '@astrojs/starlight/components';
+
 import InteractiveCode from '../../../../components/InteractiveCode.astro';
 import { Quiz } from 'starlight-quiz/components';
 
@@ -29,9 +31,9 @@ A **relative link** gives the path from the current page, like `about.html` or `
 
 ## Video
 
-[Relative Links - YouTube](https://www.youtube.com/watch?v=Um1DXLL5isc)
+<LinkCard title="Relative Links" href="/courses/dmd-1070/html-basics/relative-links-video/" description="Watch on dedicated video page." />
 
-[Non-Web Links - YouTube](https://www.youtube.com/watch?v=rkBXzXjiqzs)
+<LinkCard title="Non-Web Links" href="/courses/dmd-1070/html-basics/non-web-links-video/" description="Watch on dedicated video page." />
 
 <Quiz id="link-attribute-quiz">
 What attribute on the `<a>` element tells the browser where the link should go?

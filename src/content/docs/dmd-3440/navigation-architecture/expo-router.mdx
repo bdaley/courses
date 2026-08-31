@@ -3,6 +3,8 @@ title: Expo Router
 description: File-based routing for multi-screen Expo apps
 ---
 
+import { LinkCard } from '@astrojs/starlight/components';
+
 import { Quiz } from 'starlight-quiz/components';
 
 Expo apps use **Expo Router**, which brings the web's *file-based routing* to mobile. The file system *is* the navigation: each file in your `app/` directory is a screen, and the folder structure defines how screens nest.
@@ -37,7 +39,7 @@ No navigation library setup, no manual stack definitions — just files and fold
 
 [Expo Router: Introduction](https://docs.expo.dev/router/introduction/)
 
-[Expo: How to add navigation to your app with Expo Router (video)](https://www.youtube.com/watch?v=8336fcFV_T4)
+<LinkCard title="How to Add Navigation with Expo Router" href="/courses/dmd-3440/navigation-architecture/expo-router-video/" description="Watch on dedicated video page." />
 
 ## Layouts — The "Chrome" of Your App
 
