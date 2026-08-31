@@ -1,6 +1,8 @@
 ---
 title: File & Folder Naming
 description: Guidelines for naming files and folders in web development
+sidebar:
+  order: 4
 ---
 
 In most of your other courses, the names that you use for your files won't matter very much. However, since we will publish our files to the web, it's important that you follow these general guidelines for naming your files. Not only will your file names determine how you will embed images, videos, sound, or other assets, but proper file naming can improve the SEO of your website.

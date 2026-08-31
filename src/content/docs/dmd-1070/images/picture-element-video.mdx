@@ -1,0 +1,22 @@
+---
+title: "Picture Element - In a Nutshell"
+description: "Using the <picture> element for art direction and responsive image formats."
+sidebar:
+  badge:
+    text: Video
+    variant: tip
+---
+
+import VideoEmbed from '../../../../components/VideoEmbed.astro';
+
+<VideoEmbed platform="youtube" id="uGBCr2DL6fU" title="Picture Element - In a Nutshell" />
+
+The `<picture>` element gives you art-direction and format-switching beyond `srcset`. In this nutshell screencast you see when to use `<picture>` with `<source media>` and `<source type>` fallbacks (e.g., WebP with JPEG fallback) and how it differs from the `<img src>`/`srcset` videos already in this section.
+
+**You will learn**
+
+* `<picture>` + `<source media="(min-width: …)">` for cropping at breakpoints
+* `<source type="image/webp">` for modern formats
+* Fallback `<img>` requirements for accessibility (`alt` still required)
+
+**Related:** [Using the Image Element](./using-the-image-element) · [Image Types](./image-types)

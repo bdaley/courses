@@ -1,6 +1,8 @@
 ---
 title: What You'll Need
 description: Tools and software required for DMD 1070/5070
+sidebar:
+  order: 1
 ---
 
 ## A Text Editor

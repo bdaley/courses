@@ -1,10 +1,77 @@
 ---
 title: Why index.html?
-description: Understanding why we name our HTML files index.html
+description: The history of index.html as the default document and how servers resolve URLs that end in a slash.
+sidebar:
+  order: 8
 ---
 
-import { LinkCard } from '@astrojs/starlight/components';
+In a lot of the videos you've seen me name our HTML files `index.html`. But why?
 
-In a lot of the videos you've seen me name our HTML files as index.html. But why?
+## A Brief History
 
-<LinkCard title="Why index.html?" href="/courses/dmd-1070/getting-started/why-index-video/" description="Watch on dedicated video page." />
+On the early web, sites were just folders of files on a server — much like the folders on your own computer. When you visited a URL, the server had to decide which file to send back.
+
+Borrowing the idea of an *index* from books — the page that tells you where everything else is — early web servers (like NCSA httpd and later Apache) adopted a convention: if no specific file is requested, serve a default file named `index.html` (or `index.htm` on early Windows).
+
+That convention stuck. Today almost every web server is configured with a **DirectoryIndex** or **default document** list, typically:
+
+```
+index.html → index.htm → default.html → index.php → ...
+```
+
+The first file it finds wins. For this course we will always use `index.html` — lowercase, with the `.html` extension — because it works everywhere.
+
+## The Default Document
+
+Think of `index.html` as the *homepage of a folder*.
+
+* `https://example.com/` → the homepage of the whole site
+* `https://example.com/photos/` → the homepage of the `photos` folder
+* `https://example.com/photos/index.html` → the same file, requested explicitly
+
+You only need to create one `index.html` per folder that you want to be directly browsable. Other pages in that folder can have any valid name, like `about.html` or `contact.html`.
+
+:::tip
+You do not need a server configuration file to make this work. Naming the file `index.html` is enough — the server already knows to look for it.
+:::
+
+## What Happens When a URL Ends in `/`
+
+When you request a URL that ends in a slash, you are asking for a *directory*, not a specific file. The server handles it in three steps:
+
+1.  **Map the URL to a folder on disk.** For example, `https://example.com/photos/` maps to the `photos/` folder in your site.
+2.  **Look for a default document.** The server checks that folder for `index.html` (and then the other names in its list).
+3.  **Respond:**
+    *   **If `index.html` exists**, the server reads its contents and returns them with a `200 OK` — the browser never knows it was a folder request. The address bar stays as `.../photos/`.
+    *   **If it does not exist**, the server typically returns `403 Forbidden` or `404 Not Found`. If directory listing is enabled (rare on modern hosts), it may generate an auto-index — a plain list of files — which you do not want for a public site.
+
+Compare that to a direct file request like `https://example.com/about.html`, where the server just tries to return that exact file or a `404` if it is missing — no default lookup occurs.
+
+```
+site-root/
+├── index.html          ← served for https://example.com/
+├── about.html
+└── photos/
+    ├── index.html      ← served for https://example.com/photos/
+    ├── beach.html
+    └── mountains.html
+```
+
+In this example:
+
+* `https://example.com/` → `site-root/index.html`
+* `https://example.com/photos/` → `site-root/photos/index.html`
+* `https://example.com/photos/beach.html` → `site-root/photos/beach.html` (exact file)
+
+### Why the Trailing Slash Matters
+
+* `https://example.com/photos` (no slash) — many servers will issue a redirect to `https://example.com/photos/` and then perform the lookup above. To avoid the extra round-trip, always link to folders with the trailing slash: `href="/photos/"`.
+* `https://example.com/photos/index.html` also works, but `href="/photos/"` is cleaner, shorter, and still works if you later change the default document technology.
+
+## What This Means for You
+
+1.  **Name the homepage of every folder `index.html`.** At minimum, your site root must have `index.html`. If you create a `projects/` or `images/` section that users will navigate to, give each an `index.html` too.
+2.  **Upload the whole folder.** When you publish with FileZilla, the `index.html` inside `photos/` must be uploaded to the `photos/` folder on the server — not to the root.
+3.  **Link to folders, not just files.** Use `href="/photos/"` when you want the folder's homepage. The browser will request the slash, the server will find `photos/index.html`, and the user will see that page.
+
+**Related:** [File & Folder Naming](./naming-files) · [Installing FileZilla](./installing-filezilla-video) · [Local Environment Setup](./local-environment-setup-video) · [Uploading Files](./uploading-files-video)
