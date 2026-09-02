@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">FileZilla Site Manager — General tab</title>
+<desc id="desc">Recreation of FileZilla General tab: Protocol SFTP - SSH File Transfer Protocol, Host dmd-static.grove.ad.uconn.edu, Port blank, Logon Type Normal, User bpd01001, Password masked. Cropped placeholder — replace with actual screenshot when available.</desc>
+<rect width="720" height="420" rx="8" fill="#f8f9fb" stroke="#d0d7de"/>
+<rect x="0" y="0" width="720" height="32" rx="8" fill="#e9eef3"/>
+<text x="16" y="21" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="13" font-weight="600" fill="#24292f">Site Manager — DMD Static</text>
+<text x="700" y="21" font-family="system-ui,sans-serif" font-size="14" fill="#57606a" text-anchor="end">✕</text>
+<!-- Tabs -->
+<g font-family="system-ui,sans-serif" font-size="12">
+  <rect x="16" y="46" width="70" height="26" rx="6" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+  <text x="51" y="63" text-anchor="middle" font-weight="600" fill="#0969da">General</text>
+  <rect x="90" y="46" width="74" height="26" rx="6" fill="#eef1f4" stroke="#d0d7de"/>
+  <text x="127" y="63" text-anchor="middle" fill="#57606a">Advanced</text>
+  <rect x="168" y="46" width="110" height="26" rx="6" fill="#eef1f4" stroke="#d0d7de"/>
+  <text x="223" y="63" text-anchor="middle" fill="#57606a">Transfer Settings</text>
+  <rect x="282" y="46" width="60" height="26" rx="6" fill="#eef1f4" stroke="#d0d7de"/>
+  <text x="312" y="63" text-anchor="middle" fill="#57606a">Charset</text>
+</g>
+<!-- Form -->
+<g font-family="system-ui,sans-serif" font-size="12">
+  <text x="24" y="98" fill="#24292f">Protocol:</text>
+  <rect x="140" y="84" width="500" height="26" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="152" y="101" fill="#24292f">SFTP - SSH File Transfer Protocol</text>
+  <polygon points="628,95 638,95 633,102" fill="#57606a"/>
+  <text x="24" y="130" fill="#24292f">Host:</text>
+  <rect x="140" y="116" width="380" height="26" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="152" y="133" fill="#24292f" font-weight="600">dmd-static.grove.ad.uconn.edu</text>
+  <text x="534" y="130" fill="#24292f">Port:</text>
+  <rect x="570" y="116" width="70" height="26" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+  <!-- blank port -->
+  <text x="24" y="174" fill="#24292f">Logon Type:</text>
+  <rect x="140" y="160" width="500" height="26" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="152" y="177" fill="#24292f">Normal</text>
+  <polygon points="628,171 638,171 633,178" fill="#57606a"/>
+  <text x="24" y="206" fill="#24292f">User:</text>
+  <rect x="140" y="192" width="500" height="26" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="152" y="209" fill="#24292f">bpd01001</text>
+  <text x="24" y="238" fill="#24292f">Password:</text>
+  <rect x="140" y="224" width="500" height="26" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="152" y="241" fill="#24292f" letter-spacing="2">••••••••••••••</text>
+  <line x1="24" y1="270" x2="640" y2="270" stroke="#d0d7de" stroke-dasharray="4 4"/>
+  <text x="24" y="290" fill="#57606a">Background color:</text>
+  <rect x="140" y="278" width="80" height="22" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="148" y="293" fill="#24292f">None</text>
+  <polygon points="210,287 216,287 213,292" fill="#57606a"/>
+  <text x="24" y="316" fill="#57606a">Comments:</text>
+  <rect x="24" y="326" width="616" height="48" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+</g>
+<!-- Buttons -->
+<g font-family="system-ui,sans-serif" font-size="12">
+  <rect x="400" y="390" width="70" height="22" rx="4" fill="#eef6ff" stroke="#0969da"/>
+  <text x="435" y="405" text-anchor="middle" fill="#0969da" font-weight="600">Connect</text>
+  <rect x="478" y="390" width="50" height="22" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="503" y="405" text-anchor="middle" fill="#24292f">OK</text>
+  <rect x="536" y="390" width="60" height="22" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="566" y="405" text-anchor="middle" fill="#24292f">Cancel</text>
+</g>
+<text x="360" y="418" font-family="system-ui,sans-serif" font-size="9" fill="#8c959f" text-anchor="middle">Placeholder recreation — replace with cropped FileZilla screenshot</text>
+</svg>
