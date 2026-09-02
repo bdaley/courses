@@ -31,6 +31,39 @@ npx expo start
 - Press `w` to open it in your web browser
 - Press `a` (Android) or `i` (iOS) to run it in an emulator
 
+:::caution[Windows PowerShell: `npm` cannot be loaded / `npm.ps1` blocked]
+If `npm run web` (or `npx expo start`) fails on Windows with an error like `cannot be loaded because running scripts is disabled on this system` or referencing `npm.ps1`, this is Windows PowerShell blocking the `npm.ps1` shim — not a problem in your Expo app.
+
+**1. Confirm the policy** — in PowerShell run:
+
+```powershell
+Get-ExecutionPolicy -List
+```
+
+If `CurrentUser` or `LocalMachine` shows `Restricted`, PowerShell is blocking local scripts.
+
+**2. Temporary fix — current terminal only** (least invasive):
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+npm run web
+```
+
+This allows scripts only in this terminal session and resets when you close it.
+
+**3. Persistent fix — your Windows user account** (recommended for the semester):
+
+Open PowerShell normally (not as Administrator) and run:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+
+Confirm with `Y`, then restart your terminal and run `npm run web` again. `RemoteSigned` allows locally installed scripts like npm while still requiring downloaded scripts to be signed — it is scoped to your user account only (no admin) and does not change the system-wide `LocalMachine` policy.
+
+> Alternative: you can also use **Command Prompt (`cmd.exe`)** instead of PowerShell, which is not affected by this policy.
+:::
+
 :::note
 Not sure whether to test in Expo Go or a development build? Expo has a helpful video and guide on the difference.
 :::
