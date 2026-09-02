@@ -1,5 +1,5 @@
 ---
-title: E. Show Reel
+title: Show Reel
 description: Create a 1-2 minute show reel that showcases your work.
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: F. Putting Yourself Out There! (Goals)
+title: Putting Yourself Out There! (Goals)
 description: Achieve 2 "Putting Yourself Out There!" goals to share your work beyond the classroom.
 ---
 

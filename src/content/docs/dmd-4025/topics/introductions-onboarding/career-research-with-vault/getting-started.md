@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 description: Logging into Vault (Firsthand) and finding your profession.
+draft: true
 ---
 
 ## Logging In

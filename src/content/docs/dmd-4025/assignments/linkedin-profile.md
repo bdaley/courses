@@ -1,5 +1,5 @@
 ---
-title: D. LinkedIn Profile
+title: LinkedIn Profile
 description: Create or update your personal LinkedIn profile.
 ---
 

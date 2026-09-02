@@ -1,5 +1,5 @@
 ---
-title: B. Portfolio Website
+title: Portfolio Website
 description: Develop a professional-level portfolio website and present it in class.
 ---
 

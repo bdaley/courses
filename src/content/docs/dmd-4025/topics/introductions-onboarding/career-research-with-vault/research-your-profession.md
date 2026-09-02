@@ -1,6 +1,7 @@
 ---
 title: Research your Profession
 description: An in-class, group, and individual exercise using Vault to research professions.
+draft: true
 ---
 
 1. [**Use Vault to find a job/profession**](https://uconn.firsthand.co/careers/professions) **that you intend to pursue after graduation**. (5 min)

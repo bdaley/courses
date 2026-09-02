@@ -5,9 +5,6 @@ description: All course topics for DMD 4025.
 
 - [Introductions + Onboarding](introductions-onboarding/)
 - [About Brian](introductions-onboarding/about-brian)
-- [Career Research with Vault](introductions-onboarding/career-research-with-vault/)
-- [Getting Started](introductions-onboarding/career-research-with-vault/getting-started)
-- [Research your Profession](introductions-onboarding/career-research-with-vault/research-your-profession)
 - [How to Design Your Life](introductions-onboarding/how-to-design-your-life)
 - [Resumes](resumes)
 - [Portfolio Website](portfolio-website)

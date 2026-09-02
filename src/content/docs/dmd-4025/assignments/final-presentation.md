@@ -1,5 +1,5 @@
 ---
-title: J. Final Presentation
+title: Final Presentation
 description: Final presentation of your elevator pitch, portfolio website, and show reel.
 next: false
 ---

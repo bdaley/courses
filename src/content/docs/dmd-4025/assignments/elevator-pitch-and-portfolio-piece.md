@@ -1,5 +1,5 @@
 ---
-title: H. Elevator Pitch
+title: Elevator Pitch
 description: Write and deliver a 30 to 45-second elevator pitch to the class.
 ---
 

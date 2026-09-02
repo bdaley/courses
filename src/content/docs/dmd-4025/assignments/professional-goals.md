@@ -1,5 +1,5 @@
 ---
-title: A. Professional Goals
+title: Professional Goals
 description: Write a statement of your professional goals and a three-year plan, and present it to the class.
 ---
 
@@ -37,7 +37,7 @@ You will also give a 5 minute presentation introducing yourself, your profession
 
 #### How to submit:
 
-1. Create a document called: "A. Professional Goals + Three-Year Plan_[Your First Name Your Last Name]"
+1. Create a document called: "Professional Goals + Three-Year Plan_[Your First Name Your Last Name]"
 2. Submit the document as a Word or PDF file in HuskyCT
 
 #### Presentation:

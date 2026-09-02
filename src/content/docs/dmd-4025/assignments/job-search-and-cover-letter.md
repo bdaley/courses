@@ -1,5 +1,5 @@
 ---
-title: G. Job Search + Cover Letter
+title: Job Search + Cover Letter
 description: Identify 2 potential internships or jobs and write a one-page cover letter for 1 of them.
 ---
 

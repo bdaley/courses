@@ -1,5 +1,5 @@
 ---
-title: C. Resume
+title: Resume
 description: Update and refine your résumé.
 ---
 
