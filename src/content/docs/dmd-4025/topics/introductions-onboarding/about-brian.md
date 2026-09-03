@@ -1,6 +1,7 @@
 ---
 title: About Brian
 description: A brief introduction to your instructor, Brian Daley.
+draft: true
 ---
 
 In class: A brief introduction to your instructor.

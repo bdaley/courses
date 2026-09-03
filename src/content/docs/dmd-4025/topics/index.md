@@ -3,9 +3,6 @@ title: Topics
 description: All course topics for DMD 4025.
 ---
 
-- [Introductions + Onboarding](introductions-onboarding/)
-- [About Brian](introductions-onboarding/about-brian)
-- [How to Design Your Life](introductions-onboarding/how-to-design-your-life)
 - [Resumes](resumes)
 - [Portfolio Website](portfolio-website)
 - [LinkedIn Profiles](linkedin-profiles)

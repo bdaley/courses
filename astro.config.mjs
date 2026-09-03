@@ -101,10 +101,11 @@ export default defineConfig({
 							label: 'Introductions + Onboarding',
 							collapsed: true,
 							items: [
-								{ slug: 'dmd-4025/topics/introductions-onboarding' },
-								{ slug: 'dmd-4025/topics/introductions-onboarding/about-brian' },
-								{ slug: 'dmd-4025/topics/introductions-onboarding/how-to-design-your-life' },
 								{ slug: 'dmd-4025/topics/introductions-onboarding/how-to-design-your-life-video' },
+								{
+									slug: 'dmd-4025/topics/introductions-onboarding/career-research-lab',
+									badge: { text: 'Lab', variant: 'tip' },
+								},
 								{
 									slug: 'dmd-4025/assignments/professional-goals',
 									badge: { text: 'Assignment', variant: 'caution' },
