@@ -276,7 +276,6 @@ export default defineConfig({
 					label: 'DMD 3440/5440 · Introduction to Mobile Application Development',
 					items: [
 						{ slug: 'dmd-3440' },
-						{ slug: 'dmd-3440/syllabus' },
 						{
 							label: 'Introduction',
 							collapsed: true,

@@ -7,29 +7,27 @@ import { LinkCard } from '@astrojs/starlight/components';
 
 import { Quiz } from 'starlight-quiz/components';
 
-This lab gets your **development environment** running and puts your first Expo app on a screen. By the end you'll have a personalized profile app running on your phone, an emulator, or the web.
+This lab gets your **development environment** running and puts your first Expo app on a screen. By the end you'll have a basic **"Hello World"** app running in an emulator/simulator or web browser.
 
 ## What You Need
 
 - **Node.js** (a recent LTS version) — the JavaScript runtime that powers Expo. Install from [nodejs.org](https://nodejs.org/)
 - **VS Code** — your code editor
-- **Expo Go** — a free app from the App Store or Google Play that runs Expo projects on your phone
 
 ## Create Your First App
 
 Open a terminal and run:
 
 ```bash
-npx create-expo-app@latest my-profile-app
-cd my-profile-app
+npx create-expo-app@latest my-hello-world-app
+cd my-hello-world-app
 npx expo start
 ```
 
 `npx expo start` launches the Expo development server. From here you can:
 
-- Scan the QR code with **Expo Go** on your phone to run the app on a real device
 - Press `w` to open it in your web browser
-- Press `a` (Android) or `i` (iOS) to run it in an emulator
+- Press `a` (Android) or `i` (iOS) to run it in an emulator/simulator
 
 :::caution[Windows PowerShell: `npm` cannot be loaded / `npm.ps1` blocked]
 If `npm run web` (or `npx expo start`) fails on Windows with an error like `cannot be loaded because running scripts is disabled on this system` or referencing `npm.ps1`, this is Windows PowerShell blocking the `npm.ps1` shim — not a problem in your Expo app.
@@ -64,13 +62,7 @@ Confirm with `Y`, then restart your terminal and run `npm run web` again. `Remot
 > Alternative: you can also use **Command Prompt (`cmd.exe`)** instead of PowerShell, which is not affected by this policy.
 :::
 
-:::note
-Not sure whether to test in Expo Go or a development build? Expo has a helpful video and guide on the difference.
-:::
-
 <LinkCard title="How to Create Your First Expo App" href="/courses/dmd-3440/introduction/expo-first-app-video/" description="Watch on dedicated video page." />
-
-<LinkCard title="Expo Go vs Development Builds" href="/courses/dmd-3440/introduction/expo-go-vs-dev-builds-video/" description="Watch on dedicated video page." />
 
 [Expo docs: Create a new app](https://docs.expo.dev/get-started/creation/)
 
@@ -91,20 +83,44 @@ Where do the screens of your Expo app live?
 - [ ] app.json
 </Quiz>
 
-## Lab: Customize a Personal Profile App
+## Lab: Build a Basic App using Expo/React Native
 
-Your task is to make the starter app yours. Customize it into a simple **personal profile** screen. In the main screen file, change:
+Your task is to create a simple mobile app that displays **"Hello World"** on the screen.
 
-1. The greeting text to your name
-2. Add a line describing your major or interests
-3. Change the background color or text styling
-4. Add at least one more element — an image, a second line of text, or a button
+1. Open the main screen file (e.g., `app/index.tsx` or `app/(tabs)/index.tsx` depending on the template).
+2. Ensure the screen renders the text `Hello World`. For example:
+
+   ```tsx
+   import { Text, View } from 'react-native';
+
+   export default function Index() {
+     return (
+       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+         <Text>Hello World</Text>
+       </View>
+     );
+   }
+   ```
+
+3. You may style it however you like, but the core functionality — displaying "Hello World" — must be present.
 
 Try editing the styles in the `StyleSheet.create` block to see how styling changes in real time with **fast refresh**. Save the file and the app updates instantly.
 
-## Deliverable
+## Demonstrate Your App
 
-Submit a screenshot of your running, personalized profile app, along with a short note about anything you found confusing during setup. This is your first of many deliverables that build toward the final project.
+Record a short video (**no longer than 1 minute**). The video should clearly show the app launching and displaying "Hello World."
+
+It should show your app running:
+
+- In a mobile emulator or simulator
+- Or in a web browser
+
+## Submit Your Work
+
+Submit via HuskyCT:
+
+1. A `.zip` file containing your source code
+2. The video (or a link to your video) demonstration
 
 ## Learn More
 
