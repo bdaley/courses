@@ -104,7 +104,7 @@ export default defineConfig({
 								{ slug: 'dmd-4025/topics/introductions-onboarding/how-to-design-your-life-video' },
 								{
 									slug: 'dmd-4025/topics/introductions-onboarding/career-research-lab',
-									badge: { text: 'Lab', variant: 'tip' },
+									badge: { text: 'Lab', variant: 'success' },
 								},
 								{
 									slug: 'dmd-4025/assignments/professional-goals',
