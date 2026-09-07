@@ -2,6 +2,10 @@
 
 Supplemental learning content for Digital Media & Design courses at the University of Connecticut. Built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build), published to GitHub Pages at `https://bdaley.github.io/courses/`.
 
+---
+
+*Course site maintenance automated via **Hermes Agent** — fixes and PRs are generated from GitHub issues automatically.*
+
 Courses hosted:
 
 - **DMD 1070/5070 — Web Design I**: the design process, HTML, CSS, and deploying a complete website.
