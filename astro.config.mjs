@@ -113,23 +113,22 @@ export default defineConfig({
 							],
 						},
 						{
+							label: 'Portfolio Website',
+							collapsed: true,
+							items: [
+								{
+									slug: 'dmd-4025/topics/portfolio-website',
+									badge: { text: 'Assignment', variant: 'caution' },
+								},
+							],
+						},
+						{
 							label: 'Resumes',
 							collapsed: true,
 							items: [
 								{ slug: 'dmd-4025/topics/resumes' },
 								{
 									slug: 'dmd-4025/assignments/resume',
-									badge: { text: 'Assignment', variant: 'caution' },
-								},
-							],
-						},
-						{
-							label: 'Portfolio Website',
-							collapsed: true,
-							items: [
-								{ slug: 'dmd-4025/topics/portfolio-website' },
-								{
-									slug: 'dmd-4025/assignments/portfolio-website',
 									badge: { text: 'Assignment', variant: 'caution' },
 								},
 							],

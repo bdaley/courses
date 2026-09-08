@@ -4,7 +4,6 @@ description: All assignments for DMD 4025.
 ---
 
 - [Professional Goals](professional-goals)
-- [Portfolio Website](portfolio-website)
 - [Resume](resume)
 - [LinkedIn Profile](linkedin-profile)
 - [Show Reel](show-reel)
