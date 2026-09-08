@@ -1,0 +1,131 @@
+---
+title: What Is UX Design?
+description: User experience defined, what a UX designer does, and why it matters for mobile apps
+sidebar:
+  order: 2
+---
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+import InteractiveCode from '../../../../components/InteractiveCode.astro';
+import { Quiz } from 'starlight-quiz/components';
+
+Adapted from Chapter 1 of the Interaction Design Foundation's *Basics of UX Design*. The examples here are rewritten for mobile apps.
+
+## UX is how it feels to use
+
+**User experience (UX)** is simply how a person feels when they use a product or service. For us, that product is almost always a **mobile app**.
+
+Think of it like a restaurant. The food matters — but so do the wait time, the noise, the menu you can actually read, and whether the server listens. Diners remember the whole evening, not just the plate. App users are the same: they remember the whole experience, not just one screen.
+
+You can add every feature imaginable to an app. Success still rides on three questions:
+
+- Does the app give the user **value**?
+- Is it **simple** to use and navigate?
+- Is it actually **enjoyable** to use?
+
+A UX designer can claim a good job only when the answer is "yes" to all three.
+
+<Quiz id="mobile-ux-what-is-ux" title="What is UX?">
+User experience (UX) is:
+
+- [ ] Only the app's logo and colors
+- [x] How a person feels when they use the product
+- [ ] The programming language the app is written in
+- [ ] The price of the phone
+</Quiz>
+
+## UX vs. UI — don't confuse them
+
+**User interface (UI)** is the specific surface a person touches: buttons, type, color, spacing, icons, and layout. **UX** is the whole journey that surface serves — including what happens before and after the tap.
+
+A bus-tracking app with beautiful buttons still has terrible UX if the arrival times are wrong. A plain-looking app with accurate times and one-tap saving can have great UX.
+
+> Watch the dedicated video page: <LinkCard title="UX vs. UI (Video)" href="/courses/dmd-3440/mobile-ux-design/ux-vs-ui-video/" description="Watch on dedicated video page." />
+
+<Quiz id="mobile-ux-ui-vs-ux" title="UI vs. UX">
+Which statement is correct?
+
+- [ ] UI and UX are the same thing
+- [x] UI is the visual surface; UX is the whole experience of using the product
+- [ ] UX is only about making things pretty
+- [ ] UI includes user research and testing
+</Quiz>
+
+## What does a UX designer do?
+
+A **UX designer** investigates how users feel about a product, then uses that knowledge to guide what the team builds. In practice that means:
+
+1. **Research** — watch and ask real users (interviews, observation)
+2. **Analyze** — turn notes into patterns: goals, pain points, needs
+3. **Share** — tell designers and developers what matters most
+4. **Verify** — check the built app against the findings and iterate
+
+On a small class team, you play all four roles. That's normal — startups work the same way.
+
+Try the example below. Both buttons *work*. Only one communicates clearly:
+
+<InteractiveCode
+  html={`
+<div class="phone">
+  <h2>Save your trip?</h2>
+  <p class="muted">Bad button copy makes people hesitate.</p>
+  <button class="vague">Do it</button>
+  <button class="clear">Save bus route</button>
+</div>
+`}
+  css={`
+.phone { max-width: 380px; margin: 0 auto; padding: 24px; font-family: system-ui, sans-serif; border: 1px solid #ddd; border-radius: 16px; }
+.muted { color: #555; }
+button { display: block; width: 100%; margin-top: 12px; padding: 14px; font-size: 16px; border-radius: 10px; border: 1px solid #333; }
+.vague { background: #eee; }
+.clear { background: #14213d; color: #fff; }
+`}
+/>
+
+Try changing the vague button's label from "Do it" to something specific, like "Save route 5:42 PM". Notice how specificity alone reduces hesitation — that's UX writing doing its job.
+
+## Why UX matters
+
+In the early web, there was little competition — designers could build what *they* thought was cool and hope users showed up. That era is over.
+
+On mobile, the stakes are higher than on desktop:
+
+- **Alternatives are one tap away.** If your app confuses someone, the App Store and Play Store offer five replacements.
+- **Attention is fragmented.** People use phones on buses, in lines, mid-conversation. Confusion plus distraction equals abandonment.
+- **Ratings are public.** A frustrating release becomes a one-star review that future users read before installing.
+
+Designing for UX doesn't gamble on brand loyalty. It earns success by fitting real user needs.
+
+<Quiz id="mobile-ux-why-matters" title="Why UX matters">
+Why does UX matter MORE on mobile than it used to on the early web?
+
+- [ ] Phones are larger than desktops
+- [x] Users have many alternatives, fragmented attention, and public ratings
+- [ ] Mobile apps never have competition
+- [ ] Users never leave bad apps
+</Quiz>
+
+## Where you'll encounter UX work
+
+UX matters most in four project situations — all of which describe this course:
+
+- **Complex projects** — more features handled badly drives users away faster
+- **Small teams / startups** — no dedicated UX team, so everyone owns UX (that's you)
+- **Projects with real budgets** — teams spend on UX to protect their investment
+- **Long projects** — like your final project, where early UX mistakes compound
+
+## The method: user-centered design
+
+The main methodology is **user-centered design**: design with users' needs and expected behaviors in mind from the start — not as decoration at the end. It is *a* means to good UX, not the only tool, but it is the one this course follows:
+
+Research users → define the problem → imagine solutions → prototype → test → repeat.
+
+You'll practice the full loop in [User-Centered Design](../user-centered-design/).
+
+## Learn more
+
+- <LinkCard title="The 7 Factors That Shape Mobile UX" href="/courses/dmd-3440/mobile-ux-design/seven-factors-mobile-ux/" description="Continue to the next page in this section." />
+- [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/)
+- [Material Design](https://m3.material.io/)
+- [NN/g: UX vs. UI](https://www.nngroup.com/videos/ux-vs-ui/)

@@ -285,6 +285,11 @@ export default defineConfig({
 							items: [{ autogenerate: { directory: 'dmd-3440/introduction' } }],
 						},
 						{
+							label: 'UI/UX Design for Mobile',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'dmd-3440/mobile-ux-design' } }],
+						},
+						{
 							label: 'React Native Fundamentals',
 							collapsed: true,
 							items: [{ autogenerate: { directory: 'dmd-3440/react-native-fundamentals' } }],
