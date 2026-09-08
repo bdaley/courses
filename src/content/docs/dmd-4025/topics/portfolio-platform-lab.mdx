@@ -1,0 +1,146 @@
+---
+title: "Portfolio Platform Research Lab"
+description: In-class lab to compare hand-coding vs. site builders, research domain names properly, and choose a platform for your portfolio website.
+sidebar:
+  badge:
+    text: Lab
+    variant: success
+---
+
+import { Card, CardGrid, Steps, Aside, Badge, LinkCard } from '@astrojs/starlight/components';
+
+This hands-on lab prepares you to build your [Portfolio Website](/courses/dmd-4025/topics/portfolio-website/). You will compare **hand-coding vs. site builders**, research real costs (including whether a domain is included in hosting), learn to check domain availability the right way, and leave with a tentative decision to post in HuskyCT.
+
+<Aside type="caution" title="Research only — don't buy anything in class">
+Do not purchase a domain or plan during this lab. Prices, renewal rates, and availability change — gather data today, decide later.
+</Aside>
+
+## Learning Objectives
+
+By the end of this lab you will be able to:
+
+- Decide whether to **hand-code or use a site builder** based on your skills, time, and career goals
+- Compare platforms on cost, **renewal pricing**, domain inclusion, templates, and lock-in
+- Check domain availability correctly using a registrar + WHOIS (not the browser address bar)
+- Post a tentative platform + domain decision with 2 draft personal site goals
+
+---
+
+## Part 1: Hand-Code vs. Builder Self-Check (10 min, individually)
+
+Answer honestly — there is no single right answer. **Hand-coding is preferred if you want to show coding skills to employers** (especially web/UX paths). Using **AI assistance** for hand-coding is allowed and encouraged.
+
+- Can I already build a responsive page with HTML/CSS, or am I willing to learn with AI help this semester?
+- Do I have time for custom code alongside my other portfolio work?
+- Does my target field reward custom code (web design, UX, creative tech) or polished output fast (motion, illustration, photo, video)?
+
+Write one line: **My lean is ___ (hand-code / builder / undecided) because ___.**
+
+---
+
+## Part 2: Platform Research (25 min, individually)
+
+Research **2 options** (at minimum: 1 builder + 1 hand-code path, or 2 builders) and fill the comparison worksheet below. Prices change often — record what you see **today** plus the **renewal** price.
+
+**What to record for each platform:** monthly/annual cost, student discount, **renewal price** (the common trap), is a custom domain included (year 1 only or ongoing?), free WHOIS privacy?, portfolio templates/quality, responsive/mobile, video + large-image support, custom domain connection, can you export/leave (lock-in risk)?
+
+<CardGrid>
+  <Card title="Site builders — popular starting points" icon="star">
+    No restrictions — you may choose any platform. Common picks:
+
+    - [Squarespace](https://www.squarespace.com/) — polished templates, built-in commerce ([50% student discount](https://www.squarespace.com/students/))
+    - [Wix](https://www.wix.com/) — flexible drag-and-drop, free tier to test
+    - [Webflow](https://webflow.com/) — fine visual control, closer to hand-coded CSS
+    - [Framer](https://www.framer.com/) — design-first, strong layout/motion control
+    - [Cargo](https://cargo.site/) — experimental layouts popular in art/design; free tier
+    - [Format](https://www.format.com/) — built for photographers/visual artists, client proofing
+    - [Pixpa](https://www.pixpa.com/) — budget-friendly, galleries + store + blog
+    - [WordPress.com](https://wordpress.com/) — long-term flexibility, many themes/plugins
+    - [Adobe Portfolio](https://portfolio.adobe.com/) — **included free with Creative Cloud** (check your UConn access first)
+
+    Behance, Dribbble, or Instagram are good *supplements* — they do not replace a personal site on your own domain.
+  </Card>
+  <Card title="Hand-code paths + AI" icon="code">
+    Pair free hosting with a separately purchased domain:
+
+    - Hosting: [GitHub Pages](https://pages.github.com/), [Netlify](https://www.netlify.com/), or [Vercel](https://vercel.com/)
+    - Domain registrar: [Namecheap](https://www.namecheap.com/), [Porkbun](https://porkbun.com/), or [Cloudflare Registrar](https://www.cloudflare.com/products/registrar/)
+    - AI help is encouraged: generating boilerplate, debugging responsive layouts, writing alt text and project descriptions
+
+    Record: hosting cost ($0 on free tiers?), domain cost + renewal, and how much time you can realistically commit.
+  </Card>
+</CardGrid>
+
+### Comparison Worksheet
+
+Copy this table into your notes or Google Doc:
+
+|  | Option A | Option B |
+|---|---|---|
+| Platform + plan name | | |
+| Cost today (monthly/annual) | | |
+| **Renewal price** | | |
+| Student discount? | | |
+| Custom domain included? (Year 1? Renewal years?) | | |
+| Free WHOIS privacy? | | |
+| Templates / design quality | | |
+| Responsive + video/image support | | |
+| Can I leave / export my site? | | |
+| Biggest pro / biggest con | | |
+
+<Aside type="tip" title="Watch for the two classic traps">
+1. **Intro vs. renewal pricing** — a $3/mo deal that renews at $15/mo is not a $3/mo plan.
+2. **"Free domain"** — often year 1 only, sometimes only on annual billing. Check what years 2+ cost.
+</Aside>
+
+---
+
+## Part 3: Domain Mini-Tutorial + Research (15 min, individually)
+
+### Why typing a name into your browser proves nothing
+
+A common mistake: typing `yourname.com` into the browser, seeing no website, and assuming the domain is available. **That tells you nothing.** A domain can be registered, parked, reserved, or simply have no site attached — and still belong to someone else.
+
+The only reliable check is a **registrar search** plus a **[WHOIS lookup](https://lookup.icann.org/)**.
+
+<Steps>
+1. **Brainstorm 2–3 domain ideas** (e.g., `firstname-lastname.com`). Prefer `.com` for professional portfolios; note 1–2 fallback TLDs (`.net`, `.co`, `.art`, `.design`) if needed.
+2. **Search each idea on a registrar** — [Namecheap](https://www.namecheap.com/), [Porkbun](https://porkbun.com/), or [Cloudflare Registrar](https://www.cloudflare.com/products/registrar/). Record for each: **available or taken**, purchase price, **renewal price**, and whether WHOIS privacy is free. Do not purchase.
+3. **Look up one TAKEN name on [lookup.icann.org](https://lookup.icann.org/)**. Compare: a registered domain shows registrar, creation/expiration dates, and status codes; an available name returns no match. This is the difference the browser bar cannot show you.
+4. **If your first choice is taken**, note your plan: variation (middle initial, discipline keyword), different TLD, or contact the owner? Also check matching social handles before committing.
+</Steps>
+
+<Aside type="note" title="Domain privacy">
+WHOIS records are public. Choose a registrar with **free domain privacy** (e.g., Namecheap, Porkbun, Cloudflare, Squarespace Domains) so your personal contact details stay shielded. See the [note on domain registration](/courses/dmd-4025/topics/portfolio-website/#a-note-about-domain-registration).
+</Aside>
+
+Record this domain table alongside your platform comparison:
+
+|  | Idea 1 | Idea 2 | Idea 3 |
+|---|---|---|---|
+| Domain name | | | |
+| Available or taken? | | | |
+| Price / renewal price | | | |
+| Privacy free? | | | |
+| Backup plan if taken | | | |
+
+---
+
+## Part 4: Small Groups — Compare + Cross-Pollinate (15 min)
+
+1. **Gather** in groups of 3–4 with mixed platform picks. Bring your worksheet.
+2. **Round-robin (2 min each):** share your two options, domain findings, and biggest cost gotcha (renewal trap? domain-not-included surprise?).
+3. **Cross-pollinate:** ask what others found that you missed — templates, video support, export limits, registrar pricing. There is no report-out; the goal is to broaden everyone's options.
+
+You **may choose a platform you did not personally research** if a classmate's findings convince you — cite what swayed you in your exit ticket.
+
+---
+
+## Exit Ticket: Post in HuskyCT (5 min in class, finish as homework)
+
+Independently post your exit ticket to the **HuskyCT discussion forum** for this lab:
+
+- **My tentative platform is ___ because ___.** (Hand-code or builder? How does it fit my skills, time, and career goals? Name the plan and cost.)
+- **My domain:** idea(s), available or taken, price + renewal, privacy free? **Is a domain included in my hosting price — year 1 vs. renewal years?**
+- **My 2 draft personal site goals** (beyond the required criteria — e.g., resume page, contact page, logo, SEO, motion/transitions, process case study). See [Portfolio Website goals](/courses/dmd-4025/topics/portfolio-website/#goals).
+- (Optional) One thing a classmate's research changed my mind about.

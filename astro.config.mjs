@@ -120,6 +120,10 @@ export default defineConfig({
 									slug: 'dmd-4025/topics/portfolio-website',
 									badge: { text: 'Assignment', variant: 'caution' },
 								},
+								{
+									slug: 'dmd-4025/topics/portfolio-platform-lab',
+									badge: { text: 'Lab', variant: 'success' },
+								},
 							],
 						},
 						{

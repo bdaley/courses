@@ -5,6 +5,8 @@ description: Develop a professional-level portfolio website and present it in cl
 
 The biggest project in this class is your development of a personal website portfolio that serves as a professional-level showcase of your work. You will have the opportunity to share and present your in-progress website, and get feedback throughout the semester, before the final presentation and submission of your website.
 
+> **Not sure where to build your site?** Start with the [Portfolio Platform Research Lab](portfolio-platform-lab) — an in-class lab where you'll compare hand-coding vs. site builders, research domain names, and choose a platform.
+
 ## A Note About Domain Registration
 
 You can look up the contact details of a domain owner through what's called a "[WHOIS](https://lookup.icann.org/)" search. That means that your personal information will be publicly available for anyone to find. Many domain providers allow you to purchase domain privacy as an add-on (See: [Name.com](https://www.name.com/support/articles/205934677-Adding-Whois-Privacy)). This will shield your private information for WHOIS searches. As such, I highly recommend using a registrar that provides free domain privacy. If you find a domain registrar that provides free domain privacy, please let me know so I can add them to this list:
