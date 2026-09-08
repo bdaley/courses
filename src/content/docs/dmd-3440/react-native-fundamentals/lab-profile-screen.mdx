@@ -1,0 +1,344 @@
+---
+title: Social Profile Screen
+description: Build a single profile screen with standard React Native components in about an hour
+sidebar:
+  order: 5
+  badge:
+    text: Lab
+    variant: success
+---
+
+import { Quiz } from 'starlight-quiz/components';
+
+In this in-class lab you'll build **one complete screen** — a simplified social / artist profile — using only standard React Native components. No navigation, no APIs, no backend. Just layout.
+
+By the end you'll have used every core component from [Components & JSX](./components-and-jsx/): `View`, `Text`, `Image`, `TextInput`, `ScrollView`, `Pressable`, plus `StyleSheet` and Flexbox.
+
+## What You'll Build
+
+A single scrollable profile screen:
+
+1. **Header** — avatar `Image` + name `Text` + bio `Text` in a row
+2. **Stats row** — Posts / Followers / Following, spread across the screen
+3. **Action buttons** — Follow (`Pressable` + state) + Message
+4. **Search field** — `TextInput`
+5. **Post list** — 3 reusable cards (`Image` + `Text`), rendered from data with props
+
+## What You Need
+
+- An Expo project running (`npx expo start`, press `w` for web or scan the QR with Expo Go)
+- The starter code below pasted into `app/index.tsx` (or `App.js` if you're on Snack)
+
+## Starter Code
+
+Copy this to start. It compiles, but the screen is empty — that's your job.
+
+```tsx
+import { useState } from 'react';
+import {
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+
+const POSTS = [
+  { id: '1', title: 'Studio session', image: 'https://picsum.photos/400/300?random=1' },
+  { id: '2', title: 'Live at Storrs', image: 'https://picsum.photos/400/300?random=2' },
+  { id: '3', title: 'New merch drop', image: 'https://picsum.photos/400/300?random=3' },
+];
+
+function PostCard({ title, image }) {
+  return (
+    <View style={styles.card}>
+      <Image source={{ uri: image }} style={styles.cardImage} />
+      <Text style={styles.cardTitle}>{title}</Text>
+    </View>
+  );
+}
+
+export default function Index() {
+  return (
+    <ScrollView style={styles.container}>
+      {/* TODO Parts 1–3 go here */}
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    margin: 12,
+    overflow: 'hidden',
+  },
+  cardImage: {
+    width: '100%',
+    height: 180,
+  },
+  cardTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    padding: 12,
+  },
+});
+```
+
+:::tip[Images need a size]
+In React Native a network `Image` renders nothing unless it has explicit dimensions. The starter's `cardImage` (`width: '100%'`, `height: 180`) and the avatar style you'll add (`width: 80, height: 80`) handle this.
+:::
+
+## Suggested Timebox (~70 min)
+
+| Time | Activity |
+| --- | --- |
+| 0–10 | Instructor live-codes the header. Students follow along. |
+| 10–25 | Part 1 + 2 guided: header and stats row together. |
+| 25–55 | Parts 3 + 4 solo / pairs: buttons, search, post list. |
+| 55–70 | Show & tell: scan QR codes, 3 volunteers demo. |
+
+## Part 1 — Header Row (15 min)
+
+Add this inside the `ScrollView`, above the TODO comment. It practices `View` as a row container, `Image`, and `Text` hierarchy:
+
+```tsx
+<View style={styles.header}>
+  <Image
+    source={{ uri: 'https://picsum.photos/200?random=10' }}
+    style={styles.avatar}
+  />
+  <View style={styles.headerText}>
+    <Text style={styles.name}>Alex Chen</Text>
+    <Text style={styles.bio}>DMD · Photography & design</Text>
+  </View>
+</View>
+```
+
+Add the styles:
+
+```tsx
+header: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  padding: 16,
+  backgroundColor: '#fff',
+},
+avatar: {
+  width: 80,
+  height: 80,
+  borderRadius: 40,
+},
+headerText: {
+  marginLeft: 12,
+  flex: 1,
+},
+name: {
+  fontSize: 22,
+  fontWeight: 'bold',
+},
+bio: {
+  fontSize: 14,
+  color: '#666',
+  marginTop: 4,
+},
+```
+
+<Quiz id="lab-profile-row" title="Header layout">
+Which style makes the avatar sit *beside* the name instead of above it?
+
+- [x] `flexDirection: 'row'` on the header container
+- [ ] `flexDirection: 'column'` on the header container
+- [ ] `textAlign: 'center'` on the name
+- [ ] `flex: 1` on the container
+
+Content after the answer list is hidden until submitted.
+`flexDirection: 'row'` lays children out left-to-right. Remember: React Native defaults to `column`, unlike the web.
+</Quiz>
+
+## Part 2 — Stats Row (10 min)
+
+Below the header, add a row of three stats. This is pure Flexbox: one container, `justifyContent: 'space-between'`.
+
+```tsx
+<View style={styles.statsRow}>
+  <View style={styles.stat}>
+    <Text style={styles.statNumber}>127</Text>
+    <Text style={styles.statLabel}>Posts</Text>
+  </View>
+  <View style={styles.stat}>
+    <Text style={styles.statNumber}>4.2k</Text>
+    <Text style={styles.statLabel}>Followers</Text>
+  </View>
+  <View style={styles.stat}>
+    <Text style={styles.statNumber}>380</Text>
+    <Text style={styles.statLabel}>Following</Text>
+  </View>
+</View>
+```
+
+```tsx
+statsRow: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  paddingHorizontal: 24,
+  paddingVertical: 16,
+  backgroundColor: '#fff',
+  marginTop: 8,
+},
+stat: {
+  alignItems: 'center',
+},
+statNumber: {
+  fontSize: 18,
+  fontWeight: 'bold',
+},
+statLabel: {
+  fontSize: 12,
+  color: '#666',
+},
+```
+
+## Part 3 — Buttons + Search (15 min)
+
+Buttons teach `Pressable` and state. Search teaches `TextInput`.
+
+```tsx
+function FollowButton() {
+  const [following, setFollowing] = useState(false);
+  return (
+    <Pressable
+      onPress={() => setFollowing(!following)}
+      style={[styles.button, following && styles.buttonActive]}
+    >
+      <Text style={styles.buttonText}>{following ? 'Following' : 'Follow'}</Text>
+    </Pressable>
+  );
+}
+```
+
+Render it plus a search field:
+
+```tsx
+<View style={styles.actions}>
+  <FollowButton />
+</View>
+<TextInput
+  placeholder="Search posts..."
+  style={styles.search}
+  placeholderTextColor="#999"
+/>
+```
+
+```tsx
+actions: {
+  padding: 16,
+},
+button: {
+  backgroundColor: '#0a7ea4',
+  borderRadius: 10,
+  paddingVertical: 12,
+  alignItems: 'center',
+  minHeight: 48,
+},
+buttonActive: {
+  backgroundColor: '#333',
+},
+buttonText: {
+  color: '#fff',
+  fontWeight: 'bold',
+  fontSize: 16,
+},
+search: {
+  backgroundColor: '#fff',
+  borderRadius: 10,
+  marginHorizontal: 16,
+  marginBottom: 8,
+  paddingHorizontal: 14,
+  paddingVertical: 12,
+  fontSize: 16,
+},
+```
+
+:::note[Touch targets]
+Keep tappable elements at least **44 × 44 points** (Apple) / **48 × 48 dp** (Material). `paddingVertical: 12` + `minHeight: 48` on the button gets you there.
+:::
+
+<Quiz id="lab-profile-state" title="Button state">
+Why does the Follow button use `useState` instead of a prop?
+
+- [ ] Props render faster than state
+- [x] The pressed / unpressed value is the button's own changing memory
+- [ ] State is required for all Text components
+- [ ] Props cannot hold strings
+
+Content after the answer list is hidden until submitted.
+Rule of thumb from [Props & State](./props-and-state/): data passed in from a parent → props. Data that changes because the user interacted → state.
+</Quiz>
+
+## Part 4 — Post List with Props (15 min)
+
+Render the starter's `POSTS` array with your reusable `PostCard`. One line of JSX renders all three cards:
+
+```tsx
+{POSTS.map((post) => (
+  <PostCard key={post.id} title={post.title} image={post.image} />
+))}
+```
+
+Check your understanding:
+
+<Quiz id="lab-profile-props" title="Reusable cards">
+What do `title` and `image` do in `<PostCard title={post.title} image={post.image} />`?
+
+- [ ] They are state values the card can overwrite
+- [x] They are props — inputs the parent passes in that the card reads but does not change
+- [ ] They are StyleSheet names
+- [ ] They are file imports
+
+Content after the answer list is hidden until submitted.
+Same `PostCard` component, different props → different cards. That's the whole idea of props.
+</Quiz>
+
+## Stretch Goals (if you finish early)
+
+Pick one:
+
+- **Like button** — add `useState` inside `PostCard` so each card toggles 🤍 / ❤️ independently
+- **Working search** — store the `TextInput` value in state and `.filter()` `POSTS` by title
+- **Thumb-zone polish** — move the Follow button toward the bottom of the screen and note why that helps one-handed use
+
+## Common Pitfalls
+
+- **Forgot an import?** Every component (`View`, `Text`, `Image`, …) must appear in the `import { … } from 'react-native'` line or you get `Unable to resolve` / `is not defined`.
+- **Bare text?** All strings must be wrapped in `<Text>`. A stray `Hello` directly inside a `View` crashes with `Text strings must be rendered within a <Text> component`.
+- **Invisible image?** Network images need `width` + `height`. If your avatar is blank, check the style first.
+- **Stacked instead of side-by-side?** You probably need `flexDirection: 'row'` — the default is `column`.
+
+## Deliverable
+
+Submit via HuskyCT before you leave (or by midnight if specified in class):
+
+1. A **link to your Expo Snack / project** (or GitHub repo)
+2. A **screenshot** of the running screen (Expo Go, simulator, or web)
+
+Checklist — your screen must show:
+
+- [ ] Header with avatar image, name, and bio in a row
+- [ ] Stats row spread with Flexbox (`row` + `space-between`)
+- [ ] Working Follow button (toggles text on press, ≥ 44pt target)
+- [ ] Search `TextInput` and at least 3 post cards rendered via props
+
+## Learn More
+
+- [React Native: Core Components and APIs](https://reactnative.dev/docs/components-and-apis)
+- [React Native: A walkthrough of core components](https://reactnative.dev/docs/tutorial)
+- [Components & JSX](./components-and-jsx/)
+- [Props & State](./props-and-state/)
+- [Styling with Flexbox](./styling-with-flexbox/)
