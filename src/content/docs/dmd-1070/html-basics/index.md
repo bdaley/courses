@@ -1,6 +1,8 @@
 ---
 title: HTML Basics
 description: Week 2 - Introduction to HTML tags, attributes, elements, and document structure
+sidebar:
+  order: 0
 ---
 
 - [Tags, Attributes, & Elements](tags/)
@@ -18,3 +20,4 @@ description: Week 2 - Introduction to HTML tags, attributes, elements, and docum
 - [Comments](comments/)
 - [Validating HTML](validating-html/)
 - [Intro to DevTools](intro-to-devtools/)
+- [Campus Club Site Lab](lab-campus-club-site/)
