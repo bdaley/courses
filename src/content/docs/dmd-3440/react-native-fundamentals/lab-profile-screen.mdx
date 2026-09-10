@@ -20,7 +20,7 @@ A single scrollable profile screen:
 
 1. **Header** — avatar `Image` + name `Text` + bio `Text` in a row
 2. **Stats row** — Posts / Followers / Following, spread across the screen
-3. **Action buttons** — Follow (`Pressable` + state) + Message
+3. **Action button** — Follow (`Pressable` + state)
 4. **Search field** — `TextInput`
 5. **Post list** — 3 reusable cards (`Image` + `Text`), rendered from data with props
 
@@ -209,6 +209,10 @@ statLabel: {
 
 Buttons teach `Pressable` and state. Search teaches `TextInput`.
 
+### Step A — Define the Follow button
+
+Add this custom component at the top level of your file, next to the starter's existing `PostCard` — *not* inside `Index()`. It works like the toggle in [Props & State](./props-and-state/): the button keeps its own on/off memory and React re-renders it on every tap.
+
 ```tsx
 function FollowButton() {
   const [following, setFollowing] = useState(false);
@@ -223,7 +227,16 @@ function FollowButton() {
 }
 ```
 
-Render it plus a search field:
+Reading the code line by line:
+
+- `const [following, setFollowing] = useState(false)` — creates the button's memory. `following` is the current value (starting at `false`, i.e. not following yet) and `setFollowing` is the only way to change it.
+- `onPress={() => setFollowing(!following)}` — every tap flips the value from `false` to `true` and back. Changing state tells React to redraw the button automatically.
+- `style={[styles.button, following && styles.buttonActive]}` — an array of styles. The blue `button` style always applies; the dark `buttonActive` style is added only when `following` is `true`.
+- `{following ? 'Following' : 'Follow'}` — picks the label based on the current value. The `{...}` braces mean "run this JavaScript" inside the JSX.
+
+### Step B — Use it on the screen
+
+Render the button plus a search field inside your `ScrollView`, below the stats row from Part 2:
 
 ```tsx
 <View style={styles.actions}>
@@ -235,6 +248,10 @@ Render it plus a search field:
   placeholderTextColor="#999"
 />
 ```
+
+The `TextInput` is just an empty box until you style it. `placeholder` is the faint hint text shown before the user types anything, and `style={styles.search}` (the white rounded box below) is what makes the field visible at all.
+
+Add these styles inside your existing `StyleSheet.create`, alongside the Part 1–2 styles (don't forget the commas between entries):
 
 ```tsx
 actions: {
@@ -284,13 +301,24 @@ Rule of thumb from [Props & State](./props-and-state/): data passed in from a pa
 
 ## Part 4 — Post List with Props (15 min)
 
-Render the starter's `POSTS` array with your reusable `PostCard`. One line of JSX renders all three cards:
+You already have everything you need: the starter defined the `POSTS` data array and the reusable `PostCard` component at the top of the file. This part only *uses* them — nothing new to define. Add this block inside your `ScrollView`, after the search field, so the cards are the last thing on the screen:
 
 ```tsx
 {POSTS.map((post) => (
   <PostCard key={post.id} title={post.title} image={post.image} />
 ))}
 ```
+
+Reading the code line by line:
+
+- The outer `{...}` braces mean "run this JavaScript" inside your JSX.
+- `POSTS.map((post) => ...)` loops over the three items in the `POSTS` array and stamps out one `PostCard` per item — same component, different inputs.
+- `title={post.title} image={post.image}` are props: inputs the parent passes in that the card reads but never changes (see [Props & State](./props-and-state/)).
+- `key={post.id}` is a required nametag (`'1'`, `'2'`, `'3'`) so React can tell the three cards apart.
+
+:::tip[Check your work]
+Read down your `ScrollView` from top to bottom. It should go in this order: header (Part 1) → stats row (Part 2) → Follow button + search field (Part 3) → post list (this part). If something renders in the wrong spot, move that block up or down inside the `ScrollView`.
+:::
 
 Check your understanding:
 
