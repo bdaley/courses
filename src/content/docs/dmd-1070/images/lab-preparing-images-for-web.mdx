@@ -1,0 +1,332 @@
+---
+title: "Preparing Images for the Web"
+description: "Hands-on lab to source, crop, resize, compress, and publish optimized web images with valid HTML."
+sidebar:
+  order: 10
+  badge:
+    text: Lab
+    variant: success
+---
+
+import { Aside, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Quiz } from 'starlight-quiz/components';
+
+Stock photos are huge. Your job in this lab is to tame them: pick a theme, download 5+ photos, crop them to different shapes, resize and compress them for the web, cut the background out of one, then publish a simple page that proves every image is fast and accessible.
+
+You will build an **`images-lab/` page** in VS Code, validate it, then upload it to the DMD server so it is live on the web.
+
+## What success looks like
+
+When you are done you will have:
+
+- Five web-ready images in `images-lab/images/`, each resized, compressed, and descriptively named
+- A hero crop (wide 16:9 or 21:9, 1200–1600 px wide, under 500 KB)
+- Three crops at three different aspect ratios (square, portrait, landscape — each ~600 px wide, under 200 KB)
+- One background-removed image with transparency (PNG or WebP, 400–600 px wide, around/under 200 KB)
+- One `index.html` displaying all five with real `width`/`height`, purposeful `alt` text, and a format + dimensions + file-size caption under each
+- The page live at `https://dmd-static.grove.ad.uconn.edu/~NETID/images-lab/` and its URL submitted to HuskyCT
+
+Related pages: [Image Types](./image-types) · [Using the Image Element](./using-the-image-element) · [Organizing Images](./organizing-images) · [Resizing and Optimizing Images](./resizing-and-optimizing-images) · [Validating HTML](../html-basics/validating-html) · [File & Folder Naming](../getting-started/naming-files) · [Connecting to the DMD Server](../getting-started/lab-connecting-to-dmd-server)
+
+---
+
+## Prerequisites
+
+Before you start, confirm you have:
+
+- [ ] **VS Code** with a local site folder (the same folder you used for earlier labs)
+- [ ] **FileZilla connected** via SFTP to `dmd-static.grove.ad.uconn.edu`, remote folder `/home/NETID/public_html` — see [Connecting to the DMD Server](../getting-started/lab-connecting-to-dmd-server)
+- [ ] Access to **UCONN-SECURE** (on campus) or **Cisco AnyConnect VPN** (off campus)
+- [ ] Two browser tabs open: **[Squoosh](https://squoosh.app/)** (free side-by-side compressor) and the **[W3C Markup Validator](https://validator.w3.org/)**
+- [ ] A photo editor you are comfortable with: **Photoshop**, **Adobe Express Online**, **Photopea**, the **VS Code Image Resizer** extension, or **ImageResizer for Windows** — see [Resizing and Optimizing Images](./resizing-and-optimizing-images)
+
+<Aside type="tip" title="Pick your theme now — it makes everything faster">
+  Choose something with plenty of free stock photos: dogs, skateboarding, ramen, houseplants, space, sneakers — anything visual. You will stick with this one theme for all five images so the page reads like a real gallery, not five random downloads.
+</Aside>
+
+---
+
+## Part 1 — Download originals (10 min)
+
+<Steps>
+
+1. Go to [pexels.com](https://www.pexels.com/), [Unsplash](https://unsplash.com/), or [Pixabay](https://pixabay.com/) and download **5+ photos** that fit your theme. These are your **originals** — not the versions you will embed.
+
+2. In your local site folder, create a working folder and an archive folder for the originals:
+
+   ```
+   your-site-folder/
+   ├── images-lab/
+   │   ├── index.html      (you will create this in Part 3)
+   │   └── images/         (web-ready exports go here)
+   └── originals/          (camera/stock downloads live here, never uploaded)
+   ```
+
+   Folder names are all lowercase, no spaces, no special characters — see [File & Folder Naming](../getting-started/naming-files).
+
+3. Save the stock downloads into `originals/`. Keep the source page URLs — you will paste them into an HTML comment in Part 4 as credit (royalty-free still deserves attribution).
+
+</Steps>
+
+<Aside type="note" title="Never work on your only copy">
+  JPEG compression permanently discards data, and re-saving a JPEG compresses it again. Always keep the untouched original archived and export web copies from it — see [Resizing and Optimizing Images](./resizing-and-optimizing-images).
+</Aside>
+
+---
+
+## Part 2 — Crop, resize, and compress five web images (20 min)
+
+This is the core skill. For each image: **guess the format → export → compare in Squoosh → keep the smallest file that still looks good** — see [Image Types](./image-types).
+
+Use **descriptive lowercase-hyphenated names** (`harbor-sunset-hero.jpg`, not `IMG_0423.jpg` or `Hero Image.jpg`) — see [Organizing Images](./organizing-images).
+
+<Steps>
+
+1. **Image 1 → Hero (wide).** Pick your strongest photo. Crop it wide (**16:9 or 21:9**), resize to **1200–1600 px wide**, export as **JPEG or WebP**, and get it **under 500 KB**. Name it descriptively, e.g. `harbor-sunset-hero.jpg`.
+
+2. **Images 2–4 → Three different aspect ratios (~600 px wide, under 200 KB each).** Crop three different photos to three different shapes for variety:
+   - **Square (1:1)** — e.g. `skateboarder-square.jpg`
+   - **Portrait (4:5 or 3:4)** — e.g. `skateboarder-portrait.jpg`
+   - **Landscape (4:3 or 16:9)** — e.g. `skateboarder-landscape.jpg`
+
+   Resize each to about **600 px wide**. Photos → JPEG or WebP. Play with the quality slider in Squoosh until you find the balance point where the file shrinks but the image still looks clean.
+
+3. **Image 5 → Transparency (400–600 px wide, around/under 200 KB).** Pick a photo with a clear subject, **remove the background** with your editor's background-removal tool, and export as **PNG or WebP with transparency**. JPEG cannot do transparency — there is no setting that adds it — so this one must be PNG or WebP. E.g. `sneaker-cutout.png`.
+
+4. Copy the five finished web files into `images-lab/images/`. Leave the originals in `originals/`. Note the exact **pixel dimensions and file size** of each export — you will print them on the page in Part 4.
+
+</Steps>
+
+<Aside type="caution" title="The #1 file-size trap">
+  Do not skip Squoosh. A phone photo straight from a stock site can be 4000+ px wide and several megabytes. Resizing to display size *before* compressing is what gets you from 4 MB to 150 KB — setting `width="600"` in HTML alone does not shrink the download.
+</Aside>
+
+---
+
+## Part 3 — Scaffold the page (5 min)
+
+<Steps>
+
+1. Inside `images-lab/`, create `index.html` with the standard boilerplate:
+
+   ```html
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Skate Culture in Hartford | Your Name</title>
+   </head>
+   <body>
+     <!-- Your Name, DMD 1070, Images Lab: Preparing Images for the Web -->
+     <!-- Photo sources: paste the Pexels/Unsplash URLs here for credit -->
+
+     <h1>My Theme: Skate Culture in Hartford</h1>
+
+   </body>
+   </html>
+   ```
+
+   Give the page its own interesting `<title>` — not "My Image Project." The `viewport` meta is required on every page in this course.
+
+2. Confirm the folder layout looks like this:
+
+   ```
+   images-lab/
+   ├── index.html
+   └── images/
+       ├── skatepark-sunset-hero.jpg
+       ├── skateboarder-square.jpg
+       ├── skateboarder-portrait.jpg
+       ├── skateboarder-landscape.jpg
+       └── sneaker-cutout.png
+   ```
+
+</Steps>
+
+---
+
+## Part 4 — Display all five images (15 min)
+
+Every `<img>` needs `src` (relative path into `images/`) and `alt` (a real description, not the filename) — see [Using the Image Element](./using-the-image-element). Set `width` and `height` to the **actual exported dimensions** so the browser reserves space, and add `loading="lazy"` to images below the fold.
+
+<Steps>
+
+1. Add the hero first:
+
+   ```html
+   <h2>Header/Hero Image</h2>
+   <img src="images/skatepark-sunset-hero.jpg" alt="Skateboarder catching air at sunset in a concrete skatepark" width="1400" height="788">
+   <p>JPEG, 1400 × 788 px, 320 KB</p>
+   ```
+
+   Replace the numbers with your real dimensions and file size. Good `alt` text describes content and purpose (`alt="Skateboarder catching air at sunset..."`), not `alt="hero"` or `alt="IMG_0423.jpg"`. For a purely decorative flourish you would use `alt=""` — but all five lab images carry meaning, so each gets real text.
+
+2. Add the three aspect-ratio crops the same way, each with its own `<h2>`, accurate `width`/`height`, descriptive `alt`, and caption line:
+
+   ```html
+   <h2>Square Crop (1:1)</h2>
+   <img src="images/skateboarder-square.jpg" alt="Close-up of worn skateboard griptape and sneakers" width="600" height="600" loading="lazy">
+   <p>WebP, 600 × 600 px, 85 KB</p>
+
+   <h2>Portrait Crop (3:4)</h2>
+   <img src="images/skateboarder-portrait.jpg" alt="Skater in a red hoodie holding a board beside a ramp" width="600" height="800" loading="lazy">
+   <p>JPEG, 600 × 800 px, 120 KB</p>
+
+   <h2>Landscape Crop (4:3)</h2>
+   <img src="images/skateboarder-landscape.jpg" alt="Empty skatepark bowl under morning light" width="600" height="450" loading="lazy">
+   <p>JPEG, 600 × 450 px, 98 KB</p>
+   ```
+
+3. Add the transparency image and say which format you chose and why:
+
+   ```html
+   <h2>Background Removed (Transparency)</h2>
+   <img src="images/sneaker-cutout.png" alt="White sneaker with the background removed, floating on the page background" width="500" height="400" loading="lazy">
+   <p>PNG with transparency, 500 × 400 px, 175 KB — PNG keeps crisp edges and transparency; JPEG was not an option here.</p>
+   ```
+
+</Steps>
+
+---
+
+## Part 5 — Validate, upload, and submit (10 min)
+
+Nothing uploads until the page is valid.
+
+<Steps>
+
+1. Go to the [W3C Markup Validator](https://validator.w3.org/), choose **Validate by Direct Input**, paste all of `index.html`, and fix every error. The usual suspects: missing `alt` on an `<img>`, `href`/`src` casing that does not match the file (`Square.jpg` ≠ `square.jpg`), unclosed tags. See [Validating HTML](../html-basics/validating-html).
+
+2. In FileZilla (SFTP, `UCONN-SECURE` or VPN active), confirm the remote pane is `/home/NETID/public_html`. Drag the whole **`images-lab/` folder** (containing `index.html` + `images/`) from the local pane to the remote pane. Check **Successful transfers**.
+
+3. Visit `https://dmd-static.grove.ad.uconn.edu/~NETID/images-lab/` (replace `NETID`, keep the `~` and trailing `/`). Hard-refresh if you see an old page: `Ctrl+Shift+R` (Windows) or `Cmd+Shift+R` (Mac). Confirm all five images load, none is broken, and the cutout really shows transparency (page background shows through).
+
+4. **Edit-loop test:** fix one `alt` text locally, save, re-upload just `index.html`, hard-refresh. If it changes, your deploy loop works.
+
+5. Submit the live page URL to HuskyCT.
+
+</Steps>
+
+---
+
+## Stretch goal — custom SVG badge (if you finish early)
+
+If the five images were easy, design a small logo, icon, or badge for your theme as an **SVG** and add it to the page with the same `<h2>` + `<img>` + caption pattern. SVG is vector code, so it stays sharp at any size and is usually tiny — see [Image Types](./image-types).
+
+```html
+<h2>Theme Badge (SVG)</h2>
+<img src="images/skate-badge.svg" alt="Circular badge reading Skate Hartford with a skateboard icon" width="200" height="200" loading="lazy">
+<p>SVG, 200 × 200 px, 4 KB — vector, so it scales without pixelation.</p>
+```
+
+You can hand-write simple SVG in VS Code or export one from Illustrator / Figma / a free vector tool. Keep it simple: a circle, a wordmark, an icon.
+
+---
+
+## Troubleshooting
+
+<Tabs>
+  <TabItem label="Broken image icon">
+  **The page shows a broken-image icon**
+
+  - The `src` path is relative to `index.html`: `images/skateboarder-square.jpg` works only if `images/` sits *next to* `index.html` inside `images-lab/`.
+  - Casing must match exactly: `Square.jpg` ≠ `square.jpg` ≠ `square.JPG`. Servers are case-sensitive — see [File & Folder Naming](../getting-started/naming-files).
+  - You uploaded `index.html` but not the `images/` folder — drag the whole `images-lab/` folder, not just the HTML file.
+  </TabItem>
+  <TabItem label="Huge file / slow load">
+  **An image is 2+ MB or loads slowly**
+
+  - You embedded the original instead of the export. Check the file in `images-lab/images/` — is it the 600 px version or the 4000 px stock download?
+  - Re-export at display size first, *then* compress in Squoosh. HTML `width` does not shrink the download.
+  - Try the other format: photos often win as WebP, cutouts as PNG vs. WebP — compare and keep the smallest that still looks good.
+  </TabItem>
+  <TabItem label="Transparency shows white box">
+  **The cutout has a white rectangle behind it**
+
+  - The file was exported as JPEG — JPEG has no transparency. Re-export as PNG or WebP with transparency enabled.
+  - In your editor, confirm the background layer is actually removed/hidden (checkerboard), not just painted white.
+  </TabItem>
+  <TabItem label="Validator errors">
+  **W3C reports errors**
+
+  - Read the **first** error first — one unclosed tag cascades into phantom errors below it.
+  - Every `<img>` needs both `src` and `alt`. A missing `alt` is the most common failure in this lab.
+  - `width`/`height` are plain numbers (`width="600"`), not `width="600px"`.
+  - Re-paste after each fix — don't batch-guess.
+  </TabItem>
+  <TabItem label="Upload / old page">
+  **Connected but live page is missing or stale**
+
+  - Remote path must read `/home/NETID/public_html` — files placed directly in `/home/NETID/` are **not** served.
+  - The URL needs the `~`: `.../~NETID/images-lab/` works, `.../NETID/images-lab/` 404s.
+  - Hard-refresh (`Ctrl/Cmd + Shift + R`); Chrome caches images aggressively.
+  - Off campus without VPN (or on `UCONN-PUBLIC`) you will time out — fix the network first, not the HTML.
+  </TabItem>
+</Tabs>
+
+---
+
+## Check your understanding
+
+<Quiz id="images-lab-format-choice" title="Choosing formats">
+Which format assignments follow this unit's guidance? (Choose all that apply)
+
+- [x] Hero photograph → JPEG or WebP (lossy compression keeps photos small)
+- [x] Background-removed cutout → PNG or WebP with transparency
+- [ ] Background-removed cutout → JPEG with transparency enabled
+- [x] Simple theme badge → SVG (vector code, sharp at any size)
+
+</Quiz>
+
+<Quiz id="images-lab-file-naming" title="File naming">
+Which exported filename follows the course naming rules?
+
+- [ ] `Hero Image.JPG`
+- [ ] `skateboarder_square.jpg`
+- [x] `skateboarder-portrait.jpg`
+- [ ] `IMG_0423.jpg`
+
+Lowercase only, hyphens between words, descriptive, extension included.
+
+</Quiz>
+
+<Quiz id="images-lab-img-required" title="Required img attributes">
+Which two attributes are required on every `<img>` in this lab?
+
+- [x] `src`
+- [ ] `width`
+- [ ] `loading`
+- [x] `alt`
+
+`width`/`height` are strongly recommended (they reserve space), but `src` + `alt` are the required pair.
+
+</Quiz>
+
+<Quiz id="images-lab-compression" title="Compression & workflow">
+Which statements are true? (Choose all that apply)
+
+- [x] Lossy compression (JPEG/WebP) discards data to shrink files; lossless (PNG) keeps every pixel
+- [x] Archive the original and export web copies — re-saving a JPEG degrades it again
+- [ ] Setting `width="600"` in HTML shrinks the downloaded file to a 600 px image
+- [x] Validate with zero errors *before* uploading, then confirm the live `~NETID` URL
+
+</Quiz>
+
+---
+
+## Completion checklist
+
+Before you move on, confirm:
+
+- [ ] `images-lab/index.html` + `images-lab/images/` with **five** web-ready files, all lowercase-hyphenated and descriptive
+- [ ] Hero is wide (16:9/21:9), 1200–1600 px, under 500 KB; three crops are three different ratios at ~600 px / under 200 KB; cutout is PNG/WebP with real transparency at 400–600 px
+- [ ] Every `<img>` uses a relative `images/...` path, real `width`/`height`, purposeful `alt`, and `loading="lazy"` below the fold
+- [ ] A caption under **each** image states format + dimensions + file size (cutout also says why JPEG was excluded)
+- [ ] Page passes the **W3C Validator** with zero errors
+- [ ] Whole `images-lab/` folder is in `/home/NETID/public_html` (**Successful transfers**) and loads at `~NETID/images-lab/`; edit-reupload loop tested
+- [ ] Live URL submitted to HuskyCT
+
+**Stuck?** Work through [Troubleshooting](#troubleshooting) top-to-bottom, then ask in class with your Squoosh sizes or validator screenshot — that tells us whether the failure is export, markup, path, or network.
+
+**Next:** [HTML5 & Semantic Markup](../html5-semantic-markup/) — where your image page gets a proper header, main, and footer.
