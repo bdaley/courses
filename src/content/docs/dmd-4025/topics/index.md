@@ -9,7 +9,7 @@ description: All course topics for DMD 4025.
 - [Graduate Education](graduate-education/)
 - [Programs in the Visual Arts](graduate-education/programs-in-the-visual-arts)
 - [Show Reels](show-reels/)
-- [Show Reel Inspirations](show-reels/show-reel-inspirations)
+- [Show Reel Inspiration Lab](show-reels/show-reel-inspiration-lab)
 - [The Job Search](the-job-search)
 - [Interviewing](interviewing/)
 - [Types of Interviews](interviewing/types-of-interviews)

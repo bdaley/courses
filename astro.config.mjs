@@ -127,6 +127,38 @@ export default defineConfig({
 							],
 						},
 						{
+							label: 'Show Reels',
+							collapsed: true,
+							items: [
+								{ slug: 'dmd-4025/topics/show-reels' },
+								{ slug: 'dmd-4025/topics/show-reels/tips-for-cutting-better-show-reels-video' },
+								{ slug: 'dmd-4025/topics/show-reels/25-tips-demo-reel-video' },
+								{ slug: 'dmd-4025/topics/show-reels/demo-reel-tips-hired-video' },
+								{ slug: 'dmd-4025/topics/show-reels/show-reel-inspiration-lab',
+									badge: { text: 'Lab', variant: 'success' },
+								},
+								{
+									slug: 'dmd-4025/assignments/show-reel',
+									badge: { text: 'Assignment', variant: 'caution' },
+								},
+							],
+						},
+						{
+							label: 'The Job Search',
+							collapsed: true,
+							items: [
+								{ slug: 'dmd-4025/topics/the-job-search' },
+								{ slug: 'dmd-4025/topics/the-job-search/types-of-employment-agencies-video' },
+								{ slug: 'dmd-4025/topics/the-job-search/hidden-job-market-video' },
+								{ slug: 'dmd-4025/topics/the-job-search/job-search-checklist-video' },
+								{ slug: 'dmd-4025/topics/the-job-search/safe-job-search-video' },
+								{
+									slug: 'dmd-4025/assignments/job-search-and-cover-letter',
+									badge: { text: 'Assignment', variant: 'caution' },
+								},
+							],
+						},
+						{
 							label: 'Resumes',
 							collapsed: true,
 							items: [
@@ -135,6 +167,25 @@ export default defineConfig({
 									slug: 'dmd-4025/assignments/resume',
 									badge: { text: 'Assignment', variant: 'caution' },
 								},
+							],
+						},
+						{
+							label: 'Interviewing',
+							collapsed: true,
+							items: [
+								{ slug: 'dmd-4025/topics/interviewing' },
+								{ slug: 'dmd-4025/topics/interviewing/human-behavior-ace-interview-video' },
+								{ slug: 'dmd-4025/topics/interviewing/how-to-ace-next-interview-video' },
+								{ slug: 'dmd-4025/topics/interviewing/types-of-interviews' },
+								{ slug: 'dmd-4025/topics/interviewing/all-day-interviews-video' },
+								{ slug: 'dmd-4025/topics/interviewing/phone-interviews-video' },
+								{ slug: 'dmd-4025/topics/interviewing/preparing-group-interviews-video' },
+								{ slug: 'dmd-4025/topics/interviewing/virtual-interviews-video' },
+								{
+									slug: 'dmd-4025/assignments/mock-interview',
+									badge: { text: 'Assignment', variant: 'caution' },
+								},
+								{ slug: 'dmd-4025/assignments/mock-interview-developing-questions-video' },
 							],
 						},
 						{
@@ -163,55 +214,6 @@ export default defineConfig({
 								{ slug: 'dmd-4025/topics/graduate-education/preparing-graduate-interview-video' },
 								{ slug: 'dmd-4025/topics/graduate-education/questions-for-interviewer-video' },
 								{ slug: 'dmd-4025/topics/graduate-education/programs-in-the-visual-arts' },
-							],
-						},
-						{
-							label: 'Show Reels',
-							collapsed: true,
-							items: [
-								{ slug: 'dmd-4025/topics/show-reels' },
-								{ slug: 'dmd-4025/topics/show-reels/tips-for-cutting-better-show-reels-video' },
-								{ slug: 'dmd-4025/topics/show-reels/25-tips-demo-reel-video' },
-								{ slug: 'dmd-4025/topics/show-reels/demo-reel-tips-hired-video' },
-								{ slug: 'dmd-4025/topics/show-reels/show-reel-inspirations' },
-								{
-									slug: 'dmd-4025/assignments/show-reel',
-									badge: { text: 'Assignment', variant: 'caution' },
-								},
-							],
-						},
-						{
-							label: 'The Job Search',
-							collapsed: true,
-							items: [
-								{ slug: 'dmd-4025/topics/the-job-search' },
-								{ slug: 'dmd-4025/topics/the-job-search/types-of-employment-agencies-video' },
-								{ slug: 'dmd-4025/topics/the-job-search/hidden-job-market-video' },
-								{ slug: 'dmd-4025/topics/the-job-search/job-search-checklist-video' },
-								{ slug: 'dmd-4025/topics/the-job-search/safe-job-search-video' },
-								{
-									slug: 'dmd-4025/assignments/job-search-and-cover-letter',
-									badge: { text: 'Assignment', variant: 'caution' },
-								},
-							],
-						},
-						{
-							label: 'Interviewing',
-							collapsed: true,
-							items: [
-								{ slug: 'dmd-4025/topics/interviewing' },
-								{ slug: 'dmd-4025/topics/interviewing/human-behavior-ace-interview-video' },
-								{ slug: 'dmd-4025/topics/interviewing/how-to-ace-next-interview-video' },
-								{ slug: 'dmd-4025/topics/interviewing/types-of-interviews' },
-								{ slug: 'dmd-4025/topics/interviewing/all-day-interviews-video' },
-								{ slug: 'dmd-4025/topics/interviewing/phone-interviews-video' },
-								{ slug: 'dmd-4025/topics/interviewing/preparing-group-interviews-video' },
-								{ slug: 'dmd-4025/topics/interviewing/virtual-interviews-video' },
-								{
-									slug: 'dmd-4025/assignments/mock-interview',
-									badge: { text: 'Assignment', variant: 'caution' },
-								},
-								{ slug: 'dmd-4025/assignments/mock-interview-developing-questions-video' },
 							],
 						},
 						{
