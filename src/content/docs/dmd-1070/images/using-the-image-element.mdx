@@ -1,6 +1,8 @@
 ---
 title: Using the Image Element
 description: How to use the HTML image element and its attributes
+sidebar:
+  order: 1
 ---
 
 import { LinkCard } from '@astrojs/starlight/components';
@@ -81,11 +83,9 @@ The `loading="lazy"` attribute tells the browser to wait to load the image until
 <img src="photo.jpg" alt="A mountain view" loading="lazy">
 ```
 
-## Picture Element
+## A Note on the Picture Element
 
-For art direction and responsive formats beyond `srcset`, use `<picture>`.
-
-<LinkCard title="Picture Element - In a Nutshell" href="/courses/dmd-1070/images/picture-element-video/" description="Watch on dedicated video page." />
+HTML also has a `<picture>` element for art direction and responsive image formats. It is beyond the scope of this course — stick with `<img>` for now.
 
 ## Figure and Figcaption
 
@@ -100,7 +100,7 @@ The `<figure>` element wraps an image together with a caption. The `<figcaption>
 
 Using `<figure>` and `<figcaption>` helps search engines and assistive technology understand that the caption belongs to the image.
 
-<Quiz>
+<Quiz id="img-element-required" title="Required Attributes">
 
 Which two attributes are required on every `<img>` element?
 
@@ -109,7 +109,9 @@ Which two attributes are required on every `<img>` element?
 - [ ] loading
 - [x] alt
 
----
+</Quiz>
+
+<Quiz id="img-element-loading" title="Lazy Loading">
 
 What does `loading="lazy"` do?
 
@@ -118,7 +120,9 @@ What does `loading="lazy"` do?
 - [x] Delays loading until the image is near the viewport
 - [ ] Removes the alt text
 
----
+</Quiz>
+
+<Quiz id="img-element-display" title="Image Display">
 
 The `<img>` element displays as [[inline]] by default.
 

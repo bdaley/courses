@@ -1,6 +1,8 @@
 ---
 title: Image Types
 description: Understanding vector and raster image formats for the web
+sidebar:
+  order: 6
 ---
 
 import InteractiveCode from '../../../../components/InteractiveCode.astro';
@@ -91,7 +93,7 @@ Advantages of SVG:
 
 Try changing the house color or adding a chimney. Every part of an SVG is editable code.
 
-<Quiz>
+<Quiz id="image-types-photo" title="Photos">
 
 Which image format is best for a photograph on a website?
 
@@ -100,7 +102,9 @@ Which image format is best for a photograph on a website?
 - [ ] GIF
 - [ ] SVG
 
----
+</Quiz>
+
+<Quiz id="image-types-svg" title="SVG Facts">
 
 Which of the following are true about SVG?
 
@@ -109,8 +113,64 @@ Which of the following are true about SVG?
 - [ ] It is made of pixels
 - [x] It can be edited in a text editor
 
----
+</Quiz>
+
+<Quiz id="image-types-transparency" title="PNG Transparency">
 
 A PNG image is useful because it supports [[transparency]].
+
+</Quiz>
+
+You are building a portfolio site. Choose the best image format for each job.
+
+<Quiz id="image-format-hero" title="Scenario: Hero Photo">
+
+A full-width hero photograph with thousands of colors needs to load fast. Which format do you choose?
+
+- [x] JPEG
+- [ ] PNG
+- [ ] SVG
+- [ ] GIF
+
+JPEG's lossy compression keeps photo file sizes small. WebP would also be a good modern choice.
+
+</Quiz>
+
+<Quiz id="image-format-logo" title="Scenario: Logo">
+
+A logo must sit on different background colors with no white box around it and stay sharp. Which format do you choose?
+
+- [ ] JPEG
+- [x] PNG
+- [ ] GIF
+- [ ] SVG (only if it is vector art)
+
+PNG uses lossless compression and supports transparency, so crisp edges stay sharp with no background box.
+
+</Quiz>
+
+<Quiz id="image-format-animation" title="Scenario: Animation">
+
+You need a short looping animation with flat colors for a loading icon. Which format do you choose?
+
+- [ ] JPEG
+- [ ] PNG
+- [x] GIF
+- [ ] SVG (static only, unless animated with code)
+
+GIF supports simple animation with a limited 256-color palette. Animated WebP is the modern alternative.
+
+</Quiz>
+
+<Quiz id="image-format-icon" title="Scenario: Icon">
+
+You need an icon that stays sharp at any size, from favicon to billboard, and can be recolored with CSS. Which format do you choose?
+
+- [ ] JPEG
+- [ ] PNG
+- [ ] GIF
+- [x] SVG
+
+SVG is vector code, so it scales infinitely and can be styled with CSS.
 
 </Quiz>

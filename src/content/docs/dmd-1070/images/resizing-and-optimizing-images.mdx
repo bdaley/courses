@@ -1,6 +1,8 @@
 ---
 title: Resizing and Optimizing Images
 description: Tools and techniques for resizing and optimizing web images
+sidebar:
+  order: 8
 ---
 
 import { LinkCard } from '@astrojs/starlight/components';
@@ -65,7 +67,7 @@ Use JPEG for photographs, PNG for images needing transparency, and WebP for the 
 
 This code shows how different images might be used at different sizes on the same page. The heavy resizing work should be done before these files are added to your project.
 
-<Quiz>
+<Quiz id="resizing-compression" title="Compression">
 
 What is the difference between lossy and lossless compression?
 
@@ -74,7 +76,9 @@ What is the difference between lossy and lossless compression?
 - [ ] Lossy is for PNG; lossless is for JPEG
 - [ ] There is no difference
 
----
+</Quiz>
+
+<Quiz id="resizing-tools" title="Optimization Tools">
 
 Which tool lets you compare image quality side by side in a browser?
 
@@ -83,7 +87,9 @@ Which tool lets you compare image quality side by side in a browser?
 - [x] Squoosh
 - [ ] Image Resizer VS Code extension
 
----
+</Quiz>
+
+<Quiz id="resizing-dimensions" title="Image Dimensions">
 
 True or False: You should use an image that is 4000 pixels wide for a thumbnail that displays at 150 pixels.
 
