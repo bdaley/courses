@@ -44,6 +44,28 @@ Screen readers read the alt text aloud so that people who cannot see the image s
 
 Good alt text describes the content and purpose of the image. For a photo of a team, write `alt="Our marketing team at the annual retreat"` — not `alt="team"` or `alt="IMG_0423.jpg"`.
 
+### Functional images, decorative images, and complex images
+
+- **Functional images** (logos, buttons, icons): the alt text should say in words what the image says visually. A company banner gets `alt="Acme Carpet Cleaners"`, not `alt="banner"`. An icon button gets `alt="Play"` or `alt="Print"`.
+- **Decorative-only images** (a flourish that adds no information): use an empty alt attribute, `alt=""`. This hides the graphic from screen readers instead of announcing a meaningless filename.
+- **Complex images** (charts, diagrams): alt text alone is not enough. Pair the image with a visible `<figcaption>` caption and, for data charts, an accessible data table so screen-reader users get the same information.
+
+> Based on Patrick J. Lynch and Sarah Horton, *Web Style Guide*, Chapter 11 Images — [webstyleguide.com/11-images.html](https://webstyleguide.com/11-images.html) (Providing alternatives for images). Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). For the full decision guide, see the W3C's [HTML5: Techniques for Providing Useful Text Alternatives](https://www.w3.org/TR/html-alt-techniques/).
+
+<InteractiveCode
+  html={`<!-- Functional: says what the image means -->
+<img src="logo.png" alt="Acme Carpet Cleaners" width="200" height="60">
+
+<!-- Decorative: hidden from screen readers -->
+<img src="flourish.png" alt="" width="200" height="20">
+
+<!-- Complex: caption carries the explanation -->
+<figure>
+  <img src="chart.png" alt="Bar chart of lifespan increase over time">
+  <figcaption>Lifespan rose from 60 to 78 years between 1950 and 2020. Data table below repeats these values.</figcaption>
+</figure>`}
+/>
+
 <LinkCard title="The alt Attribute" href="/courses/dmd-1070/images/alt-attribute-video/" description="Watch on dedicated video page." />
 
 ## The `width` and `height` Attributes
@@ -87,6 +109,8 @@ The `loading="lazy"` attribute tells the browser to wait to load the image until
 
 HTML also has a `<picture>` element for art direction and responsive image formats. It is beyond the scope of this course — stick with `<img>` for now.
 
+> Teaser: modern phones and laptops often have high-density ("retina" or 2x) screens where one CSS pixel covers four device pixels. That is why the same photo can look crisp on one screen and fuzzy on another, and why professional sites serve smaller/larger versions of an image at different breakpoints with `<picture>` and `srcset`. You will meet that idea again in Responsive Web Design — for now, just know it exists. Based on Patrick J. Lynch and Sarah Horton, *Web Style Guide*, Chapter 11 Images — [webstyleguide.com/11-images.html](https://webstyleguide.com/11-images.html). Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
 ## Figure and Figcaption
 
 The `<figure>` element wraps an image together with a caption. The `<figcaption>` element holds the caption text.
@@ -125,5 +149,22 @@ What does `loading="lazy"` do?
 <Quiz id="img-element-display" title="Image Display">
 
 The `<img>` element displays as [[inline]] by default.
+
+</Quiz>
+
+<Quiz id="img-element-alt-types" title="Alt Text Types">
+
+Which `alt` value is correct for a purely decorative flourish image?
+
+- [ ] `alt="flourish"`
+- [x] `alt=""`
+- [ ] No `alt` attribute at all
+- [ ] `alt="IMG_0423.jpg"`
+
+</Quiz>
+
+<Quiz id="img-element-alt-functional" title="Functional Alt Text">
+
+A play-button icon should use the alt text [[Play]] — the words the image says visually.
 
 </Quiz>

@@ -46,17 +46,57 @@ Try changing the `fill` colors or the `r` (radius) of the circle. Because SVG is
 
 JPEG is the standard format for photographs. It compresses well, which means small file sizes, but it uses **lossy compression** — some image data is discarded to save space. Every time you save a JPEG, you lose a little quality.
 
+JPEG images are full-color (24-bit, up to 16.8 million colors) and let you slide between higher quality and smaller files. Pushing compression too far creates visible blockiness and "noise," especially around text and sharp edges. A variant called **progressive JPEG** loads in gradually from blurry to sharp, giving visitors a preview while the file downloads.
+
+> Based on Patrick J. Lynch and Sarah Horton, *Web Style Guide*, Chapter 11 Images — [webstyleguide.com/11-images.html](https://webstyleguide.com/11-images.html). Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
 ### PNG
 
 PNG uses **lossless compression** — no data is lost. This makes PNG ideal for screenshots, logos, and any image with crisp edges or text. PNG also supports transparency, so you can have a logo with no rectangular background box.
+
+PNG shines on line art, text, and logos — images with large areas of flat color and sharp transitions. For photographs it works but produces much larger files than JPEG, so prefer JPEG or WebP for photos. PNG files can also embed a short text description of the image content, which search engines can use to index the image.
+
+> Based on Patrick J. Lynch and Sarah Horton, *Web Style Guide*, Chapter 11 Images — [webstyleguide.com/11-images.html](https://webstyleguide.com/11-images.html). Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ### GIF
 
 GIF is limited to 256 colors, which makes it a poor choice for photographs. But GIF supports simple animations, which is why it is still popular for short looping clips.
 
+Because GIF uses lossless LZW compression, it compresses best when there are large areas of flat color — logos and diagrams, not photos. Saving with fewer colors (for example 16 or 32 instead of the full 256) can shrink the file substantially with no visible difference on simple graphics.
+
+> Based on Patrick J. Lynch and Sarah Horton, *Web Style Guide*, Chapter 11 Images — [webstyleguide.com/11-images.html](https://webstyleguide.com/11-images.html). Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
 ### WebP
 
 WebP is a modern format created by Google. It supports both lossy and lossless compression, transparency, and animation — all in a smaller file than JPEG or PNG. Most browsers support WebP, and it is becoming the standard for the web.
+
+## How to Choose: Test and Compare
+
+There is no magic formula like "always use JPEG for this, always use PNG for that." Use this beginner workflow:
+
+1. Guess based on the image: photo → JPEG/WebP, crisp logo or screenshot → PNG/SVG, simple animation → GIF/WebP.
+2. Export the same image in two formats and compare file size and quality side by side.
+3. Pick the smallest file that still looks good — especially for larger images where the savings add up.
+
+Small graphics can fool you: a tiny hard-edged icon "should" be a GIF, but sometimes a PNG or JPEG is smaller or sharper. Testing beats guessing.
+
+> Based on Patrick J. Lynch and Sarah Horton, *Web Style Guide*, Chapter 11 Images — [webstyleguide.com/11-images.html](https://webstyleguide.com/11-images.html). Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). [Learn more about choosing file formats](https://webstyleguide.com/11-images.html).
+
+## Sometimes the Best Graphic Is No Image File
+
+Buttons, color fields, rules, shadows, and simple icons often do not need an image file at all. They can be built with CSS styling or with inline SVG/icon fonts, which scale cleanly and cost almost nothing to download. Before exporting a graphic, ask: "Could CSS do this instead?"
+
+> Based on Patrick J. Lynch and Sarah Horton, *Web Style Guide*, Chapter 11 Images — [webstyleguide.com/11-images.html](https://webstyleguide.com/11-images.html) (CSS-based graphics and icon fonts). Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+<Quiz id="image-types-choosing" title="Choosing Formats">
+
+You export a small icon as GIF (48 KB) and as PNG (21 KB) with no visible quality difference. What should you do?
+
+- [x] Use the PNG — smallest file that still looks good wins
+- [ ] Always use GIF for icons, regardless of size
+- [ ] Use whichever was exported first
+
+</Quiz>
 
 ## Vector Format: SVG
 

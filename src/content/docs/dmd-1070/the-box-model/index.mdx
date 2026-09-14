@@ -70,14 +70,16 @@ If you do not set a `width`, a block-level element will stretch to fill its cont
 }`}
 />
 
-<Quiz id="box-model-width" title="Content width">
+<Quiz id="box-model-width-a" title="Content width (1 of 2)">
 What does the <code>width</code> property control in the box model?
 
 - [ ] The total width including padding and border
 - [ ] The space outside the border
 - [x] The width of the content area
 - [ ] The thickness of the border
+</Quiz>
 
+<Quiz id="box-model-width-b" title="Content width (2 of 2)">
 If you do not set a <code>width</code> on a block-level element, it will:
 
 - [ ] Collapse to zero width
@@ -130,14 +132,16 @@ The two boxes have the same `width: 200px`, but the second one looks much bigger
 
 <p>Try changing <code>.box-large</code> padding to <code>10px</code>. Do the boxes look the same now? Try setting the padding on <code>.box</code> to <code>10px 60px</code> — what changes?</p>
 
-<Quiz id="box-model-padding" title="Padding">
+<Quiz id="box-model-padding-a" title="Padding (1 of 2)">
 What does padding control?
 
 - [x] The space between content and border
 - [ ] The space outside the border
 - [ ] The width of the border
 - [ ] The background color
+</Quiz>
 
+<Quiz id="box-model-padding-b" title="Padding (2 of 2)">
 If two elements have the same <code>width</code> but different padding, the one with more padding will:
 
 - [ ] Have less content space
@@ -193,14 +197,16 @@ border: 1px solid #ccc;      /* a thin gray solid border — very common */
 
 <p>Notice the first box — even though <code>border: 3px red</code> sets a width and color, no border shows because the style is missing. Change it to <code>border: 3px solid red</code> and see what happens.</p>
 
-<Quiz id="box-model-border" title="Border">
+<Quiz id="box-model-border-a" title="Border (1 of 2)">
 Which part of the border declaration is required for a border to show?
 
 - [ ] width
 - [x] style
 - [ ] color
 - [ ] All three are required
+</Quiz>
 
+<Quiz id="box-model-border-b" title="Border (2 of 2)">
 Which of these will create a visible border?
 
 - [ ] <code>border: 2px blue;</code>
@@ -267,14 +273,16 @@ When two vertical margins touch, they collapse into a single margin equal to the
 
 <p>Try changing <code>margin-bottom</code> on the first box to <code>10px</code>. Now which margin wins?</p>
 
-<Quiz id="box-model-margin" title="Margin">
+<Quiz id="box-model-margin-a" title="Margin (1 of 2)">
 What does margin control?
 
 - [ ] Space between content and border
 - [ ] The thickness of the border
 - [x] Space outside the border between elements
 - [ ] The inner padding of a container
+</Quiz>
 
+<Quiz id="box-model-margin-b" title="Margin (2 of 2)">
 If one element has <code>margin-bottom: 30px</code> and the next has <code>margin-top: 10px</code>, how much vertical space appears between them?
 
 - [ ] 40px
@@ -356,21 +364,25 @@ Both boxes have `width: 300px`, `padding: 25px`, and `border: 5px`. The first on
 
 <p>Switch the second box to <code>box-sizing: content-box</code>. What happens to its total width? Add <code>box-sizing: border-box</code> to the first box — does it get smaller?</p>
 
-<Quiz id="box-model-box-sizing" title="Box-sizing">
+<Quiz id="box-model-box-sizing-a" title="Box-sizing (1 of 3)">
 By default (<code>box-sizing: content-box</code>), the <code>width</code> property sets the width of which part?
 
 - [ ] The total element including padding, border, and margin
 - [x] The content area only
 - [ ] The content area plus padding
 - [ ] The content area plus border
+</Quiz>
 
+<Quiz id="box-model-box-sizing-b" title="Box-sizing (2 of 3)">
 An element has <code>width: 200px; padding: 10px; border: 2px solid black;</code>. What is its total width with the default <code>box-sizing</code>?
 
 - [ ] 200px
 - [ ] 210px
 - [ ] 202px
 - [x] 224px
+</Quiz>
 
+<Quiz id="box-model-box-sizing-c" title="Box-sizing (3 of 3)">
 Which <code>box-sizing</code> value makes <code>width</code> include padding and border?
 
 - [ ] <code>content-box</code>

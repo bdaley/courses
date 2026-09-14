@@ -18,14 +18,16 @@ Please watch the two videos below for an introduction:
 
 <LinkCard title="Responsive Web Design Intro — Part 2" href="/courses/dmd-1070/responsive-web-design/rwd-intro-part2-video/" description="Watch on dedicated video page." />
 
-<Quiz id="rwd-what-is">
+<Quiz id="rwd-what-is-adapt" title="What RWD Does">
 What does responsive web design allow a website to do?
 
 - [ ] Look exactly the same on every device
 - [x] Adapt its layout to fit different screen sizes
 - [ ] Only work on mobile phones
 - [ ] Require separate HTML for each device
+</Quiz>
 
+<Quiz id="rwd-what-is-definition" title="Defining RWD">
 Which best describes responsive web design?
 
 - [ ] A separate mobile version of a website
@@ -56,14 +58,16 @@ You never remove anything — you only add.
 
 In CSS, mobile-first means you write **base styles** for mobile (no media query needed), then use `min-width` media queries to add styles for larger screens. You will see this in the next section.
 
-<Quiz id="rwd-mobile-first">
+<Quiz id="rwd-mobile-first-meaning" title="Mobile-First Meaning">
 What does "mobile-first" mean in web design?
 
 - [ ] Designing for desktop first, then shrinking for mobile
 - [x] Starting with the mobile layout and adding for larger screens
 - [ ] Only designing for mobile phones and ignoring desktop
 - [ ] Building a mobile app instead of a website
+</Quiz>
 
+<Quiz id="rwd-mobile-first-query" title="Mobile-First Query">
 Mobile-first design uses [[min-width]] media queries to add styles for larger screens.
 </Quiz>
 
@@ -190,14 +194,16 @@ footer {
 
 Try changing `768px` to `500px`. The layout switches earlier. Change it to `1024px` and it switches later. This is how you control exactly where your layout breaks.
 
-<Quiz id="rwd-media-queries">
+<Quiz id="rwd-media-queries-meaning" title="Reading a Media Query">
 What does `@media (min-width: 768px)` mean?
 
 - [ ] Apply styles when the screen is exactly 768px wide
 - [x] Apply styles when the screen is 768px or wider
 - [ ] Apply styles when the screen is 768px or narrower
 - [ ] Apply styles only to tablets
+</Quiz>
 
+<Quiz id="rwd-media-queries-type" title="Mobile-First Query Type">
 In mobile-first design, which type of media query do you use?
 
 - [ ] max-width
@@ -296,16 +302,20 @@ Resize the preview. On mobile, the three cards stack in a single column. At 768p
 
 Try changing the `768px` in the media query to `500px`. The cards switch to a row layout at a narrower width. What breakpoint feels right to you?
 
-<Quiz id="rwd-stacked-to-columns">
+<Quiz id="rwd-stacked-direction" title="Stacking Direction">
 On mobile, a mobile-first layout typically uses which `flex-direction` value to stack items vertically?
 
 - [ ] row
 - [x] column
 - [ ] row-reverse
 - [ ] column-reverse
+</Quiz>
 
-To convert a stacked mobile layout into a multi-column desktop layout, you change `flex-direction` from `[[column]]` to `[[row]]` inside a media query.
+<Quiz id="rwd-stacked-fill" title="Stacked to Row">
+To convert a stacked mobile layout into a multi-column desktop layout, you change `flex-direction` from [[column]] to [[row]] inside a media query.
+</Quiz>
 
+<Quiz id="rwd-stacked-feature" title="Responsive Feature">
 Which CSS feature do you use to apply styles only at certain screen widths?
 
 - [ ] Flexbox

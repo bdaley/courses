@@ -91,19 +91,23 @@ p {
 
 Try adding `class="intro"` to the second paragraph or changing the `#footer` padding value.
 
-<Quiz>
+<Quiz id="selectors-element" title="Element Selectors">
 Which selector would you use to style all paragraphs on a page the same way?
 - [ ] .paragraph
 - [ ] #paragraph
 - [x] p
 - [ ] *paragraph
+</Quiz>
 
+<Quiz id="selectors-class" title="Class Selectors">
 Which selector targets an element with class="warning"?
 - [ ] #warning
 - [x] .warning
 - [ ] warning
 - [ ] *warning
+</Quiz>
 
+<Quiz id="selectors-id-unique" title="ID Uniqueness">
 True or false: An ID must be unique on a page.
 - [x] True
 - [ ] False
@@ -170,13 +174,15 @@ h3 {
 }`}
 />
 
-<Quiz>
+<Quiz id="selectors-descendant" title="Descendant Selectors">
 Which selector targets only `<p>` elements inside a `<section>`?
 - [ ] section, p
 - [x] section p
 - [ ] p section
 - [ ] section > p is the only way
+</Quiz>
 
+<Quiz id="selectors-grouping" title="Grouping Selectors">
 What does `h1, h2, h3 { color: red; }` do?
 - [x] Makes all h1, h2, and h3 elements red
 - [ ] Makes h1 red, then h2 red, then h3 red
@@ -233,13 +239,15 @@ a:hover {
 
 Hover your mouse over the link to see the `:hover` effect. Try changing the colors.
 
-<Quiz>
+<Quiz id="selectors-hover" title="Hover Pseudo-class">
 What does the :hover pseudo-class do?
 - [ ] Makes an element shake
 - [x] Applies styles when the mouse is over the element
 - [ ] Hides the element until clicked
 - [ ] Makes the element stay in place when scrolling
+</Quiz>
 
+<Quiz id="selectors-first-child" title="First-child Pseudo-class">
 Which pseudo-class targets the first child inside a parent?
 - [ ] :first-element
 - [ ] :nth(1)

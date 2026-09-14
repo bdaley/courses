@@ -67,13 +67,15 @@ p {
 
 Notice how each paragraph has a different color. The most specific selector always wins.
 
-<Quiz>
+<Quiz id="cascade-specificity-highest" title="Highest Specificity">
 Which selector has the highest specificity?
 - [ ] p
 - [x] #footer
 - [ ] .footer
 - [ ] div p
+</Quiz>
 
+<Quiz id="cascade-class-vs-id" title="Class vs ID">
 What color will text be if both a class and an ID target the same element?
 - [ ] The class color (more reusable)
 - [x] The ID color (higher specificity)
@@ -179,19 +181,23 @@ Inline CSS (the `style` attribute on an HTML element) has the **highest specific
 
 This is why inline CSS is dangerous — it's hard to override later. Use it sparingly, if at all.
 
-<Quiz>
+<Quiz id="cascade-source-order" title="Source Order">
 What happens when two CSS rules have the same specificity?
 - [x] The one that appears later in the file wins
 - [ ] The one that appears first wins
 - [ ] Both are applied equally
 - [ ] The browser picks randomly
+</Quiz>
 
+<Quiz id="cascade-priority" title="Cascade Priority">
 Which has the highest priority in the cascade?
 - [ ] An ID selector
 - [ ] A class selector
 - [x] An inline style attribute
 - [ ] An element selector
+</Quiz>
 
+<Quiz id="cascade-order-always" title="Source Order Limits">
 True or false: Putting a rule later in the CSS file always makes it win.
 - [ ] True
 - [x] False
@@ -230,13 +236,15 @@ p {
 }`}
 />
 
-<Quiz>
+<Quiz id="cascade-important" title="Important Flag">
 What does !important do?
 - [ ] Makes the rule load faster
 - [x] Forces the rule to the highest priority
 - [ ] Adds a warning icon to the element
 - [ ] Makes the text bold
+</Quiz>
 
+<Quiz id="cascade-important-avoid" title="Avoiding Important">
 Should you use !important often?
 - [ ] Yes, it makes styling easier
 - [x] No, it makes CSS harder to debug
